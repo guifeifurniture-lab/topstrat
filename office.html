@@ -278,30 +278,30 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'总指挥', active:true, events:1284, task:'协调 3 个待处理任务', color:'#4ade80' },
-  { name:'张良 📊', role:'战略侦察', active:true, events:892, task:'扫描 47 个市场信号', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'内容创作', active:true, events:637, task:'撰写本周场记', color:'#c084fc' },
-  { name:'孙膑 ⚔️', role:'竞争分析', active:false, events:451, task:'待机 — 等待 Spec', color:'#6b7280' },
-  { name:'墨子 🧠', role:'客户支持', active:true, events:318, task:'处理 2 个支持请求', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'财务管理', active:false, events:256, task:'待机 — 等待 Spec', color:'#6b7280' },
-  { name:'管仲 🔧', role:'运营开发', active:true, events:523, task:'部署谋士堂 v1.0', color:'#60a5fa' },
-  { name:'萧何 📦', role:'后勤保障', active:false, events:189, task:'待机 — 等待 Spec', color:'#6b7280' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:156, task:'官网优化任务统筹', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:234, task:'Office 页面实时数据接入', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:189, task:'响应式适配优化', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:167, task:'API Schema 设计', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:143, task:'CI/CD 配置', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:false, events:78, task:'待机 — 等待测试任务', color:'#6b7280' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:124, task:'需求文档 PRD v1.0', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:false, events:45, task:'待机 — 等待预算审批', color:'#6b7280' },
 ];
 
 const FLOOR_CELLS = [
   { type:'occupied', icon:'💡', name:'诸葛亮', status:'coordinating' },
-  { type:'occupied', icon:'📊', name:'张良', status:'scanning' },
+  { type:'occupied', icon:'🔧', name:'管仲', status:'frontend' },
   { type:'server', icon:'🖥️', name:'SRV-1', status:'' },
   { type:'server', icon:'🖥️', name:'SRV-2', status:'' },
   { type:'empty', icon:'', name:'', status:'' },
   { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'✍️', name:'商鞅', status:'writing' },
-  { type:'empty', icon:'', name:'', status:'' },
+  { type:'occupied', icon:'🧠', name:'墨子', status:'frontend' },
+  { type:'occupied', icon:'⚔️', name:'孙膑', status:'backend' },
   { type:'server', icon:'🗄️', name:'DB', status:'' },
   { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'🧠', name:'墨子', status:'support' },
+  { type:'occupied', icon:'✍️', name:'商鞅', status:'devops' },
   { type:'empty', icon:'', name:'', status:'' },
-  { type:'idle', icon:'⚔️', name:'孙膑', status:'' },
+  { type:'occupied', icon:'📊', name:'张良', status:'product' },
   { type:'empty', icon:'', name:'', status:'' },
   { type:'occupied', icon:'🔧', name:'管仲', status:'deploying' },
   { type:'empty', icon:'', name:'', status:'' },
@@ -316,16 +316,18 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">init</span> --project website --priority critical' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 项目初始化完成 — <span class="val">5 页面</span>' },
-  { prompt:'guanzhong@frontend:~$', text:'<span class="cmd">build</span> --page office.html --status done' },
-  { prompt:'> status', text:'Office 页面完成 · 实时数据已接入 <span class="highlight">▌</span>' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">develop</span> --page vault.html --progress 50%' },
-  { prompt:'> found', text:'<span class="val">定价卡片</span> · <span class="ok">支付占位</span> · 进行中' },
-  { prompt:'sunbin@backend:~$', text:'<span class="cmd">design</span> --api radar --status drafting' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> API Schema 设计中 · 预计 30 分钟' },
-  { prompt:'shangyang@devops:~$', text:'<span class="cmd">setup</span> --ci github-actions --cd vercel' },
-  { prompt:'> status', text:'CI/CD 配置中 <span class="val">80%</span> <span class="highlight">▌</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">task</span> --optimize website --priority critical' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 官网优化任务启动 — <span class="val">v0.2</span>' },
+  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">update</span> --page office.html --data realtime' },
+  { prompt:'> status', text:'Office 实时数据已接入 <span class="highlight">▌</span>' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">optimize</span> --responsive mobile --status done' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 移动端适配完成 <span class="highlight">▌</span>' },
+  { prompt:'sunbin@backend:~$', text:'<span class="cmd">design</span> --api stage --status done' },
+  { prompt:'> sent', text:'<span class="ok">✓</span> Stage API 设计完成' },
+  { prompt:'shangyang@devops:~$', text:'<span class="cmd">commit</span> --message "v0.2 优化" --count 5' },
+  { prompt:'> status', text:'Git 提交完成 <span class="val">5 commits</span> <span class="highlight">▌</span>' },
+  { prompt:'zhangliang@product:~$', text:'<span class="cmd">review</span> --prd v1.0 --status done' },
+  { prompt:'> result', text:'<span class="ok">✓</span> PRD v1.0 评审通过' },
 ];
 
 function renderFloor() {
