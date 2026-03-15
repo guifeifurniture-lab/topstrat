@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:178, task:'Cloudflare 部署统筹', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:256, task:'域名配置 + 前端支持', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:211, task:'部署前页面检查', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:189, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:165, task:'Cloudflare Pages 配置执行', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:100, task:'部署验证 + 质量检查', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:146, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:true, events:65, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:182, task:'Cloudflare 部署统筹', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:260, task:'ClawHub 技能搜索 + 每日学习', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:215, task:'部署前页面检查', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:193, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:169, task:'Cloudflare Pages 配置执行', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:104, task:'部署验证 + 质量检查', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:150, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:true, events:69, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,14 +316,14 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">deploy</span> --target cloudflare --project topstrat' },
-  { prompt:'> result', text:'<span class="ok">✓</span> Cloudflare Pages 部署启动 — <span class="val">预计 30 分钟</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">assign</span> --task ClawHub 技能搜索 --agent guanzhong' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 管仲任命为技能学习负责人 — <span class="val">每日 08:00 执行</span>' },
+  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">search</span> --clawhub https://clawhub.ai/ --daily 08:00' },
+  { prompt:'> status', text:'ClawHub 技能搜索任务已启动 <span class="highlight">▌</span>' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">check</span> --pages 6 --status all-pass' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 部署前页面检查通过' },
   { prompt:'shangyang@devops:~$', text:'<span class="cmd">configure</span> --pages topstrat --auto' },
   { prompt:'> status', text:'Cloudflare Pages 配置中 <span class="highlight">▌</span>' },
-  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">setup</span> --domain topstrat.pages.dev' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 域名配置准备中' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">check</span> --pages 6 --status all-pass' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> 部署前页面检查通过' },
   { prompt:'xiaoh@qa:~$', text:'<span class="cmd">prepare</span> --verify deployment --checklist 8items' },
   { prompt:'> status', text:'部署验证清单准备中 <span class="highlight">▌</span>' },
   { prompt:'sunbin@backend:~$', text:'<span class="cmd">develop</span> --api realtime --websocket --status drafting' },
