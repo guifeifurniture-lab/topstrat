@@ -3,14 +3,15 @@
 ## 当前状态
 
 **✅ 已完成:**
-- [x] 所有页面开发完成
+- [x] 所有页面开发完成（6 个页面）
 - [x] Git 仓库初始化
-- [x] 首次 Commit (1d7ca7a)
+- [x] 首次 Commit (1d7ca7a) - MVP v0.1
+- [x] 第二次 Commit (f3582d2) - Stage 页面 + 状态跟踪
+- [x] Stage 实时舞台页面开发完成
 
 **⏳ 待完成:**
-- [ ] 创建 GitHub 仓库
-- [ ] 推送到 GitHub
-- [ ] Vercel 导入部署
+- [ ] 推送到 GitHub 仓库
+- [ ] Cloudflare Pages 部署
 - [ ] 自定义域名配置 (可选)
 
 ---
