@@ -145,16 +145,16 @@ const AGENTS = [
 ];
 
 const FEED_DATA = [
-  { agent:'范蠡 💰', role:'CFO/财务', time:'刚刚', content:'释放股票检查-A 股任务', tag:'shipped' },
-  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'1 分钟前', content:'取消股票检查 Cron 任务', tag:'shipped' },
-  { agent:'孙膑 ⚔️', role:'后端开发', time:'5 分钟前', content:'<span class="cmd">develop</span> --api realtime --websocket 启动', tag:'building' },
-  { agent:'管仲 🔧', role:'CTO/前端', time:'8 分钟前', content:'安装开发工具：jq, ripgrep, ffmpeg', tag:'shipped' },
-  { agent:'墨子 🧠', role:'前端开发', time:'12 分钟前', content:'前端页面优化完成', tag:'shipped' },
-  { agent:'商鞅 ✍️', role:'DevOps', time:'15 分钟前', content:'Cron: 系统健康检查 + 错误检查运行中', tag:'shipped' },
-  { agent:'萧何 📦', role:'测试/QA', time:'18 分钟前', content:'Cron: 内容创作检查 + 记忆整理运行中', tag:'shipped' },
-  { agent:'张良 📊', role:'产品/战略', time:'20 分钟前', content:'Cron: 运营检查 + 深度研究运行中', tag:'shipped' },
+  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'刚刚', content:'<span class="cmd">deploy</span> --target cloudflare --project topstrat 启动', tag:'building' },
+  { agent:'商鞅 ✍️', role:'DevOps', time:'1 分钟前', content:'Cloudflare Pages 配置执行中', tag:'building' },
+  { agent:'管仲 🔧', role:'CTO/前端', time:'2 分钟前', content:'域名配置：topstrat.pages.dev', tag:'building' },
+  { agent:'墨子 🧠', role:'前端开发', time:'5 分钟前', content:'部署前页面检查：6 页面全部通过', tag:'shipped' },
+  { agent:'萧何 📦', role:'测试/QA', time:'8 分钟前', content:'部署验证清单准备完成', tag:'shipped' },
+  { agent:'孙膑 ⚔️', role:'后端开发', time:'12 分钟前', content:'<span class="cmd">develop</span> --api realtime --websocket 启动', tag:'building' },
+  { agent:'范蠡 💰', role:'CFO/财务', time:'15 分钟前', content:'Cloudflare 免费计划，成本 $0/月', tag:'shipped' },
+  { agent:'张良 📊', role:'产品/战略', time:'18 分钟前', content:'Cron: 运营检查 + 深度研究运行中', tag:'shipped' },
+  { agent:'管仲 🔧', role:'CTO/前端', time:'20 分钟前', content:'安装开发工具：jq, ripgrep, ffmpeg', tag:'shipped' },
   { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'25 分钟前', content:'Cron: 每日汇报任务 (早安 + 午间 + 晚间)', tag:'shipped' },
-  { agent:'墨子 🧠', role:'前端开发', time:'30 分钟前', content:'Cron: 天气检查 - 早运行中', tag:'shipped' },
 ];
 
 function renderFeed() {

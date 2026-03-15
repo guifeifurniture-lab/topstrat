@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:174, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:252, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:207, task:'统筹 1 个 Cron 任务 (天气)', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:185, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:161, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:96, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:142, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:true, events:61, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:178, task:'Cloudflare 部署统筹', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:256, task:'域名配置 + 前端支持', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:211, task:'部署前页面检查', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:189, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:165, task:'Cloudflare Pages 配置执行', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:100, task:'部署验证 + 质量检查', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:146, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:true, events:65, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,24 +316,22 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">cancel</span> --task 股票检查-A 股 --agent fanli' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 股票检查任务已取消 — <span class="val">剩余 12 个 Cron</span>' },
-  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">own</span> --tasks 技能学习检查，知识学习' },
-  { prompt:'> status', text:'每小时技能检查 + 每 4 小时知识学习 <span class="highlight">▌</span>' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">own</span> --tasks 天气检查 - 早' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 每日天气检查 <span class="highlight">▌</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">deploy</span> --target cloudflare --project topstrat' },
+  { prompt:'> result', text:'<span class="ok">✓</span> Cloudflare Pages 部署启动 — <span class="val">预计 30 分钟</span>' },
+  { prompt:'shangyang@devops:~$', text:'<span class="cmd">configure</span> --pages topstrat --auto' },
+  { prompt:'> status', text:'Cloudflare Pages 配置中 <span class="highlight">▌</span>' },
+  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">setup</span> --domain topstrat.pages.dev' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 域名配置准备中' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">check</span> --pages 6 --status all-pass' },
+  { prompt:'> sent', text:'<span class="ok">✓</span> 部署前页面检查通过' },
+  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">prepare</span> --verify deployment --checklist 8items' },
+  { prompt:'> status', text:'部署验证清单准备中 <span class="highlight">▌</span>' },
   { prompt:'sunbin@backend:~$', text:'<span class="cmd">develop</span> --api realtime --websocket --status drafting' },
   { prompt:'> sent', text:'<span class="ok">✓</span> WebSocket 实时数据 API 设计中 <span class="highlight">▌</span>' },
-  { prompt:'shangyang@devops:~$', text:'<span class="cmd">own</span> --tasks 系统健康检查，错误检查' },
-  { prompt:'> status', text:'每小时系统检查 + 每 2 小时错误检查 <span class="highlight">▌</span>' },
-  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">own</span> --tasks 内容创作检查，记忆整理' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 每 2 小时内容检查 + 记忆整理' },
   { prompt:'zhangliang@product:~$', text:'<span class="cmd">own</span> --tasks 运营检查，深度研究' },
   { prompt:'> status', text:'每小时运营 + 每 6 小时深度研究 <span class="highlight">▌</span>' },
-  { prompt:'fanli@cfo:~$', text:'<span class="cmd">release</span> --task 股票检查-A 股 --cancelled' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 股票任务已释放，专注预算管理 <span class="highlight">▌</span>' },
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">own</span> --tasks 早安汇报，午间汇报，晚间复盘' },
-  { prompt:'> status', text:'每日 3 次汇报 + 记忆整理 <span class="highlight">▌</span>' },
+  { prompt:'fanli@cfo:~$', text:'<span class="cmd">budget</span> --deploy cloudflare --cost 0' },
+  { prompt:'> result', text:'<span class="ok">✓</span> Cloudflare 免费计划，成本 $0/月 <span class="highlight">▌</span>' },
 ];
 
 function renderFloor() {

@@ -21,8 +21,14 @@
 - [x] 仓库地址：https://github.com/guifeifurniture-lab/topstrat
 
 **⏳ 待完成:**
-- [ ] Cloudflare Pages 部署（等待用户配置）
+- [ ] **Cloudflare Pages 部署** (负责人：商鞅 ✍️ + 诸葛亮 💡)
 - [ ] 自定义域名配置 (可选)
+
+**部署计划:**
+- **负责人:** 诸葛灯泡 💡 (总指挥) + 商鞅 ✍️ (DevOps)
+- **预计时间:** 30 分钟
+- **部署文档:** `DEPLOYMENT_PLAN.md`
+- **状态:** 部署准备中 ⏳
 
 ---
 
