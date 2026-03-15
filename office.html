@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:162, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:240, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:195, task:'统筹 2 个 Cron 任务 (天气 + 内容)', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:173, task:'统筹 2 个 Cron 任务 (市场 + 竞品)', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:149, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:84, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:130, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:true, events:49, task:'统筹 1 个 Cron 任务 (股票)', color:'#4ade80' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:166, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:244, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:199, task:'统筹 1 个 Cron 任务 (天气)', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:177, task:'统筹 0 个 Cron 任务 (家具任务已取消)', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:153, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:88, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:134, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:true, events:53, task:'统筹 1 个 Cron 任务 (股票)', color:'#4ade80' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,14 +316,14 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">assign</span> --cron 16tasks --team 8agents' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 任务分配完成 — <span class="val">16/8 人均 2 个</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">cancel</span> --tasks 家具市场研究，家具竞品分析，家具内容创作' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 3 个家具任务已取消 — <span class="val">剩余 13 个 Cron</span>' },
   { prompt:'guanzhong@cto:~$', text:'<span class="cmd">own</span> --tasks 技能学习检查，知识学习' },
   { prompt:'> status', text:'每小时技能检查 + 每 4 小时知识学习 <span class="highlight">▌</span>' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">own</span> --tasks 天气检查 - 早，家具内容创作' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 每日天气 + 内容创作 <span class="highlight">▌</span>' },
-  { prompt:'sunbin@backend:~$', text:'<span class="cmd">own</span> --tasks 家具市场研究-US，家具竞品分析' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> 市场研究 + 竞品分析 (每日)' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">own</span> --tasks 天气检查 - 早' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 每日天气检查 <span class="highlight">▌</span>' },
+  { prompt:'sunbin@backend:~$', text:'<span class="cmd">release</span> --tasks 家具市场研究，家具竞品分析 --cancelled' },
+  { prompt:'> sent', text:'<span class="ok">✓</span> 家具任务已释放 <span class="highlight">▌</span>' },
   { prompt:'shangyang@devops:~$', text:'<span class="cmd">own</span> --tasks 系统健康检查，错误检查' },
   { prompt:'> status', text:'每小时系统检查 + 每 2 小时错误检查 <span class="highlight">▌</span>' },
   { prompt:'xiaoh@qa:~$', text:'<span class="cmd">own</span> --tasks 内容创作检查，记忆整理' },
