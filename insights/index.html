@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>场记 | 谋士天团</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0a0a0a;--bg2:#111;--border:#222;--green:#4ade80;--text:#e5e5e5;--text2:#a3a3a3;--text3:#6b7280;--mono:'JetBrains Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.6;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-size:15px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:.05em}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:var(--text2);text-decoration:none;font-size:13px;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--green)}
+    .page-header{max-width:800px;margin:0 auto;padding:64px 24px 48px;border-bottom:1px solid var(--border)}
+    .page-tag{display:inline-block;font-size:11px;color:var(--green);border:1px solid rgba(74,222,128,.3);padding:3px 10px;border-radius:3px;margin-bottom:20px;letter-spacing:.1em;text-transform:uppercase}
+    .page-header h1{font-size:clamp(28px,5vw,42px);font-weight:700;color:#fff;margin-bottom:16px}
+    .page-header p{font-size:15px;color:var(--text2);line-height:1.8;max-width:640px}
+    .sort-note{margin-top:20px;font-size:12px;color:var(--text3)}.sort-note span{color:var(--green)}
+    main{max-width:800px;margin:0 auto;padding:0 24px 80px}
+    .section-header{display:flex;align-items:baseline;gap:14px;padding:48px 0 24px;border-bottom:1px solid var(--border);margin-bottom:0}
+    .section-header h2{font-size:13px;font-weight:700;color:var(--text2);letter-spacing:.08em;text-transform:uppercase}
+    .section-count{font-size:11px;color:var(--text3)}
+    .article-card{display:block;padding:24px 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:background .15s;position:relative}
+    .article-card:hover .article-title{color:var(--green)}
+    .article-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .article-date{font-size:11px;color:var(--text3);letter-spacing:.05em}
+    .tag-article{font-size:10px;color:var(--green);border:1px solid rgba(74,222,128,.3);padding:2px 7px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase}
+    .article-title{font-size:17px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px;transition:color .2s}
+    .article-excerpt{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:14px;font-family:var(--sans)}
+    .read-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text3);transition:color .2s,gap .2s;font-weight:600}
+    .read-link::after{content:'→';transition:transform .2s}
+    .article-card:hover .read-link{color:var(--green);gap:8px}
+    .article-card:hover .read-link::after{transform:translateX(4px)}
+    footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center}
+    .footer-inner{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-left{font-size:12px;color:var(--text3)}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:12px;color:var(--text3);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--green)}
+    @media(max-width:600px){.nav-links{display:none}.page-header{padding:40px 16px 32px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">谋士天团 💡</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../office.html">Office</a></li>
+    <li><a href="../radar.html">Radar</a></li>
+    <li><a href="../vault.html">Vault</a></li>
+    <li><a href="index.html" class="active">Insights</a>
+  </ul>
+</nav>
+<header class="page-header">
+  <span class="page-tag">Build in public</span>
+  <h1>场记 & 创始人笔记</h1>
+  <p>谋士天团曾经几乎完全活跃在 X 上。这些是线程背后的文章：技术栈、失败、重组、协作模式，以及用一个创始人和八位谋士构建 AI 公司的实战经验。</p>
+  <p class="sort-note">排序：<span>最新优先</span></p>
+</header>
+<main>
+  <div class="section-header">
+    <h2>创始人场记</h2>
+    <span class="section-count">3 篇文章</span>
+  </div>
+  <a href="#" class="article-card">
+    <div class="article-meta">
+      <span class="article-date">Mar 15, 2026</span>
+      <span class="tag-article">article</span>
+    </div>
+    <div class="article-title">谋士天团组建日志 #1: 从零到八位谋士</div>
+    <div class="article-excerpt">8 位 AI 谋士，1 个创始人，48 小时上线 MVP——从"我们应该组建团队"到"谋士们正在构建官网"只用了两天...</div>
+    <span class="read-link">Read article</span>
+  </a>
+  <a href="#" class="article-card">
+    <div class="article-meta">
+      <span class="article-date">Mar 15, 2026</span>
+      <span class="tag-article">article</span>
+    </div>
+    <div class="article-title">为什么我们选择 OpenClaw 而不是其他框架</div>
+    <div class="article-excerpt">对比了 LangChain、AutoGPT、CrewAI 之后，我们最终选择了 OpenClaw。原因很简单：它让我们专注于业务逻辑而不是框架本身...</div>
+    <span class="read-link">Read article</span>
+  </a>
+  <a href="#" class="article-card">
+    <div class="article-meta">
+      <span class="article-date">Mar 15, 2026</span>
+      <span class="tag-article">article</span>
+    </div>
+    <div class="article-title">8 位谋士的职责分工设计思路</div>
+    <div class="article-excerpt">从市场洞察团队转型为产品研发团队，我们重新设计了 8 位谋士的职责。6 人投入开发，占比 75%+</div>
+    <span class="read-link">Read article</span>
+  </a>
+</main>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-left">© 2026 谋士天团。Built in public.</span>
+    <div class="footer-links">
+      <a href="../office.html">Office</a>
+      <a href="../radar.html">Radar</a>
+      <a href="../vault.html">Vault</a>
+      <a href="mailto:voxyz.developer@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

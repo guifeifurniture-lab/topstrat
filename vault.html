@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>锦囊库 | 组建你的 AI 谋士团队 - 谋士天团</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0a0a0a;--bg2:#111;--bg3:#161616;--bg4:#1a1a1a;
+      --border:#1e1e1e;--border2:#262626;--border3:#2e2e2e;
+      --green:#4ade80;--green-dim:rgba(74,222,128,.08);--green-bd:rgba(74,222,128,.18);
+      --cyan:#22d3ee;--cyan-dim:rgba(34,211,238,.08);--cyan-bd:rgba(34,211,238,.18);
+      --yellow:#fbbf24;--purple:#c084fc;--blue:#60a5fa;--red:#f87171;
+      --text:#e5e7eb;--text-dim:#6b7280;--text-muted:#374151;
+      --mono:'JetBrains Mono','Fira Code','Courier New',monospace;
+      --sans:'Inter',system-ui,-apple-system,sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0}
+    .nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:-.5px}.logo span{color:var(--green)}
+    .nav-links{display:flex;gap:24px}.nav-links a{font-family:var(--mono);font-size:12px;color:var(--text-dim);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}.nav-links a.active{color:var(--green)}
+    .container{max-width:960px;margin:0 auto;padding:0 24px}
+    .section{padding:72px 0;border-bottom:1px solid var(--border)}
+    .hero{padding:80px 0 64px;border-bottom:1px solid var(--border);background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(74,222,128,.04),transparent)}
+    .hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+    .hero-eyebrow::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+    .hero h1{font-size:clamp(36px,6vw,64px);font-weight:800;letter-spacing:-2px;line-height:1.05;color:#fff;margin-bottom:20px}
+    .hero h1 em{font-style:normal;color:var(--green)}
+    .hero-sub{font-size:18px;color:var(--text-dim);max-width:520px;line-height:1.7;margin-bottom:36px}
+    .hero-links{display:flex;gap:20px;flex-wrap:wrap}
+    .hero-link{font-family:var(--mono);font-size:13px;color:var(--text-dim);transition:color .2s;display:inline-flex;align-items:center;gap:5px}
+    .hero-link:hover{color:var(--green)}.hero-link-sep{color:var(--text-muted)}
+    .sec-label{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+    .sec-heading{font-size:clamp(24px,4vw,36px);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:10px}
+    .sec-sub{font-size:15px;color:var(--text-dim);max-width:560px;line-height:1.7}
+    .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+    .price-card{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:32px;position:relative;transition:border-color .25s,transform .2s}
+    .price-card:hover{border-color:var(--border3);transform:translateY(-2px)}
+    .price-card.featured{border-color:var(--green);background:linear-gradient(160deg,rgba(74,222,128,.04),var(--bg2))}
+    .price-card.featured:hover{border-color:var(--green)}
+    .featured-badge{position:absolute;top:-13px;left:28px;background:var(--green);color:#000;font-family:var(--mono);font-size:10px;font-weight:700;padding:3px 12px;border-radius:3px;letter-spacing:1.5px;text-transform:uppercase}
+    .save-badge{display:inline-block;font-family:var(--mono);font-size:11px;background:var(--cyan-dim);color:var(--cyan);border:1px solid var(--cyan-bd);padding:2px 9px;border-radius:3px;margin-bottom:14px}
+    .price-tier{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+    .price-amount{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+    .price-num{font-size:48px;font-weight:800;color:#fff;letter-spacing:-2px}
+    .price-orig{font-family:var(--mono);font-size:15px;color:var(--text-muted);text-decoration:line-through}
+    .price-desc{font-size:14px;color:var(--text-dim);margin-bottom:28px;line-height:1.6}
+    .price-features{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:10px}
+    .price-features li{font-size:13px;color:var(--text-dim);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+    .price-features li::before{content:'→';color:var(--green);font-family:var(--mono);flex-shrink:0;margin-top:1px}
+    .price-features li strong{color:var(--text)}
+    .btn{display:block;width:100%;font-family:var(--mono);font-size:14px;font-weight:700;padding:13px;border-radius:5px;text-align:center;border:none;cursor:pointer;transition:opacity .2s,transform .15s}
+    .btn:hover{opacity:.85;transform:translateY(-1px)}
+    .btn-primary{background:var(--green);color:#000}
+    .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
+    .btn-secondary:hover{border-color:var(--border3)}
+    .price-note{font-family:var(--mono);font-size:11px;color:var(--text-muted);text-align:center;margin-top:12px}
+    .upgrade-notice{background:var(--bg2);border:1px solid var(--cyan-bd);border-radius:8px;padding:20px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start}
+    .upgrade-icon{font-size:18px;flex-shrink:0}
+    .upgrade-body{font-size:13px;color:var(--text-dim);line-height:1.65}.upgrade-body strong{color:var(--cyan)}
+    footer{padding:48px 0;border-top:1px solid var(--border)}
+    .footer-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:20px}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px}
+    .footer-logo{font-family:var(--mono);font-size:16px;font-weight:700}.footer-logo span{color:var(--green)}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-links a{font-family:var(--mono);font-size:12px;color:var(--text-dim);transition:color .2s}
+    .footer-links a:hover{color:var(--text)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+    .footer-copy{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+    .footer-email a{font-family:var(--mono);font-size:12px;color:var(--text-dim);transition:color .2s}
+    .footer-email a:hover{color:var(--green)}
+    @media(max-width:700px){.pricing-grid{grid-template-columns:1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">谋士<span>天团</span> 💡</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="office.html">Office</a>
+      <a href="radar.html">Radar</a>
+      <a href="vault.html" class="active">Vault</a>
+      <a href="insights/">Insights</a>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Build Your AI Team</div>
+    <h1>像一家<em>公司</em>那样运营。</h1>
+    <p class="hero-sub">不是安装教程。是一个已经在运行的系统——以及构建属于你自己的完整路径。</p>
+    <div class="hero-links">
+      <a href="office.html" class="hero-link">公开建设 /</a>
+      <span class="hero-link-sep">·</span>
+      <a href="office.html" class="hero-link">查看谋士堂 →</a>
+      <span class="hero-link-sep">·</span>
+      <a href="insights/" class="hero-link">阅读场记 →</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="sec-label">从安装到生产</div>
+    <h2 class="sec-heading">选择你的路径</h2>
+    <p class="sec-sub">一次性付费。所有未来更新包含。50 位建造者已在运行。</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="save-badge">省 ¥200</div>
+        <div class="price-tier">入门锦囊</div>
+        <div class="price-amount">
+          <div class="price-num">¥299</div>
+          <div class="price-orig">¥499</div>
+        </div>
+        <p class="price-desc">适合从未配置过 AI 谋士团队，想要快速从零到谋士处理真实工作的建造者。</p>
+        <ul class="price-features">
+          <li><strong>完整的从零到一路径</strong> — 每个步骤从 0 到运行中的团队</li>
+          <li><strong>可定制的谋士角色</strong> 适用于任何行业或用例</li>
+          <li><strong>粘贴即用的提示词</strong> — 无需代码</li>
+          <li>解决困难的第一小时：设置、配置、第一个任务</li>
+          <li>内置支持谋士 + 邮件指导</li>
+          <li>所有未来更新，免费</li>
+        </ul>
+        <button class="btn btn-secondary" onclick="handleBuy('starter')">购买入门锦囊 — ¥299</button>
+        <p class="price-note">一次性 · 即时访问 · 终身更新</p>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">最受欢迎</div>
+        <div class="save-badge">省 ¥500</div>
+        <div class="price-tier">专业锦囊</div>
+        <div class="price-amount">
+          <div class="price-num">¥799</div>
+          <div class="price-orig">¥1,299</div>
+        </div>
+        <p class="price-desc">适合 AI 谋士团队已在运行但需要生产环境稳定性、协作和 24/7 部署的建造者。</p>
+        <ul class="price-features">
+          <li><strong>入门锦囊所有内容</strong></li>
+          <li><strong>谋士间评审</strong>和协作层</li>
+          <li>来自真实运行公司的完整协作代码</li>
+          <li>监控、成本控制和故障恢复</li>
+          <li>本地 → 24/7 服务器部署指南</li>
+          <li>从设置到生产的指导支持</li>
+          <li>所有未来更新，免费</li>
+        </ul>
+        <button class="btn btn-primary" onclick="handleBuy('pro')">购买专业锦囊 — ¥799</button>
+        <p class="price-note">一次性 · 即时访问 · 终身更新</p>
+      </div>
+    </div>
+    <div class="upgrade-notice">
+      <div class="upgrade-icon">⚡</div>
+      <div class="upgrade-body">
+        <strong>已有入门锦囊？</strong>升级专业锦囊仅需<strong>¥500</strong>— 只付差价，保留你已有的一切。
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">谋士<span>天团</span> 💡</div>
+      <div class="footer-links">
+        <a href="#">服务条款</a>
+        <a href="#">隐私政策</a>
+        <a href="#">团队咨询</a>
+        <a href="office.html">谋士堂</a>
+        <a href="insights/">场记</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 谋士天团。All rights reserved.</div>
+      <div class="footer-email"><a href="mailto:voxyz.developer@gmail.com">voxyz.developer@gmail.com</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+function handleBuy(plan) {
+  const btn = event.target;
+  const orig = btn.textContent;
+  btn.textContent = '✓ 即将上线，敬请期待…';
+  btn.style.opacity = '0.7';
+  setTimeout(() => { btn.textContent = orig; btn.style.opacity = ''; }, 3000);
+}
+</script>
+</body>
+</html>
