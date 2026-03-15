@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:158, task:'GitHub 推送 + 部署统筹', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:236, task:'Cloudflare Pages 配置', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:191, task:'移动端导航开发', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:169, task:'API 后端接入准备', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:145, task:'CI/CD 流水线配置', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:80, task:'部署前质量检查', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:126, task:'竞品分析调研', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:false, events:45, task:'待机 — 预算审批中', color:'#6b7280' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:162, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:240, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:195, task:'统筹 2 个 Cron 任务 (天气 + 内容)', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:173, task:'统筹 2 个 Cron 任务 (市场 + 竞品)', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:149, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:84, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:130, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:true, events:49, task:'统筹 1 个 Cron 任务 (股票)', color:'#4ade80' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,20 +316,24 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">deploy</span> --target cloudflare --status pushing' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 部署任务启动 — <span class="val">GitHub 推送中</span>' },
-  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">setup</span> --cloudflare pages --auto' },
-  { prompt:'> status', text:'Cloudflare Pages 配置准备中 <span class="highlight">▌</span>' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">develop</span> --feature mobile-nav --progress 60%' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 汉堡菜单开发中' },
-  { prompt:'sunbin@backend:~$', text:'<span class="cmd">prepare</span> --api realtime --status ready' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> API 后端接入准备就绪' },
-  { prompt:'shangyang@devops:~$', text:'<span class="cmd">ci</span> --pipeline github-actions --status done' },
-  { prompt:'> status', text:'CI/CD 配置完成 <span class="val">100%</span> <span class="highlight">▌</span>' },
-  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">check</span> --quality pre-deploy --status running' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 质量检查进行中' },
-  { prompt:'zhangliang@product:~$', text:'<span class="cmd">research</span> --competitor coxyz --status drafting' },
-  { prompt:'> status', text:'竞品分析报告撰写中 <span class="highlight">▌</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">assign</span> --cron 16tasks --team 8agents' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 任务分配完成 — <span class="val">16/8 人均 2 个</span>' },
+  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">own</span> --tasks 技能学习检查，知识学习' },
+  { prompt:'> status', text:'每小时技能检查 + 每 4 小时知识学习 <span class="highlight">▌</span>' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">own</span> --tasks 天气检查 - 早，家具内容创作' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 每日天气 + 内容创作 <span class="highlight">▌</span>' },
+  { prompt:'sunbin@backend:~$', text:'<span class="cmd">own</span> --tasks 家具市场研究-US，家具竞品分析' },
+  { prompt:'> sent', text:'<span class="ok">✓</span> 市场研究 + 竞品分析 (每日)' },
+  { prompt:'shangyang@devops:~$', text:'<span class="cmd">own</span> --tasks 系统健康检查，错误检查' },
+  { prompt:'> status', text:'每小时系统检查 + 每 2 小时错误检查 <span class="highlight">▌</span>' },
+  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">own</span> --tasks 内容创作检查，记忆整理' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 每 2 小时内容检查 + 记忆整理' },
+  { prompt:'zhangliang@product:~$', text:'<span class="cmd">own</span> --tasks 运营检查，深度研究' },
+  { prompt:'> status', text:'每小时运营 + 每 6 小时深度研究 <span class="highlight">▌</span>' },
+  { prompt:'fanli@cfo:~$', text:'<span class="cmd">own</span> --tasks 股票检查-A 股' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 每小时 A 股监控 <span class="highlight">▌</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">own</span> --tasks 早安汇报，午间汇报，晚间复盘' },
+  { prompt:'> status', text:'每日 3 次汇报 + 记忆整理 <span class="highlight">▌</span>' },
 ];
 
 function renderFloor() {
