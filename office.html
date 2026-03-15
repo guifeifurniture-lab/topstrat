@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:170, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:248, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:203, task:'统筹 1 个 Cron 任务 (天气)', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:181, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:157, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:92, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:138, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:true, events:57, task:'统筹 1 个 Cron 任务 (股票)', color:'#4ade80' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:174, task:'统筹 3 个 Cron 任务 (汇报 + 记忆)', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:252, task:'统筹 2 个 Cron 任务 (技能 + 知识)', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:207, task:'统筹 1 个 Cron 任务 (天气)', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:185, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:161, task:'统筹 2 个 Cron 任务 (系统 + 错误)', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:96, task:'统筹 2 个 Cron 任务 (内容 + 质量)', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:142, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:true, events:61, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,8 +316,8 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">assign</span> --task 网站后端开发 --agent sunbin' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 孙膑任命为后端开发负责人 <span class="highlight">▌</span>' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">cancel</span> --task 股票检查-A 股 --agent fanli' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 股票检查任务已取消 — <span class="val">剩余 12 个 Cron</span>' },
   { prompt:'guanzhong@cto:~$', text:'<span class="cmd">own</span> --tasks 技能学习检查，知识学习' },
   { prompt:'> status', text:'每小时技能检查 + 每 4 小时知识学习 <span class="highlight">▌</span>' },
   { prompt:'mozi@frontend:~$', text:'<span class="cmd">own</span> --tasks 天气检查 - 早' },
@@ -330,8 +330,8 @@ const BB_LINES = [
   { prompt:'> result', text:'<span class="ok">✓</span> 每 2 小时内容检查 + 记忆整理' },
   { prompt:'zhangliang@product:~$', text:'<span class="cmd">own</span> --tasks 运营检查，深度研究' },
   { prompt:'> status', text:'每小时运营 + 每 6 小时深度研究 <span class="highlight">▌</span>' },
-  { prompt:'fanli@cfo:~$', text:'<span class="cmd">own</span> --tasks 股票检查-A 股' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 每小时 A 股监控 <span class="highlight">▌</span>' },
+  { prompt:'fanli@cfo:~$', text:'<span class="cmd">release</span> --task 股票检查-A 股 --cancelled' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 股票任务已释放，专注预算管理 <span class="highlight">▌</span>' },
   { prompt:'zhuge@ceo:~$', text:'<span class="cmd">own</span> --tasks 早安汇报，午间汇报，晚间复盘' },
   { prompt:'> status', text:'每日 3 次汇报 + 记忆整理 <span class="highlight">▌</span>' },
 ];
