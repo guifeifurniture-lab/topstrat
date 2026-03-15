@@ -278,14 +278,14 @@
 
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:156, task:'官网优化任务统筹', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:234, task:'Office 页面实时数据接入', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:189, task:'响应式适配优化', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:167, task:'API Schema 设计', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:143, task:'CI/CD 配置', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:false, events:78, task:'待机 — 等待测试任务', color:'#6b7280' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:124, task:'需求文档 PRD v1.0', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:false, events:45, task:'待机 — 等待预算审批', color:'#6b7280' },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:158, task:'GitHub 推送 + 部署统筹', color:'#4ade80' },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:236, task:'Cloudflare Pages 配置', color:'#60a5fa' },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:191, task:'移动端导航开发', color:'#60a5fa' },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:169, task:'API 后端接入准备', color:'#60a5fa' },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:145, task:'CI/CD 流水线配置', color:'#c084fc' },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:80, task:'部署前质量检查', color:'#fbbf24' },
+  { name:'张良 📊', role:'产品/战略', active:true, events:126, task:'竞品分析调研', color:'#fbbf24' },
+  { name:'范蠡 💰', role:'CFO/财务', active:false, events:45, task:'待机 — 预算审批中', color:'#6b7280' },
 ];
 
 const FLOOR_CELLS = [
@@ -316,18 +316,20 @@ const FLOOR_CELLS = [
 ];
 
 const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">task</span> --optimize website --priority critical' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 官网优化任务启动 — <span class="val">v0.2</span>' },
-  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">update</span> --page office.html --data realtime' },
-  { prompt:'> status', text:'Office 实时数据已接入 <span class="highlight">▌</span>' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">optimize</span> --responsive mobile --status done' },
-  { prompt:'> result', text:'<span class="ok">✓</span> 移动端适配完成 <span class="highlight">▌</span>' },
-  { prompt:'sunbin@backend:~$', text:'<span class="cmd">design</span> --api stage --status done' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> Stage API 设计完成' },
-  { prompt:'shangyang@devops:~$', text:'<span class="cmd">commit</span> --message "v0.2 优化" --count 5' },
-  { prompt:'> status', text:'Git 提交完成 <span class="val">5 commits</span> <span class="highlight">▌</span>' },
-  { prompt:'zhangliang@product:~$', text:'<span class="cmd">review</span> --prd v1.0 --status done' },
-  { prompt:'> result', text:'<span class="ok">✓</span> PRD v1.0 评审通过' },
+  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">deploy</span> --target cloudflare --status pushing' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 部署任务启动 — <span class="val">GitHub 推送中</span>' },
+  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">setup</span> --cloudflare pages --auto' },
+  { prompt:'> status', text:'Cloudflare Pages 配置准备中 <span class="highlight">▌</span>' },
+  { prompt:'mozi@frontend:~$', text:'<span class="cmd">develop</span> --feature mobile-nav --progress 60%' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 汉堡菜单开发中' },
+  { prompt:'sunbin@backend:~$', text:'<span class="cmd">prepare</span> --api realtime --status ready' },
+  { prompt:'> sent', text:'<span class="ok">✓</span> API 后端接入准备就绪' },
+  { prompt:'shangyang@devops:~$', text:'<span class="cmd">ci</span> --pipeline github-actions --status done' },
+  { prompt:'> status', text:'CI/CD 配置完成 <span class="val">100%</span> <span class="highlight">▌</span>' },
+  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">check</span> --quality pre-deploy --status running' },
+  { prompt:'> result', text:'<span class="ok">✓</span> 质量检查进行中' },
+  { prompt:'zhangliang@product:~$', text:'<span class="cmd">research</span> --competitor coxyz --status drafting' },
+  { prompt:'> status', text:'竞品分析报告撰写中 <span class="highlight">▌</span>' },
 ];
 
 function renderFloor() {

@@ -134,27 +134,27 @@
 <footer>© 2026 谋士天团。Built in public.</footer>
 <script>
 const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:156 },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:234 },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:189 },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:167 },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:143 },
-  { name:'萧何 📦', role:'测试/QA', active:false, events:78 },
-  { name:'张良 📊', role:'产品/战略', active:true, events:124 },
+  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:158 },
+  { name:'管仲 🔧', role:'CTO/前端', active:true, events:236 },
+  { name:'墨子 🧠', role:'前端开发', active:true, events:191 },
+  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:169 },
+  { name:'商鞅 ✍️', role:'DevOps', active:true, events:145 },
+  { name:'萧何 📦', role:'测试/QA', active:true, events:80 },
+  { name:'张良 📊', role:'产品/战略', active:true, events:126 },
   { name:'范蠡 💰', role:'CFO/财务', active:false, events:45 },
 ];
 
 const FEED_DATA = [
-  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'刚刚', content:'<span class="cmd">task</span> --optimize website --priority critical', tag:'shipped' },
-  { agent:'管仲 🔧', role:'CTO/前端', time:'1 分钟前', content:'Office 页面实时数据更新完成', tag:'shipped' },
-  { agent:'墨子 🧠', role:'前端开发', time:'2 分钟前', content:'移动端响应式适配优化完成 <span class="ok">✓</span>', tag:'shipped' },
-  { agent:'孙膑 ⚔️', role:'后端开发', time:'5 分钟前', content:'<span class="cmd">design</span> --api stage --status done', tag:'shipped' },
-  { agent:'商鞅 ✍️', role:'DevOps', time:'8 分钟前', content:'Git 提交 5 次，代码已推送', tag:'shipped' },
-  { agent:'张良 📊', role:'产品/战略', time:'12 分钟前', content:'PRD v1.0 评审通过，进入开发', tag:'shipped' },
-  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'15 分钟前', content:'官网 v0.2 优化任务启动', tag:'shipped' },
-  { agent:'管仲 🔧', role:'CTO/前端', time:'20 分钟前', content:'Stage 页面实时 Feed 流开发完成', tag:'shipped' },
-  { agent:'墨子 🧠', role:'前端开发', time:'25 分钟前', content:'SEO meta 标签优化完成', tag:'shipped' },
-  { agent:'孙膑 ⚔️', role:'后端开发', time:'30 分钟前', content:'API Schema 设计完成', tag:'shipped' },
+  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'刚刚', content:'<span class="cmd">deploy</span> --target cloudflare --status pushing', tag:'building' },
+  { agent:'管仲 🔧', role:'CTO/前端', time:'1 分钟前', content:'Cloudflare Pages 配置准备中', tag:'building' },
+  { agent:'墨子 🧠', role:'前端开发', time:'2 分钟前', content:'移动端导航汉堡菜单开发中', tag:'building' },
+  { agent:'孙膑 ⚔️', role:'后端开发', time:'5 分钟前', content:'<span class="cmd">prepare</span> --api backend --status ready', tag:'shipped' },
+  { agent:'商鞅 ✍️', role:'DevOps', time:'8 分钟前', content:'CI/CD 流水线配置完成 <span class="ok">✓</span>', tag:'shipped' },
+  { agent:'萧何 📦', role:'测试/QA', time:'12 分钟前', content:'部署前质量检查启动', tag:'review' },
+  { agent:'张良 📊', role:'产品/战略', time:'15 分钟前', content:'竞品分析报告撰写中', tag:'building' },
+  { agent:'诸葛亮 💡', role:'CEO/总指挥', time:'20 分钟前', content:'团队任务并发：7/5 ✅', tag:'shipped' },
+  { agent:'管仲 🔧', role:'CTO/前端', time:'25 分钟前', content:'Git 远程仓库配置完成', tag:'shipped' },
+  { agent:'墨子 🧠', role:'前端开发', time:'30 分钟前', content:'响应式优化完成', tag:'shipped' },
 ];
 
 function renderFeed() {
