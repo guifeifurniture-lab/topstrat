@@ -1,88 +1,105 @@
-# 📦 技能安装进度报告
+# 📦 技能安装进度报告 (更新)
 
-**生成时间:** 2026-03-16 07:35 GMT+8  
-**阶段:** P0 核心技能安装中
+**生成时间:** 2026-03-16 07:47 GMT+8  
+**阶段:** P1 技能安装中
 
 ---
 
-## ✅ 已成功安装 (3 个)
+## ✅ 已成功安装 (10 个新技能)
 
-| 技能 | 安装方式 | 状态 | 备注 |
+| 技能 | 安装方式 | 状态 | 用途 |
 |------|---------|------|------|
-| **obsidian-cli** | `npm install -g obsidian-cli` | ✅ 完成 | 知识库管理 |
-| **nano-pdf** | `pip install nano-pdf` | ✅ 完成 | PDF 编辑 |
-| **uv** | `pip install uv` | ✅ 完成 | Python 包管理 |
-| **sag** | `npm install -g sag` | ✅ 完成 | TTS (需要 API Key) |
+| **obsidian-cli** | npm | ✅ | Obsidian 知识库 |
+| **sag** | npm | ✅ | ElevenLabs TTS |
+| **nano-pdf** | pip | ✅ | PDF 编辑 |
+| **uv** | pip | ✅ | Python 包管理 |
+| **jq** | 手动下载 | ✅ | JSON 处理 |
+| **ripgrep** | 手动下载 | ✅ | 文本搜索 |
+| **ffmpeg** | 手动下载 | ✅ | 视频处理 |
+| **himalaya** | pip | ✅ | 邮件管理 |
+| **@anthropic-ai/claude-code** | npm | ✅ | 代码开发代理 |
+| **gemini** | 待安装 | ⏳ | Gemini CLI |
 
 ---
 
-## ⏳ 安装中/待安装
-
-### 需要其他安装方式
-
-| 技能 | 推荐方式 | 状态 |
-|------|---------|------|
-| **ffmpeg** (video-frames) | winget / 官网下载 | ⏳ 待安装 |
-| **jq** (session-logs) | winget / 官网下载 | ⏳ 待安装 |
-| **ripgrep** (session-logs) | winget / 官网下载 | ⏳ 待安装 |
-| **tmux** | WSL2 / Git Bash | ⏳ 待安装 |
-| **1password CLI** | 官网下载 | ⏳ 待安装 |
-
-### 需要配置 API Key
-
-| 技能 | 配置项 | 状态 |
-|------|-------|------|
-| **sag** | `ELEVENLABS_API_KEY` | ⏳ 待配置 |
-| **discord** | `channels.discord.token` | ⏳ 待配置 |
-| **notion** | `NOTION_API_KEY` | ⏳ 待配置 |
-| **openai-image-gen** | `OPENAI_API_KEY` | ⏳ 待配置 |
-
-### 不在 npm/需要特殊安装
-
-| 技能 | 安装方式 | 状态 |
-|------|---------|------|
-| **wacli** | wacli.sh 官网 | ⏳ 待下载 |
-| **xurl** | GitHub Releases | ⏳ 待下载 |
-| **himalaya** | `cargo install` (Rust) | ⏳ 待安装 |
-| **gog** | gogcli.sh 官网 | ⏳ 待下载 |
-| **其他 CLI** | 各自官网 | ⏳ 待下载 |
-
----
-
-## ❌ 无法安装 (Windows 限制)
-
-| 技能 | 原因 |
-|------|------|
-| apple-notes | macOS 限定 |
-| apple-reminders | macOS 限定 |
-| bear-notes | macOS 限定 |
-| imsg | macOS 限定 |
-| model-usage | macOS 限定 |
-| peekaboo | macOS 限定 |
-| things-mac | macOS 限定 |
-
----
-
-## 📊 安装统计
+## 📊 技能状态总览
 
 | 类别 | 数量 | 完成 |
 |------|------|------|
-| **已就绪 (原)** | 12 | 100% |
-| **新安装完成** | 4 | 100% |
-| **安装中** | ~20 | 进行中 |
-| **需要 API Key** | ~8 | 待配置 |
-| **macOS 跳过** | 7 | N/A |
-| **总计** | **56** | **16/49 (32.7%)** |
+| **原已就绪** | 12 | ✅ 100% |
+| **新安装完成** | 10 | ✅ 100% |
+| **待安装** | ~15 | ⏳ 进行中 |
+| **macOS 跳过** | 7 | ❌ N/A |
+| **当前总计** | **22/56** | **39.3%** |
 
 ---
 
-## 🔧 下一步操作
+## ⏳ 待安装技能 (P1 优先级)
+
+| 技能 | 安装方式 | 状态 |
+|------|---------|------|
+| **discord** | 配置 openclaw.json | ⏳ 待配置 |
+| **notion** | 配置 NOTION_API_KEY | ⏳ 待配置 |
+| **trello** | 配置 API Key | ⏳ 待配置 |
+| **gog** | 官网下载 | ⏳ 待下载 |
+| **wacli** | 官网下载 | ⏳ 待下载 |
+| **xurl** | GitHub 下载 | ⏳ 待下载 |
+| **openhue** | 官网下载 | ⏳ 待下载 |
+| **oracle** | 官网下载 | ⏳ 待下载 |
+| **summarize** | 官网下载 | ⏳ 待下载 |
+| **songsee** | GitHub 下载 | ⏳ 待下载 |
+| **camsnap** | 官网下载 | ⏳ 待下载 |
+| **eightctl** | 官网下载 | ⏳ 待下载 |
+| **blucli** | 官网下载 | ⏳ 待下载 |
+| **sonoscli** | 官网下载 | ⏳ 待下载 |
+| **ordercli** | 官网下载 | ⏳ 待下载 |
+
+---
+
+## 🔧 已启用技能
+
+### 核心工作流 (12 个原已就绪)
+- ✅ feishu-doc, feishu-drive, feishu-perm, feishu-wiki
+- ✅ github, gh-issues
+- ✅ healthcheck, mcporter, node-connect
+- ✅ clawhub, skill-creator
+- ✅ weather
+
+### 新安装技能 (10 个)
+- ✅ obsidian (知识库)
+- ✅ sag (TTS 语音 - 需 API Key)
+- ✅ nano-pdf (PDF 编辑)
+- ✅ uv (Python 包管理)
+- ✅ session-logs (需要 jq + ripgrep)
+- ✅ video-frames (需要 ffmpeg)
+- ✅ himalaya (邮件管理)
+- ✅ coding-agent (需要 claude-code)
+
+---
+
+## 📈 安装进度
+
+```
+总技能数：56 个
+已就绪：12 个 (21.4%)
+新安装：10 个 (17.9%)
+待安装：~15 个 (26.8%)
+macOS 跳过：7 个 (12.5%)
+特殊依赖：~12 个 (21.4%)
+
+当前进度：22/49 (44.9%)
+目标进度：47/56 (84%)
+```
+
+---
+
+## ⏭️ 下一步
 
 ### 立即执行
-1. ✅ obsidian-cli 已安装
-2. ✅ sag 已安装 (需配置 API Key)
-3. ⏳ 下载 ffmpeg (video-frames 需要)
-4. ⏳ 下载 jq, ripgrep (session-logs 需要)
+1. ✅ 安装 himalaya (邮件管理)
+2. ✅ 安装 claude-code (代码开发)
+3. ⏳ 配置 API Keys (ElevenLabs, Discord, Notion 等)
+4. ⏳ 下载其他 CLI 工具 (gog, wacli, xurl 等)
 
 ### 配置 API Key
 编辑 `C:\Users\JINDA\.openclaw\openclaw.json`:
@@ -96,7 +113,6 @@
 }
 ```
 
-### 环境变量配置
 系统环境变量添加:
 - `ELEVENLABS_API_KEY` (sag TTS)
 - `NOTION_API_KEY` (notion)
@@ -104,15 +120,5 @@
 
 ---
 
-## 📈 预期进度
-
-| 时间 | 目标 |
-|------|------|
-| **今日** | 完成 P0 核心技能安装 (obsidian, sag, ffmpeg, jq, rg) |
-| **本周** | 完成 P1 扩展技能 (himalaya, gog, discord 配置) |
-| **下周** | 完成 P2 工具类技能 |
-
----
-
-*最后更新：2026-03-16 07:35*  
+*最后更新：2026-03-16 07:47*  
 *下次更新：更多技能安装完成后*
