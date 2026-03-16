@@ -343,7 +343,22 @@
   ],
   "inProgress": [],
   "review": [],
-  "done": [],
+  "done": [
+    {
+      "id": "task-002",
+      "title": "部署状态监控（19:54 循环）",
+      "description": "检查 Cloudflare Pages 部署状态，验证所有页面可访问",
+      "assignedTo": "shangyang",
+      "priority": "P0",
+      "status": "done",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T20:24:00Z",
+      "completedAt": "2026-03-16T20:05:00Z",
+      "artifacts": ["tasks/artifacts/task-002-complete.md"],
+      "approvalRequired": false,
+      "category": "运维监控"
+    }
+  ],
   "failed": [],
   "autoRefill": {
     "enabled": true,
