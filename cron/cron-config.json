@@ -1,0 +1,157 @@
+# OpenClaw Cron 配置文件
+
+**位置：** `~/.openclaw/config/cron.json` 或工作区 `cron/cron-config.json`
+
+---
+
+## 谋士天团定时任务配置
+
+```json
+{
+  "version": "1.0",
+  "timezone": "Asia/Shanghai",
+  "tasks": {
+    "office-status-update": {
+      "name": "Office 实时数据更新",
+      "description": "每 5 分钟更新 Office 页面 Agent 状态数据",
+      "schedule": "*/5 * * * *",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\cron\\update-office-status.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
+      "enabled": true,
+      "timeout": 60,
+      "log": true,
+      "logFile": "C:\\Users\\JINDA\\.openclaw\\logs\\office-status-update.log"
+    },
+    
+    "agent-activity-report": {
+      "name": "Agent 活动状态上报",
+      "description": "每 2 分钟各 Agent 自动上报活动状态",
+      "schedule": "*/2 * * * *",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\cron\\auto-report-activity.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
+      "enabled": true,
+      "timeout": 30,
+      "log": true
+    },
+    
+    "hourly-summary": {
+      "name": "每小时任务汇总",
+      "description": "整点生成任务汇总报告",
+      "schedule": "0 * * * *",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\cron\\hourly-summary.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "enabled": true,
+      "timeout": 120,
+      "log": true
+    }
+  }
+}
+```
+
+---
+
+## 安装步骤
+
+### 方法 1：复制到 OpenClaw 配置目录
+```powershell
+# 复制 cron 配置到 OpenClaw 全局配置
+Copy-Item "C:\Users\JINDA\.openclaw\workspace-zhugeliang\cron\cron-config.json" `
+          "C:\Users\JINDA\.openclaw\config\cron.json"
+```
+
+### 方法 2：在 OpenClaw 中注册
+编辑 `~/.openclaw/config.json`，添加：
+```json
+{
+  "cron": {
+    "enabled": true,
+    "configFile": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\cron\\cron-config.json"
+  }
+}
+```
+
+### 方法 3：使用 OpenClaw CLI（推荐）
+```bash
+# 查看 cron 状态
+openclaw cron status
+
+# 启用 cron
+openclaw cron enable
+
+# 注册任务
+openclaw cron register --file cron/cron-config.json
+
+# 查看任务列表
+openclaw cron list
+```
+
+---
+
+## 验证配置
+
+```powershell
+# 检查 cron 服务状态
+openclaw cron status
+
+# 手动触发一次测试
+openclaw cron run office-status-update
+
+# 查看日志
+Get-Content C:\Users\JINDA\.openclaw\logs\office-status-update.log -Tail 20
+```
+
+---
+
+## 预期输出
+
+### Office Status Update 日志
+```
+========================================
+Office Status Update - 2026-03-16 19:25:00
+========================================
+[INFO] 当前目录：C:\Users\JINDA\.openclaw\workspace-zhugeliang\website
+[INFO] 开始更新 Office 状态数据...
+Updating office state...
+Office state updated at 2026-03-16T11:25:00.000Z
+Agents: 8, Activities: 10, Shipping: 5
+[INFO] 检测到数据变更：
+data/activity-log.json
+data/office-state.json
+[INFO] 提交变更...
+[INFO] 推送到 GitHub 触发部署...
+[SUCCESS] ✓ 更新完成并推送部署
+========================================
+下次执行：5 分钟后
+========================================
+```
+
+---
+
+## 故障排查
+
+### Cron 服务未运行
+```bash
+# 重启 cron 服务
+openclaw cron restart
+```
+
+### 任务未执行
+检查 cron 配置语法：
+```powershell
+# 验证 JSON 格式
+Get-Content cron-config.json | ConvertFrom-Json
+```
+
+### 权限问题
+```powershell
+# 检查 PowerShell 执行策略
+Get-ExecutionPolicy
+
+# 如果 Restricted，临时允许当前会话
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+```
+
+---
+
+*配置时间：2026-03-16 19:21*  
+*下次检查：5 分钟后自动执行*
