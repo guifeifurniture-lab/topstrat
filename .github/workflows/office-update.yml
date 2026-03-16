@@ -1,0 +1,39 @@
+name: Office State Update
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 每 5 分钟执行
+  workflow_dispatch:       # 允许手动触发
+
+jobs:
+  update-office-state:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Generate office state
+        run: |
+          cd website
+          node api/update-office-state.js
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add website/data/office-state.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: auto update office state $(date -u)"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
