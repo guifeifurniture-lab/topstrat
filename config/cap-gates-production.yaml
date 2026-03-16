@@ -1,0 +1,248 @@
+# Cap Gates 配额配置文件 - 生产环境
+
+**版本：** v1.0  
+**创建时间：** 2026-03-16 19:00  
+**负责人：** 商鞅（shangyang）
+
+---
+
+## 配置说明
+
+本配置文件定义了谋士天团各任务类型的配额限制，防止任务队列堆积和资源耗尽。
+
+---
+
+## 配额配置
+
+```yaml
+cap_gates:
+  # ========== 社交媒体发布 ==========
+  post_tweet:
+    limit: 10
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    warning_threshold: 0.8  # 80% 时发出警告
+    
+  post_weibo:
+    limit: 8
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+
+  # ========== 内容创作 ==========
+  write_content:
+    limit: 5
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    cooldown_minutes: 30  # 内容发布间隔至少 30 分钟
+    
+  write_newsletter:
+    limit: 2
+    window: weekly
+    reset_time: "09:00"
+    timezone: "Asia/Shanghai"
+
+  # ========== 部署操作 ==========
+  deploy:
+    limit: 3
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    cooldown_minutes: 60  # 部署间隔至少 60 分钟
+    require_approval: true  # 需要人工审批
+    
+  deploy_staging:
+    limit: 10
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    cooldown_minutes: 15
+
+  # ========== API 调用 ==========
+  api_call:
+    limit: 100
+    window: hourly
+    reset_time: null
+    burst_limit: 20  # 每分钟最多 20 次突发
+    
+  api_call_external:
+    limit: 50
+    window: hourly
+    reset_time: null
+
+  # ========== 数据爬取 ==========
+  web_scrape:
+    limit: 20
+    window: hourly
+    reset_time: null
+    cooldown_minutes: 2  # 爬取间隔至少 2 分钟
+    
+  web_scrape_deep:
+    limit: 5
+    window: hourly
+    reset_time: null
+    cooldown_minutes: 5
+
+  # ========== 邮件发送 ==========
+  send_email:
+    limit: 50
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    
+  send_email_bulk:
+    limit: 200
+    window: daily
+    reset_time: "00:00"
+    timezone: "Asia/Shanghai"
+    require_approval: true
+
+  # ========== 文件操作 ==========
+  upload_file:
+    limit: 50
+    window: daily
+    reset_time: "00:00"
+    
+  download_file:
+    limit: 100
+    window: daily
+    reset_time: "00:00"
+
+  # ========== 数据库操作 ==========
+  db_write:
+    limit: 1000
+    window: hourly
+    reset_time: null
+    
+  db_delete:
+    limit: 100
+    window: hourly
+    reset_time: null
+    require_approval: true
+
+  # ========== AI 模型调用 ==========
+  llm_call:
+    limit: 500
+    window: hourly
+    reset_time: null
+    cost_per_call: 0.002  # 每次调用成本（美元）
+    daily_budget: 10.00   # 每日预算上限
+    
+  image_gen:
+    limit: 50
+    window: daily
+    reset_time: "00:00"
+    cost_per_call: 0.020
+    daily_budget: 5.00
+
+  # ========== 通知发送 ==========
+  send_notification:
+    limit: 100
+    window: daily
+    reset_time: "00:00"
+    
+  send_sms:
+    limit: 20
+    window: daily
+    reset_time: "00:00"
+    require_approval: true
+```
+
+---
+
+## 配额类型说明
+
+### 按时间窗口分类
+
+| 窗口类型 | 说明 | 重置时间 |
+|---------|------|---------|
+| `hourly` | 自然小时 | 每小时整点自动重置 |
+| `daily` | 自然日 | 按配置的 reset_time 重置 |
+| `weekly` | 自然周 | 每周一 00:00 重置 |
+
+### 按审批要求分类
+
+| 审批类型 | 说明 | 示例 |
+|---------|------|------|
+| 自动审批 | 配额内自动执行 | post_tweet, api_call |
+| 人工审批 | 需要人工确认 | deploy, db_delete, send_sms |
+
+---
+
+## 监控告警
+
+### 告警阈值
+
+- **警告（Warning）：** 配额使用达到 80%
+- **严重（Critical）：** 配额使用达到 100%
+- **拒绝（Rejected）：** 超额请求被拒绝
+
+### 告警渠道
+
+- 邮件通知：admin@topstrat.pages.dev
+- 飞书机器人：谋士天团监控群
+- Dashboard: https://topstrat.pages.dev/office
+
+---
+
+## 调整流程
+
+1. **监控分析：** 商鞅（ops）每周检查配额使用报告
+2. **提案调整：** 根据实际使用情况提出调整建议
+3. **审批流程：** 诸葛亮（CEO）审批配额调整
+4. **更新配置：** 更新本文件并提交 git
+5. **生效部署：** 自动部署到生产环境
+
+---
+
+## 调优建议
+
+### 初始配置（保守）
+
+前 7 天使用保守配置，观察实际使用情况：
+
+| 任务类型 | 初始配额 | 观察指标 |
+|---------|---------|---------|
+| post_tweet | 5 条/日 | 实际使用率、互动率 |
+| write_content | 3 篇/日 | 阅读量、完成率 |
+| deploy | 2 次/日 | 部署成功率、回滚率 |
+| api_call | 50 次/小时 | 错误率、延迟 |
+
+### 动态调整规则
+
+- **连续 7 天使用率 < 50%** → 配额减少 20%
+- **连续 7 天使用率 > 90%** → 配额增加 20%
+- **频繁触发拒绝（>10 次/日）** → 立即分析原因，可能需要增加配额
+
+---
+
+## 应急处理
+
+### 配额耗尽应急流程
+
+1. **立即通知：** 系统自动发送告警到飞书群
+2. **暂停任务：** 暂停对应类型的非关键任务
+3. **人工审批：** 紧急任务走人工审批通道
+4. **根因分析：** 24 小时内输出分析报告
+5. **配置调整：** 根据分析结果调整配额
+
+### 联系人
+
+- **技术负责人：** 管仲（guanzhong）- CTO
+- **运维负责人：** 商鞅（shangyang）- DevOps
+- **决策负责人：** 诸葛亮（zhugeliang）- CEO
+
+---
+
+## 文件位置
+
+- **生产环境：** `config/cap-gates-production.yaml`
+- **测试环境：** `config/cap-gates-staging.yaml`
+- **开发环境：** `config/cap-gates-dev.yaml`
+
+---
+
+*最后更新：2026-03-16 19:00*  
+*下次审查：2026-03-23（每周审查）*
