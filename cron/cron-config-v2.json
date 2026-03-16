@@ -12,12 +12,22 @@
       "timeout": 60,
       "log": true
     },
+    "auto-task-dispatch": {
+      "name": "自动任务派发",
+      "description": "每 5 分钟检查任务队列深度，自动补充任务，唤醒空闲 Agent",
+      "schedule": "*/5 * * * *",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\auto-dispatch.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
+      "enabled": true,
+      "timeout": 60,
+      "log": true
+    },
     "15min-agent-check": {
       "name": "15 分钟全员状态检查",
       "description": "每 15 分钟检查所有 Agent 状态并生成报告",
       "schedule": "*/15 * * * *",
-      "command": "node -e \"console.log('15min check at', new Date().toISOString())\"",
-      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\15min-agent-check.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
       "enabled": true,
       "timeout": 30,
       "log": true

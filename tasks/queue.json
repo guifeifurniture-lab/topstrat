@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-03-16T19:54:00Z",
+  "lastUpdated": "2026-03-16T20:00:00Z",
   "pending": [
     {
       "id": "task-001",
@@ -12,7 +12,8 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T22:54:00Z",
       "artifacts": [],
-      "approvalRequired": false
+      "approvalRequired": false,
+      "category": "竞品分析"
     },
     {
       "id": "task-002",
@@ -24,7 +25,8 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T20:24:00Z",
       "artifacts": [],
-      "approvalRequired": false
+      "approvalRequired": false,
+      "category": "运维监控"
     },
     {
       "id": "task-003",
@@ -36,7 +38,8 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T20:54:00Z",
       "artifacts": [],
-      "approvalRequired": false
+      "approvalRequired": false,
+      "category": "财务分析"
     },
     {
       "id": "task-004",
@@ -48,7 +51,8 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T21:54:00Z",
       "artifacts": [],
-      "approvalRequired": false
+      "approvalRequired": false,
+      "category": "代码审查"
     },
     {
       "id": "task-005",
@@ -60,7 +64,8 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T21:54:00Z",
       "artifacts": [],
-      "approvalRequired": false
+      "approvalRequired": false,
+      "category": "测试验证"
     },
     {
       "id": "task-006",
@@ -72,11 +77,278 @@
       "createdAt": "2026-03-16T19:54:00Z",
       "dueAt": "2026-03-16T22:54:00Z",
       "artifacts": [],
-      "approvalRequired": true
+      "approvalRequired": true,
+      "category": "功能开发"
+    },
+    {
+      "id": "task-007",
+      "title": "Office 页面性能优化",
+      "description": "分析 Office 页面加载性能，优化 JavaScript 和 CSS",
+      "assignedTo": "sunbin",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T23:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "性能优化"
+    },
+    {
+      "id": "task-008",
+      "title": "Radar 页面数据可视化优化",
+      "description": "改进 Radar 页面的数据展示和交互体验",
+      "assignedTo": "sunbin",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T00:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "功能开发"
+    },
+    {
+      "id": "task-009",
+      "title": "Insights 文章内容审核",
+      "description": "检查所有洞察文章的内容质量和准确性",
+      "assignedTo": "xiaohe",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T22:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "内容审核"
+    },
+    {
+      "id": "task-010",
+      "title": "GitHub 仓库整理",
+      "description": "清理无用文件，优化目录结构，更新 README",
+      "assignedTo": "shangyang",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T02:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "运维优化"
+    },
+    {
+      "id": "task-011",
+      "title": "Tailwind CSS 配置优化",
+      "description": "审查 tailwind.config.js，移除未使用的样式，优化构建",
+      "assignedTo": "guanzhong",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T02:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "性能优化"
+    },
+    {
+      "id": "task-012",
+      "title": "移动端适配检查",
+      "description": "测试所有页面在移动设备上的显示效果",
+      "assignedTo": "xiaohe",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T23:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "测试验证"
+    },
+    {
+      "id": "task-013",
+      "title": "SEO 优化分析",
+      "description": "分析所有页面的 SEO 指标，提出改进建议",
+      "assignedTo": "zhangliang",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T02:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "市场分析"
+    },
+    {
+      "id": "task-014",
+      "title": "支付流程测试",
+      "description": "测试 Vault 页面的 PayPal/微信/支付宝支付流程",
+      "assignedTo": "xiaohe",
+      "priority": "P0",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T21:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "测试验证"
+    },
+    {
+      "id": "task-015",
+      "title": "API 文档编写",
+      "description": "为 Office API 编写完整的 API 文档",
+      "assignedTo": "shangyang",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T04:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "文档编写"
+    },
+    {
+      "id": "task-016",
+      "title": "错误日志分析",
+      "description": "分析最近 24 小时的错误日志，找出高频问题",
+      "assignedTo": "guanzhong",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T22:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "问题分析"
+    },
+    {
+      "id": "task-017",
+      "title": "竞品定价策略分析",
+      "description": "分析 VoxYZ 的定价策略，对比我们的定价",
+      "assignedTo": "fanli",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T23:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "财务分析"
+    },
+    {
+      "id": "task-018",
+      "title": "用户反馈收集",
+      "description": "收集并整理用户反馈，分类整理",
+      "assignedTo": "zhangliang",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T22:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "用户研究"
+    },
+    {
+      "id": "task-019",
+      "title": "自动化测试脚本编写",
+      "description": "为关键页面编写自动化测试脚本",
+      "assignedTo": "xiaohe",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T00:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "测试开发"
+    },
+    {
+      "id": "task-020",
+      "title": "Cloudflare 配置优化",
+      "description": "优化 Cloudflare Pages 配置，提升加载速度",
+      "assignedTo": "shangyang",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T23:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "运维优化"
+    },
+    {
+      "id": "task-021",
+      "title": "代码规范检查",
+      "description": "检查所有代码文件是否符合规范",
+      "assignedTo": "guanzhong",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T02:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "代码审查"
+    },
+    {
+      "id": "task-022",
+      "title": "社交媒体内容规划",
+      "description": "规划下周的社交媒体发布内容",
+      "assignedTo": "zhangliang",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T04:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "内容规划"
+    },
+    {
+      "id": "task-023",
+      "title": "财务日报模板设计",
+      "description": "设计财务日报的标准模板",
+      "assignedTo": "fanli",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T04:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "财务分析"
+    },
+    {
+      "id": "task-024",
+      "title": "404 页面设计",
+      "description": "设计并实现自定义 404 页面",
+      "assignedTo": "sunbin",
+      "priority": "P2",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-17T02:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "功能开发"
+    },
+    {
+      "id": "task-025",
+      "title": "网站性能基准测试",
+      "description": "使用 Lighthouse 进行性能测试并建立基准",
+      "assignedTo": "guanzhong",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T23:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "性能测试"
+    },
+    {
+      "id": "task-026",
+      "title": "备份策略设计",
+      "description": "设计数据和代码的备份策略",
+      "assignedTo": "shangyang",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T22:00:00Z",
+      "artifacts": [],
+      "approvalRequired": false,
+      "category": "运维规划"
     }
   ],
   "inProgress": [],
   "review": [],
   "done": [],
-  "failed": []
+  "failed": [],
+  "autoRefill": {
+    "enabled": true,
+    "minTasks": 20,
+    "targetTasks": 25,
+    "refillInterval": "*/15 * * * *"
+  }
 }
