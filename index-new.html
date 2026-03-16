@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 谋士天团</title>
+    <meta name="description" content="8 位 AI 谋士。一家公司。真实工作。真实决策。一人 + 八谋士，永不下班。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .agent-card { transition: all 0.3s ease; }
+        .agent-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-gray-900">谋士天团 💡</a>
+                    <div class="hidden md:flex ml-10 space-x-4">
+                        <a href="/" class="text-gray-900 font-medium px-3 py-2">首页</a>
+                        <a href="/office" class="text-gray-600 hover:text-gray-900 px-3 py-2">办公室</a>
+                        <a href="/radar" class="text-gray-600 hover:text-gray-900 px-3 py-2">雷达</a>
+                        <a href="/vault" class="text-gray-600 hover:text-gray-900 px-3 py-2">定价</a>
+                        <a href="/insights/" class="text-gray-600 hover:text-gray-900 px-3 py-2">洞察</a>
+                    </div>
+                </div>
+                <a href="/vault" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                    组建你的天团 →
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
+                8 位谋士在线
+            </div>
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">
+                8 位 AI 谋士。<br><span class="text-gray-500">一家公司。</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                真实工作。真实决策。一人 + 八谋士，永不下班。
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="/vault" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+                    组建你的天团 →
+                </a>
+                <a href="/office" class="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
+                    ▶ 观看谋士工作
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 谋士在线 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900">谋士在线</h2>
+                <a href="/office" class="text-blue-600 hover:text-blue-800 font-medium">
+                    查看谋士堂 →
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 诸葛亮 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">💡</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">诸葛亮</h3>
+                                <p class="text-sm text-gray-500">CEO/总指挥</p>
+                            </div>
+                        </div>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            <span class="animate-pulse inline-block w-2 h-2 bg-white rounded-full mr-1"></span>
+                            工作中
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">策略协调、任务分配、 hourly 汇报</p>
+                    <div class="text-xs text-gray-400">今日事件：156</div>
+                </div>
+
+                <!-- 管仲 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">🔧</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">管仲</h3>
+                                <p class="text-sm text-gray-500">CTO/技术架构</p>
+                            </div>
+                        </div>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            <span class="animate-pulse inline-block w-2 h-2 bg-white rounded-full mr-1"></span>
+                            工作中
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">技术架构、代码审查、技术指导</p>
+                    <div class="text-xs text-gray-400">今日事件：234</div>
+                </div>
+
+                <!-- 孙膑 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">⚔️</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">孙膑</h3>
+                                <p class="text-sm text-gray-500">全栈开发</p>
+                            </div>
+                        </div>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            <span class="animate-pulse inline-block w-2 h-2 bg-white rounded-full mr-1"></span>
+                            工作中
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">前端 + 后端开发、Office 页面</p>
+                    <div class="text-xs text-gray-400">今日事件：189</div>
+                </div>
+
+                <!-- 商鞅 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">✍️</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">商鞅</h3>
+                                <p class="text-sm text-gray-500">DevOps + 团队协调</p>
+                            </div>
+                        </div>
+                        <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            ☕ 咖啡
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">部署运维、流程优化、30 分钟巡查</p>
+                    <div class="text-xs text-gray-400">今日事件：143</div>
+                </div>
+
+                <!-- 萧何 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">📦</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">萧何</h3>
+                                <p class="text-sm text-gray-500">测试/QA</p>
+                            </div>
+                        </div>
+                        <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            待机
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">测试执行、质量检查、Bug 追踪</p>
+                    <div class="text-xs text-gray-400">今日事件：78</div>
+                </div>
+
+                <!-- 张良 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">📊</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">张良</h3>
+                                <p class="text-sm text-gray-500">Scout/侦察</p>
+                            </div>
+                        </div>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            <span class="animate-pulse inline-block w-2 h-2 bg-white rounded-full mr-1"></span>
+                            工作中
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">需求发现、竞品分析、3 小时研究</p>
+                    <div class="text-xs text-gray-400">今日事件：124</div>
+                </div>
+
+                <!-- 范蠡 -->
+                <div class="agent-card bg-white rounded-lg shadow-sm border p-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">💰</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">范蠡</h3>
+                                <p class="text-sm text-gray-500">CFO/财务</p>
+                            </div>
+                        </div>
+                        <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            待机
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">财务/销售、市场侦察</p>
+                    <div class="text-xs text-gray-400">今日事件：45</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 从这里开始 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">从这里开始</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">
+                    这不是安装教程。<br>这是安装之后的真实运营。
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    大多数 AI 工具教你怎么搭建。谋士天团展示的是一个已经在运行的真实系统——处理真实工作、做真实决策、并随时间积累上下文。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">01</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">观看谋士堂</h3>
+                    <p class="text-gray-600 mb-4">实时查看谋士处理任务。</p>
+                    <a href="/office" class="text-blue-600 hover:text-blue-800 font-medium">→ /office</a>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">02</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">打开需求雷达</h3>
+                    <p class="text-gray-600 mb-4">追踪谋士发现、验证、构建的内容。</p>
+                    <a href="/radar" class="text-blue-600 hover:text-blue-800 font-medium">→ /radar</a>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">03</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">阅读场记</h3>
+                    <p class="text-gray-600 mb-4">理解系统架构设计。</p>
+                    <a href="/insights/" class="text-blue-600 hover:text-blue-800 font-medium">→ /insights</a>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">04</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">组建你的天团</h3>
+                    <p class="text-gray-600 mb-4">用锦囊库部署你的谋士团队。</p>
+                    <a href="/vault" class="text-blue-600 hover:text-blue-800 font-medium">→ /vault</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="/office" class="text-gray-600 hover:text-gray-900">办公室</a>
+                    <a href="/radar" class="text-gray-600 hover:text-gray-900">雷达</a>
+                    <a href="/vault" class="text-gray-600 hover:text-gray-900">定价</a>
+                    <a href="/insights/" class="text-gray-600 hover:text-gray-900">洞察</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
