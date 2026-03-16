@@ -16,7 +16,9 @@ const SHIPPING_LOG_PATH = path.join(__dirname, '../data/shipping-log.json');
 function getAgentStates() {
     try {
         // 读取 Agent 配置文件
-        const agentsConfig = JSON.parse(fs.readFileSync(AGENTS_CONFIG_PATH, 'utf8'));
+        const configData = JSON.parse(fs.readFileSync(AGENTS_CONFIG_PATH, 'utf8'));
+        // agents.json 格式是 { lastUpdated, agents: [] }，需要提取 agents 数组
+        const agentsConfig = configData.agents || configData;
         
         // 读取活动日志获取最后活动时间
         const activityLog = JSON.parse(fs.readFileSync(ACTIVITY_LOG_PATH, 'utf8'));
