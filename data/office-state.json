@@ -1,380 +1,133 @@
 {
-  "lastUpdated": "2026-03-16T11:48:51.368Z",
+  "lastUpdated": "2026-03-16T21:30:56.675Z",
   "agents": [
     {
       "id": "zhugeliang",
       "name": "诸葛亮",
       "emoji": "💡",
       "role": "CEO/总指挥",
-      "status": "offline",
-      "lastActivity": "2026-03-16T11:00:00Z",
-      "eventsToday": 2,
-      "currentTask": "任务派发与协调",
-      "description": "运筹帷幄之中，决胜千里之外"
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 32,
+      "description": "诸葛亮 - CEO/总指挥"
     },
     {
       "id": "guanzhong",
       "name": "管仲",
       "emoji": "🔧",
       "role": "CTO/技术架构",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:59:00Z",
-      "eventsToday": 2,
-      "currentTask": "技术架构审查",
-      "description": "技术架构师，系统设计专家"
-    },
-    {
-      "id": "mozi",
-      "name": "墨子",
-      "emoji": "🧠",
-      "role": "前端开发",
-      "status": "offline",
-      "lastActivity": null,
-      "eventsToday": 0,
+      "status": "idle",
       "currentTask": null,
-      "description": "前端开发专家，用户体验追求者"
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 18,
+      "description": "管仲 - CTO/技术架构"
     },
     {
       "id": "sunbin",
       "name": "孙膑",
       "emoji": "⚔️",
-      "role": "后端开发",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:58:00Z",
-      "eventsToday": 2,
-      "currentTask": "前端修复",
-      "description": "后端开发专家，数据结构设计"
+      "role": "全栈开发",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 12,
+      "description": "孙膑 - 全栈开发"
+    },
+    {
+      "id": "guojia",
+      "name": "郭嘉",
+      "emoji": "🎨",
+      "role": "前端专家",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 13,
+      "description": "郭嘉 - 前端专家"
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "emoji": "🔨",
+      "role": "前端开发",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 26,
+      "description": "墨子 - 前端开发"
     },
     {
       "id": "shangyang",
       "name": "商鞅",
       "emoji": "✍️",
       "role": "DevOps",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:57:00Z",
-      "eventsToday": 1,
-      "currentTask": "DevOps 配置",
-      "description": "DevOps 专家，自动化部署"
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 59,
+      "description": "商鞅 - DevOps"
     },
     {
       "id": "xiaohe",
       "name": "萧何",
       "emoji": "📦",
-      "role": "测试/QA",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:56:00Z",
-      "eventsToday": 1,
-      "currentTask": "QA 测试",
-      "description": "质量保证专家，测试策略"
+      "role": "QA/测试",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 30,
+      "description": "萧何 - QA/测试"
     },
     {
       "id": "zhangliang",
       "name": "张良",
       "emoji": "📊",
-      "role": "产品/战略",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:55:00Z",
-      "eventsToday": 1,
-      "currentTask": "竞品分析",
-      "description": "产品战略家，市场分析"
+      "role": "军师/侦察",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 14,
+      "description": "张良 - 军师/侦察"
     },
     {
       "id": "fanli",
       "name": "范蠡",
       "emoji": "💰",
       "role": "CFO/财务",
-      "status": "offline",
-      "lastActivity": "2026-03-16T10:54:00Z",
-      "eventsToday": 1,
-      "currentTask": "财务分析",
-      "description": "财务专家，成本控制"
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 17,
+      "description": "范蠡 - CFO/财务"
+    },
+    {
+      "id": "hanxin",
+      "name": "韩信",
+      "emoji": "📈",
+      "role": "增长黑客",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 23,
+      "description": "韩信 - 增长黑客"
+    },
+    {
+      "id": "chenping",
+      "name": "陈平",
+      "emoji": "🤝",
+      "role": "客户成功",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:30:56.675Z",
+      "eventsToday": 55,
+      "description": "陈平 - 客户成功"
     }
   ],
-  "activities": [
-    {
-      "id": "act_1710586200000",
-      "agent": "诸葛亮",
-      "agentId": "zhugeliang",
-      "action": "working",
-      "content": "派发任务并协调团队工作",
-      "task": "任务派发与协调",
-      "timestamp": "2026-03-16T11:00:00Z"
-    },
-    {
-      "id": "act_1710586140000",
-      "agent": "管仲",
-      "agentId": "guanzhong",
-      "action": "working",
-      "content": "审查 Cap Gates 设计文档",
-      "task": "技术架构审查",
-      "timestamp": "2026-03-16T10:59:00Z"
-    },
-    {
-      "id": "act_1710586080000",
-      "agent": "孙膑",
-      "agentId": "sunbin",
-      "action": "working",
-      "content": "修复 Vault 页面编码问题",
-      "task": "前端修复",
-      "timestamp": "2026-03-16T10:58:00Z"
-    },
-    {
-      "id": "act_1710586020000",
-      "agent": "商鞅",
-      "agentId": "shangyang",
-      "action": "working",
-      "content": "配置 Cap Gates 生产环境",
-      "task": "DevOps 配置",
-      "timestamp": "2026-03-16T10:57:00Z"
-    },
-    {
-      "id": "act_1710585960000",
-      "agent": "萧何",
-      "agentId": "xiaohe",
-      "action": "working",
-      "content": "测试 Office 页面实时数据",
-      "task": "QA 测试",
-      "timestamp": "2026-03-16T10:56:00Z"
-    },
-    {
-      "id": "act_1710585900000",
-      "agent": "张良",
-      "agentId": "zhangliang",
-      "action": "working",
-      "content": "分析 VoxYZ 竞品差异",
-      "task": "竞品分析",
-      "timestamp": "2026-03-16T10:55:00Z"
-    },
-    {
-      "id": "act_1710585840000",
-      "agent": "范蠡",
-      "agentId": "fanli",
-      "action": "working",
-      "content": "审核定价策略",
-      "task": "财务分析",
-      "timestamp": "2026-03-16T10:54:00Z"
-    },
-    {
-      "id": "act_1710585780000",
-      "agent": "诸葛亮",
-      "agentId": "zhugeliang",
-      "action": "handoff",
-      "content": "将 Vault 修复任务移交给孙膑",
-      "task": "任务交接",
-      "timestamp": "2026-03-16T10:53:00Z"
-    },
-    {
-      "id": "act_1710585720000",
-      "agent": "孙膑",
-      "agentId": "sunbin",
-      "action": "working",
-      "content": "提交代码并推送 GitHub",
-      "task": "代码部署",
-      "timestamp": "2026-03-16T10:52:00Z"
-    },
-    {
-      "id": "act_1710585660000",
-      "agent": "管仲",
-      "agentId": "guanzhong",
-      "action": "coffee",
-      "content": "短暂休息，思考架构优化",
-      "task": "休息",
-      "timestamp": "2026-03-16T10:51:00Z"
-    }
-  ],
-  "shipping": [
-    {
-      "id": "ship_003",
-      "title": "Cap Gates 配置文件创建",
-      "shippedAt": "2026-03-16T11:05:00Z",
-      "contributors": [
-        "诸葛亮",
-        "商鞅"
-      ],
-      "deployUrl": "https://github.com/guifeifurniture-lab/topstrat",
-      "status": "shipped",
-      "confidence": "90%",
-      "duration": "30 分钟"
-    },
-    {
-      "id": "ship_001",
-      "title": "官网 v0.3 完整版本 - Office 页面 + 支付集成",
-      "shippedAt": "2026-03-16T11:04:00Z",
-      "contributors": [
-        "孙膑",
-        "诸葛亮"
-      ],
-      "deployUrl": "https://topstrat-7mv.pages.dev",
-      "status": "shipped",
-      "confidence": "95%",
-      "duration": "2 小时"
-    },
-    {
-      "id": "ship_002",
-      "title": "Vault 页面编码问题修复",
-      "shippedAt": "2026-03-16T11:04:00Z",
-      "contributors": [
-        "诸葛亮"
-      ],
-      "deployUrl": "https://topstrat-7mv.pages.dev/vault",
-      "status": "shipped",
-      "confidence": "100%",
-      "duration": "15 分钟"
-    },
-    {
-      "id": "ship_004",
-      "title": "Office 页面实时数据 API",
-      "shippedAt": "2026-03-16T10:10:00Z",
-      "contributors": [
-        "孙膑",
-        "管仲"
-      ],
-      "deployUrl": "https://topstrat-7mv.pages.dev/office",
-      "status": "shipped",
-      "confidence": "85%",
-      "duration": "1.5 小时"
-    },
-    {
-      "id": "ship_005",
-      "title": "Stage 页面 + SEO 优化",
-      "shippedAt": "2026-03-16T06:45:00Z",
-      "contributors": [
-        "孙膑"
-      ],
-      "deployUrl": "https://topstrat-7mv.pages.dev/stage",
-      "status": "shipped",
-      "confidence": "90%",
-      "duration": "2 小时"
-    }
-  ],
-  "accuracy": [
-    {
-      "agent": "萧何",
-      "agentId": "xiaohe",
-      "rank": 1,
-      "accuracy": "93%",
-      "samples": 145,
-      "best": "质量把控",
-      "weakest": "速度",
-      "signal": "91%",
-      "narrative": "94%",
-      "build": "88%",
-      "wtp": "95%"
-    },
-    {
-      "agent": "管仲",
-      "agentId": "guanzhong",
-      "rank": 2,
-      "accuracy": "91%",
-      "samples": 234,
-      "best": "架构设计",
-      "weakest": "快速迭代",
-      "signal": "89%",
-      "narrative": "90%",
-      "build": "93%",
-      "wtp": "92%"
-    },
-    {
-      "agent": "孙膑",
-      "agentId": "sunbin",
-      "rank": 3,
-      "accuracy": "89%",
-      "samples": 189,
-      "best": "全栈开发",
-      "weakest": "文档编写",
-      "signal": "87%",
-      "narrative": "85%",
-      "build": "95%",
-      "wtp": "90%"
-    },
-    {
-      "agent": "范蠡",
-      "agentId": "fanli",
-      "rank": 4,
-      "accuracy": "88%",
-      "samples": 134,
-      "best": "财务分析",
-      "weakest": "技术理解",
-      "signal": "85%",
-      "narrative": "90%",
-      "build": "80%",
-      "wtp": "91%"
-    },
-    {
-      "agent": "诸葛亮",
-      "agentId": "zhugeliang",
-      "rank": 5,
-      "accuracy": "87%",
-      "samples": 156,
-      "best": "战略决策",
-      "weakest": "细节执行",
-      "signal": "92%",
-      "narrative": "85%",
-      "build": "N/A",
-      "wtp": "88%"
-    },
-    {
-      "agent": "张良",
-      "agentId": "zhangliang",
-      "rank": 6,
-      "accuracy": "86%",
-      "samples": 178,
-      "best": "竞品分析",
-      "weakest": "执行落地",
-      "signal": "90%",
-      "narrative": "88%",
-      "build": "75%",
-      "wtp": "87%"
-    },
-    {
-      "agent": "商鞅",
-      "agentId": "shangyang",
-      "rank": 7,
-      "accuracy": "85%",
-      "samples": 167,
-      "best": "流程优化",
-      "weakest": "创意发散",
-      "signal": "88%",
-      "narrative": "82%",
-      "build": "90%",
-      "wtp": "84%"
-    }
-  ],
+  "activities": [],
   "pulse": {
-    "totalEvents": 10,
+    "totalEvents": 299,
     "activeAgents": 0,
-    "shippedCount": 5,
-    "handoffsToday": 1,
-    "totalAgents": 8,
-    "lastUpdated": "2026-03-16T11:48:51.371Z"
-  },
-  "graveyard": [
-    {
-      "id": "grave_003",
-      "idea": "实时推送所有 Agent 活动到 Discord",
-      "proposer": "孙膑",
-      "rejectedBy": "诸葛亮",
-      "rejectedAt": "2026-03-16T10:00:00Z",
-      "reason": "信息过载，噪音太多",
-      "revivalTrigger": "实现智能过滤，仅推送重要事件"
-    },
-    {
-      "id": "grave_002",
-      "idea": "全自动社交媒体发布（无审批）",
-      "proposer": "张良",
-      "rejectedBy": "商鞅",
-      "rejectedAt": "2026-03-16T09:00:00Z",
-      "reason": "缺少人工审核，品牌风险高",
-      "revivalTrigger": "实现 AI 审批 + 人工复核双重机制"
-    },
-    {
-      "id": "grave_001",
-      "idea": "家具复刻电商业务",
-      "proposer": "范蠡",
-      "rejectedBy": "诸葛亮",
-      "rejectedAt": "2026-03-15T14:00:00Z",
-      "reason": "法律风险>70%，版权侵权风险高",
-      "revivalTrigger": "获得原创设计授权或 IP 许可"
-    }
-  ]
+    "totalAgents": 11,
+    "lastUpdated": "2026-03-16T21:30:56.675Z"
+  }
 }
