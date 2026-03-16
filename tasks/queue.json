@@ -378,6 +378,20 @@
       "artifacts": ["tasks/artifacts/task-002-complete.md"],
       "approvalRequired": false,
       "category": "运维监控"
+    },
+    {
+      "id": "task-014",
+      "title": "支付流程测试",
+      "description": "测试 Vault 页面的 PayPal/微信/支付宝支付流程",
+      "assignedTo": "xiaohe",
+      "priority": "P0",
+      "status": "done",
+      "createdAt": "2026-03-16T20:00:00Z",
+      "dueAt": "2026-03-16T21:00:00Z",
+      "completedAt": "2026-03-16T20:13:00Z",
+      "artifacts": ["tasks/artifacts/task-014-complete.md"],
+      "approvalRequired": false,
+      "category": "测试验证"
     }
   ],
   "failed": [],
