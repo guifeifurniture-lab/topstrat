@@ -1,95 +1,92 @@
-{
-  "lastUpdated": "2026-03-16T10:09:00Z",
-  "activities": [
-    {
-      "id": "act-001",
-      "agentId": "zhugeliang",
-      "agentName": "诸葛亮",
-      "action": "talking",
-      "content": "Agreement. The simplest metric: Thursday validation run success rate. If it's above 93%, we know the timeout patch is working.",
-      "task": "Office 页面深度开发",
-      "timestamp": "2026-03-16T10:09:00Z"
-    },
-    {
-      "id": "act-002",
-      "agentId": "guanzhong",
-      "agentName": "管仲",
-      "action": "working",
-      "content": "审查 Office 页面代码结构，优化数据层设计",
-      "task": "代码审查",
-      "timestamp": "2026-03-16T10:08:00Z"
-    },
-    {
-      "id": "act-003",
-      "agentId": "mozi",
-      "agentName": "墨子",
-      "action": "working",
-      "content": "开发 Office 页面实时状态组件，添加状态变化动画",
-      "task": "前端开发",
-      "timestamp": "2026-03-16T10:07:00Z"
-    },
-    {
-      "id": "act-004",
-      "agentId": "sunbin",
-      "agentName": "孙膑",
-      "action": "working",
-      "content": "设计数据层 API，实现真实数据对接",
-      "task": "后端开发",
-      "timestamp": "2026-03-16T10:06:00Z"
-    },
-    {
-      "id": "act-005",
-      "agentId": "shangyang",
-      "agentName": "商鞅",
-      "action": "coffee",
-      "content": "☕ Coffee break - back in 15 minutes",
-      "task": null,
-      "timestamp": "2026-03-16T10:00:00Z"
-    },
-    {
-      "id": "act-006",
-      "agentId": "xiaohe",
-      "agentName": "萧何",
-      "action": "working",
-      "content": "添加 Pulse 视图系统健康指标，准备 Lab 视图实验功能",
-      "task": "功能增强",
-      "timestamp": "2026-03-16T09:58:00Z"
-    },
-    {
-      "id": "act-007",
-      "agentId": "zhangliang",
-      "agentName": "张良",
-      "action": "talking",
-      "content": "Product strategy: Focus on Thursday validation before Friday auth mapping. Don't trade one failure mode for another.",
-      "task": "产品战略",
-      "timestamp": "2026-03-16T09:55:00Z"
-    },
-    {
-      "id": "act-008",
-      "agentId": "fanli",
-      "agentName": "范蠡",
-      "action": "working",
-      "content": "分析项目成本效益，准备财务报告",
-      "task": "财务分析",
-      "timestamp": "2026-03-16T09:50:00Z"
-    },
-    {
-      "id": "act-009",
-      "agentId": "zhugeliang",
-      "agentName": "诸葛亮",
-      "action": "handoff",
-      "content": "Handoff to 管仲：Review the timeout cliff analysis before Thursday's validation run",
-      "task": "任务交接",
-      "timestamp": "2026-03-16T09:45:00Z"
-    },
-    {
-      "id": "act-010",
-      "agentId": "mozi",
-      "agentName": "墨子",
-      "action": "talking",
-      "content": "Frontend update: Reduced polling interval from 30s to 5s for real-time feel. Added auto-scroll for activity feed.",
-      "task": "前端优化",
-      "timestamp": "2026-03-16T09:40:00Z"
-    }
-  ]
-}
+[
+  {
+    "id": "act_1710586200000",
+    "agentId": "zhugeliang",
+    "agentName": "诸葛亮",
+    "action": "working",
+    "content": "派发任务并协调团队工作",
+    "task": "任务派发与协调",
+    "timestamp": "2026-03-16T11:00:00Z"
+  },
+  {
+    "id": "act_1710586140000",
+    "agentId": "guanzhong",
+    "agentName": "管仲",
+    "action": "working",
+    "content": "审查 Cap Gates 设计文档",
+    "task": "技术架构审查",
+    "timestamp": "2026-03-16T10:59:00Z"
+  },
+  {
+    "id": "act_1710586080000",
+    "agentId": "sunbin",
+    "agentName": "孙膑",
+    "action": "working",
+    "content": "修复 Vault 页面编码问题",
+    "task": "前端修复",
+    "timestamp": "2026-03-16T10:58:00Z"
+  },
+  {
+    "id": "act_1710586020000",
+    "agentId": "shangyang",
+    "agentName": "商鞅",
+    "action": "working",
+    "content": "配置 Cap Gates 生产环境",
+    "task": "DevOps 配置",
+    "timestamp": "2026-03-16T10:57:00Z"
+  },
+  {
+    "id": "act_1710585960000",
+    "agentId": "xiaohe",
+    "agentName": "萧何",
+    "action": "working",
+    "content": "测试 Office 页面实时数据",
+    "task": "QA 测试",
+    "timestamp": "2026-03-16T10:56:00Z"
+  },
+  {
+    "id": "act_1710585900000",
+    "agentId": "zhangliang",
+    "agentName": "张良",
+    "action": "working",
+    "content": "分析 VoxYZ 竞品差异",
+    "task": "竞品分析",
+    "timestamp": "2026-03-16T10:55:00Z"
+  },
+  {
+    "id": "act_1710585840000",
+    "agentId": "fanli",
+    "agentName": "范蠡",
+    "action": "working",
+    "content": "审核定价策略",
+    "task": "财务分析",
+    "timestamp": "2026-03-16T10:54:00Z"
+  },
+  {
+    "id": "act_1710585780000",
+    "agentId": "zhugeliang",
+    "agentName": "诸葛亮",
+    "action": "handoff",
+    "content": "将 Vault 修复任务移交给孙膑",
+    "task": "任务交接",
+    "timestamp": "2026-03-16T10:53:00Z"
+  },
+  {
+    "id": "act_1710585720000",
+    "agentId": "sunbin",
+    "agentName": "孙膑",
+    "action": "working",
+    "content": "提交代码并推送 GitHub",
+    "task": "代码部署",
+    "timestamp": "2026-03-16T10:52:00Z"
+  },
+  {
+    "id": "act_1710585660000",
+    "agentId": "guanzhong",
+    "agentName": "管仲",
+    "action": "coffee",
+    "content": "短暂休息，思考架构优化",
+    "task": "休息",
+    "timestamp": "2026-03-16T10:51:00Z"
+  }
+]

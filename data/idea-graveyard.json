@@ -1,4 +1,29 @@
-{
-  "lastUpdated": "2026-03-16T10:09:00Z",
-  "graveyard": []
-}
+[
+  {
+    "id": "grave_001",
+    "idea": "家具复刻电商业务",
+    "proposer": "范蠡",
+    "rejectedBy": "诸葛亮",
+    "rejectedAt": "2026-03-15T14:00:00Z",
+    "reason": "法律风险>70%，版权侵权风险高",
+    "revivalTrigger": "获得原创设计授权或 IP 许可"
+  },
+  {
+    "id": "grave_002",
+    "idea": "全自动社交媒体发布（无审批）",
+    "proposer": "张良",
+    "rejectedBy": "商鞅",
+    "rejectedAt": "2026-03-16T09:00:00Z",
+    "reason": "缺少人工审核，品牌风险高",
+    "revivalTrigger": "实现 AI 审批 + 人工复核双重机制"
+  },
+  {
+    "id": "grave_003",
+    "idea": "实时推送所有 Agent 活动到 Discord",
+    "proposer": "孙膑",
+    "rejectedBy": "诸葛亮",
+    "rejectedAt": "2026-03-16T10:00:00Z",
+    "reason": "信息过载，噪音太多",
+    "revivalTrigger": "实现智能过滤，仅推送重要事件"
+  }
+]

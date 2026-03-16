@@ -61,7 +61,8 @@ function tryWebSocket() {
 // 加载数据
 async function loadData() {
     try {
-        const response = await fetch('/data/office-state.json');
+        // 使用真实 API 端点
+        const response = await fetch('/api/office/state');
         const newData = await response.json();
         
         // 检测数据变化

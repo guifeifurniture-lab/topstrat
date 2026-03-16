@@ -1,103 +1,86 @@
-{
-  "lastUpdated": "2026-03-16T10:09:00Z",
-  "accuracy": [
-    {
-      "agentId": "shangyang",
-      "agent": "商鞅",
-      "accuracy": "96",
-      "samples": 39,
-      "best": "Narrative",
-      "weakest": "WTP",
-      "signal": "—",
-      "narrative": "96% →",
-      "build": "—",
-      "wtp": "—"
-    },
-    {
-      "agentId": "zhangliang",
-      "agent": "张良",
-      "accuracy": "96",
-      "samples": 39,
-      "best": "WTP",
-      "weakest": "Build",
-      "signal": "—",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "96% →"
-    },
-    {
-      "agentId": "sunbin",
-      "agent": "孙膑",
-      "accuracy": "88",
-      "samples": 39,
-      "best": "Signal",
-      "weakest": "WTP",
-      "signal": "88% →",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "—"
-    },
-    {
-      "agentId": "mozi",
-      "agent": "墨子",
-      "accuracy": "83",
-      "samples": 39,
-      "best": "Build",
-      "weakest": "WTP",
-      "signal": "—",
-      "narrative": "—",
-      "build": "83% →",
-      "wtp": "—"
-    },
-    {
-      "agentId": "zhugeliang",
-      "agent": "诸葛亮",
-      "accuracy": "—",
-      "samples": 0,
-      "best": "Signal",
-      "weakest": "WTP",
-      "signal": "—",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "—"
-    },
-    {
-      "agentId": "guanzhong",
-      "agent": "管仲",
-      "accuracy": "—",
-      "samples": 0,
-      "best": "—",
-      "weakest": "—",
-      "signal": "—",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "—"
-    },
-    {
-      "agentId": "fanli",
-      "agent": "范蠡",
-      "accuracy": "—",
-      "samples": 0,
-      "best": "—",
-      "weakest": "—",
-      "signal": "—",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "—"
-    },
-    {
-      "agentId": "xiaohe",
-      "agent": "萧何",
-      "accuracy": "—",
-      "samples": 0,
-      "best": "—",
-      "weakest": "—",
-      "signal": "—",
-      "narrative": "—",
-      "build": "—",
-      "wtp": "—"
-    }
-  ],
-  "resolved": 156,
-  "pending": 1732
-}
+[
+  {
+    "agent": "诸葛亮",
+    "agentId": "zhugeliang",
+    "accuracy": "87%",
+    "samples": 156,
+    "best": "战略决策",
+    "weakest": "细节执行",
+    "signal": "92%",
+    "narrative": "85%",
+    "build": "N/A",
+    "wtp": "88%"
+  },
+  {
+    "agent": "管仲",
+    "agentId": "guanzhong",
+    "accuracy": "91%",
+    "samples": 234,
+    "best": "架构设计",
+    "weakest": "快速迭代",
+    "signal": "89%",
+    "narrative": "90%",
+    "build": "93%",
+    "wtp": "92%"
+  },
+  {
+    "agent": "孙膑",
+    "agentId": "sunbin",
+    "accuracy": "89%",
+    "samples": 189,
+    "best": "全栈开发",
+    "weakest": "文档编写",
+    "signal": "87%",
+    "narrative": "85%",
+    "build": "95%",
+    "wtp": "90%"
+  },
+  {
+    "agent": "商鞅",
+    "agentId": "shangyang",
+    "accuracy": "85%",
+    "samples": 167,
+    "best": "流程优化",
+    "weakest": "创意发散",
+    "signal": "88%",
+    "narrative": "82%",
+    "build": "90%",
+    "wtp": "84%"
+  },
+  {
+    "agent": "萧何",
+    "agentId": "xiaohe",
+    "accuracy": "93%",
+    "samples": 145,
+    "best": "质量把控",
+    "weakest": "速度",
+    "signal": "91%",
+    "narrative": "94%",
+    "build": "88%",
+    "wtp": "95%"
+  },
+  {
+    "agent": "张良",
+    "agentId": "zhangliang",
+    "accuracy": "86%",
+    "samples": 178,
+    "best": "竞品分析",
+    "weakest": "执行落地",
+    "signal": "90%",
+    "narrative": "88%",
+    "build": "75%",
+    "wtp": "87%"
+  },
+  {
+    "agent": "范蠡",
+    "agentId": "fanli",
+    "accuracy": "88%",
+    "samples": 134,
+    "best": "财务分析",
+    "weakest": "技术理解",
+    "signal": "85%",
+    "narrative": "90%",
+    "build": "80%",
+    "wtp": "91%"
+  }
+]
