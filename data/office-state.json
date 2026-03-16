@@ -1,133 +1,179 @@
 {
-  "lastUpdated": "2026-03-16T21:30:56.675Z",
+  "lastUpdated": "2026-03-17T06:07:00Z",
   "agents": [
     {
       "id": "zhugeliang",
       "name": "诸葛亮",
       "emoji": "💡",
       "role": "CEO/总指挥",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 32,
-      "description": "诸葛亮 - CEO/总指挥"
+      "status": "busy",
+      "currentTask": "任务派发与协调",
+      "lastActivity": "2026-03-17T06:07:00Z",
+      "eventsToday": 50,
+      "description": "运筹帷幄之中，决胜千里之外"
     },
     {
       "id": "guanzhong",
       "name": "管仲",
       "emoji": "🔧",
       "role": "CTO/技术架构",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 18,
-      "description": "管仲 - CTO/技术架构"
+      "status": "busy",
+      "currentTask": "task-004（Stage 代码审查）",
+      "lastActivity": "2026-03-17T05:55:00Z",
+      "eventsToday": 20,
+      "description": "技术架构师，系统设计专家"
     },
     {
       "id": "sunbin",
       "name": "孙膑",
       "emoji": "⚔️",
       "role": "全栈开发",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 12,
-      "description": "孙膑 - 全栈开发"
+      "status": "busy",
+      "currentTask": "task-006（Cap Gates 实现）",
+      "lastActivity": "2026-03-17T05:18:00Z",
+      "eventsToday": 15,
+      "description": "后端开发专家，数据结构设计"
     },
     {
       "id": "guojia",
       "name": "郭嘉",
       "emoji": "🎨",
       "role": "前端专家",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 13,
-      "description": "郭嘉 - 前端专家"
+      "status": "busy",
+      "currentTask": "web-gsap-001（网站 GSAP 流体动效优化）",
+      "lastActivity": "2026-03-17T06:05:00Z",
+      "eventsToday": 15,
+      "description": "前端专家，UI/UX 优化"
     },
     {
       "id": "mozi",
       "name": "墨子",
       "emoji": "🔨",
       "role": "前端开发",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 26,
-      "description": "墨子 - 前端开发"
+      "status": "busy",
+      "currentTask": "web-gsap-001（网站 GSAP 流体动效优化）",
+      "lastActivity": "2026-03-17T06:05:00Z",
+      "eventsToday": 28,
+      "description": "前端开发专家，交互优化"
     },
     {
       "id": "shangyang",
       "name": "商鞅",
       "emoji": "✍️",
       "role": "DevOps",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 59,
-      "description": "商鞅 - DevOps"
+      "status": "busy",
+      "currentTask": "patrol-0530（05:30 团队巡查）",
+      "lastActivity": "2026-03-17T05:36:00Z",
+      "eventsToday": 61,
+      "description": "DevOps 专家，自动化部署"
     },
     {
       "id": "xiaohe",
       "name": "萧何",
       "emoji": "📦",
       "role": "QA/测试",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 30,
-      "description": "萧何 - QA/测试"
+      "status": "busy",
+      "currentTask": "task-005（Office 功能测试）",
+      "lastActivity": "2026-03-17T05:55:00Z",
+      "eventsToday": 32,
+      "description": "质量保证专家，测试策略"
     },
     {
       "id": "zhangliang",
       "name": "张良",
       "emoji": "📊",
       "role": "军师/侦察",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 14,
-      "description": "张良 - 军师/侦察"
+      "status": "busy",
+      "currentTask": "intel-001（竞品侦察 + 进化计划）",
+      "lastActivity": "2026-03-17T05:18:00Z",
+      "eventsToday": 16,
+      "description": "产品战略家，市场分析"
     },
     {
       "id": "fanli",
       "name": "范蠡",
       "emoji": "💰",
       "role": "CFO/财务",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 17,
-      "description": "范蠡 - CFO/财务"
+      "status": "busy",
+      "currentTask": "task-017（竞品定价分析）",
+      "lastActivity": "2026-03-17T05:55:00Z",
+      "eventsToday": 19,
+      "description": "财务专家，成本控制"
     },
     {
       "id": "hanxin",
       "name": "韩信",
       "emoji": "📈",
       "role": "增长黑客",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 23,
-      "description": "韩信 - 增长黑客"
+      "status": "busy",
+      "currentTask": "growth-001（获客渠道分析）",
+      "lastActivity": "2026-03-17T05:55:00Z",
+      "eventsToday": 25,
+      "description": "增长黑客，数据分析"
     },
     {
       "id": "chenping",
       "name": "陈平",
       "emoji": "🤝",
       "role": "客户成功",
-      "status": "idle",
-      "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 55,
-      "description": "陈平 - 客户成功"
+      "status": "busy",
+      "currentTask": "success-001（客户 onboarding 流程）",
+      "lastActivity": "2026-03-17T05:55:00Z",
+      "eventsToday": 57,
+      "description": "客户成功专家，onboarding 流程"
     }
   ],
-  "activities": [],
+  "activities": [
+    {
+      "id": "act_1710684420000",
+      "agentId": "zhugeliang",
+      "agentName": "诸葛亮",
+      "action": "working",
+      "content": "派发网站 GSAP 优化任务",
+      "task": "任务派发与协调",
+      "timestamp": "2026-03-17T06:05:00Z"
+    },
+    {
+      "id": "act_1710684300000",
+      "agentId": "guojia",
+      "agentName": "郭嘉",
+      "action": "working",
+      "content": "领取 GSAP 流体动效优化任务",
+      "task": "web-gsap-001",
+      "timestamp": "2026-03-17T06:05:00Z"
+    },
+    {
+      "id": "act_1710684300001",
+      "agentId": "mozi",
+      "agentName": "墨子",
+      "action": "working",
+      "content": "领取 GSAP 流体动效优化任务",
+      "task": "web-gsap-001",
+      "timestamp": "2026-03-17T06:05:00Z"
+    },
+    {
+      "id": "act_1710683700000",
+      "agentId": "shangyang",
+      "agentName": "商鞅",
+      "action": "working",
+      "content": "生成 05:30 巡查报告",
+      "task": "patrol-0530",
+      "timestamp": "2026-03-17T05:36:00Z"
+    },
+    {
+      "id": "act_1710683100000",
+      "agentId": "sunbin",
+      "agentName": "孙膑",
+      "action": "working",
+      "content": "开始 Cap Gates 实现",
+      "task": "task-006",
+      "timestamp": "2026-03-17T05:18:00Z"
+    }
+  ],
   "pulse": {
-    "totalEvents": 299,
-    "activeAgents": 0,
+    "totalEvents": 338,
+    "activeAgents": 11,
     "totalAgents": 11,
-    "lastUpdated": "2026-03-16T21:30:56.675Z"
+    "lastUpdated": "2026-03-17T06:07:00Z"
   }
 }
