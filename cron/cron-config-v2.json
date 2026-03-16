@@ -16,7 +16,17 @@
       "name": "自动任务派发",
       "description": "每 5 分钟检查任务队列深度，自动补充任务，唤醒空闲 Agent",
       "schedule": "*/5 * * * *",
-      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\auto-dispatch.ps1\"",
+      "command": "node \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\auto-dispatch.js\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
+      "enabled": true,
+      "timeout": 60,
+      "log": true
+    },
+    "30min-patrol": {
+      "name": "30 分钟团队巡查",
+      "description": "每 30 分钟强制检查所有 Agent 工作状态，生成巡查报告",
+      "schedule": "0,30 * * * *",
+      "command": "node \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\30min-patrol.js\"",
       "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
       "enabled": true,
       "timeout": 60,
