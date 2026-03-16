@@ -1,0 +1,133 @@
+{
+  "lastUpdated": "2026-03-16T21:24:48.715Z",
+  "agents": [
+    {
+      "id": "zhugeliang",
+      "name": "诸葛亮",
+      "emoji": "💡",
+      "role": "CEO/总指挥",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 45,
+      "description": "诸葛亮 - CEO/总指挥"
+    },
+    {
+      "id": "guanzhong",
+      "name": "管仲",
+      "emoji": "🔧",
+      "role": "CTO/技术架构",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 54,
+      "description": "管仲 - CTO/技术架构"
+    },
+    {
+      "id": "sunbin",
+      "name": "孙膑",
+      "emoji": "⚔️",
+      "role": "全栈开发",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 37,
+      "description": "孙膑 - 全栈开发"
+    },
+    {
+      "id": "guojia",
+      "name": "郭嘉",
+      "emoji": "🎨",
+      "role": "前端专家",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 42,
+      "description": "郭嘉 - 前端专家"
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "emoji": "🔨",
+      "role": "前端开发",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 45,
+      "description": "墨子 - 前端开发"
+    },
+    {
+      "id": "shangyang",
+      "name": "商鞅",
+      "emoji": "✍️",
+      "role": "DevOps",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 59,
+      "description": "商鞅 - DevOps"
+    },
+    {
+      "id": "xiaohe",
+      "name": "萧何",
+      "emoji": "📦",
+      "role": "QA/测试",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 15,
+      "description": "萧何 - QA/测试"
+    },
+    {
+      "id": "zhangliang",
+      "name": "张良",
+      "emoji": "📊",
+      "role": "军师/侦察",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 26,
+      "description": "张良 - 军师/侦察"
+    },
+    {
+      "id": "fanli",
+      "name": "范蠡",
+      "emoji": "💰",
+      "role": "CFO/财务",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 43,
+      "description": "范蠡 - CFO/财务"
+    },
+    {
+      "id": "hanxin",
+      "name": "韩信",
+      "emoji": "📈",
+      "role": "增长黑客",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 12,
+      "description": "韩信 - 增长黑客"
+    },
+    {
+      "id": "chenping",
+      "name": "陈平",
+      "emoji": "🤝",
+      "role": "客户成功",
+      "status": "idle",
+      "currentTask": null,
+      "lastActivity": "2026-03-16T21:24:48.715Z",
+      "eventsToday": 54,
+      "description": "陈平 - 客户成功"
+    }
+  ],
+  "activities": [],
+  "pulse": {
+    "totalEvents": 432,
+    "activeAgents": 0,
+    "totalAgents": 11,
+    "lastUpdated": "2026-03-16T21:24:48.715Z"
+  }
+}
