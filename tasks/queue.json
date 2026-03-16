@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-16T19:54:00Z",
+  "pending": [
+    {
+      "id": "task-001",
+      "title": "VoxYZ 竞品分析（19:54 循环）",
+      "description": "扫描 voxyz.space 所有页面，记录最新变化，对比谋士天团差异",
+      "assignedTo": "zhangliang",
+      "priority": "P0",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T22:54:00Z",
+      "artifacts": [],
+      "approvalRequired": false
+    },
+    {
+      "id": "task-002",
+      "title": "部署状态监控（19:54 循环）",
+      "description": "检查 Cloudflare Pages 部署状态，验证所有页面可访问",
+      "assignedTo": "shangyang",
+      "priority": "P0",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T20:24:00Z",
+      "artifacts": [],
+      "approvalRequired": false
+    },
+    {
+      "id": "task-003",
+      "title": "Vault 页面访问统计（19:54 循环）",
+      "description": "分析 Vault 页面访问数据，统计转化率",
+      "assignedTo": "fanli",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T20:54:00Z",
+      "artifacts": [],
+      "approvalRequired": false
+    },
+    {
+      "id": "task-004",
+      "title": "Stage 页面代码审查",
+      "description": "审查 stage-v2.html 代码质量，检查性能问题",
+      "assignedTo": "guanzhong",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T21:54:00Z",
+      "artifacts": [],
+      "approvalRequired": false
+    },
+    {
+      "id": "task-005",
+      "title": "Office 页面功能测试",
+      "description": "测试 Office 页面所有功能，验证数据更新正常",
+      "assignedTo": "xiaohe",
+      "priority": "P1",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T21:54:00Z",
+      "artifacts": [],
+      "approvalRequired": false
+    },
+    {
+      "id": "task-006",
+      "title": "Cap Gates 实现方案",
+      "description": "根据 cap-gates-design.md 实现配额限制机制",
+      "assignedTo": "sunbin",
+      "priority": "P0",
+      "status": "pending",
+      "createdAt": "2026-03-16T19:54:00Z",
+      "dueAt": "2026-03-16T22:54:00Z",
+      "artifacts": [],
+      "approvalRequired": true
+    }
+  ],
+  "inProgress": [],
+  "review": [],
+  "done": [],
+  "failed": []
+}

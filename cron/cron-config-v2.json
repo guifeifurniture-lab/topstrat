@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "timezone": "Asia/Shanghai",
+  "tasks": {
+    "office-status-update": {
+      "name": "Office 实时数据更新",
+      "description": "每 5 分钟更新 Office 页面 Agent 状态数据",
+      "schedule": "*/5 * * * *",
+      "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website\\cron\\update-office-status.ps1\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang\\website",
+      "enabled": true,
+      "timeout": 60,
+      "log": true
+    },
+    "15min-agent-check": {
+      "name": "15 分钟全员状态检查",
+      "description": "每 15 分钟检查所有 Agent 状态并生成报告",
+      "schedule": "*/15 * * * *",
+      "command": "node -e \"console.log('15min check at', new Date().toISOString())\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "enabled": true,
+      "timeout": 30,
+      "log": true
+    },
+    "30min-patrol": {
+      "name": "30 分钟团队巡查",
+      "description": "每 30 分钟商鞅执行团队巡查",
+      "schedule": "0,30 * * * *",
+      "command": "node -e \"console.log('30min patrol at', new Date().toISOString())\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "enabled": true,
+      "timeout": 60,
+      "log": true
+    },
+    "hourly-summary": {
+      "name": "每小时任务汇总",
+      "description": "整点生成任务汇总报告",
+      "schedule": "0 * * * *",
+      "command": "node -e \"console.log('Hourly summary at', new Date().toISOString())\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "enabled": true,
+      "timeout": 120,
+      "log": true
+    },
+    "3hour-voxyz-analysis": {
+      "name": "3 小时竞品分析",
+      "description": "每 3 小时张良分析 voxyz.space",
+      "schedule": "0 */3 * * *",
+      "command": "node -e \"console.log('VoxYZ analysis at', new Date().toISOString())\"",
+      "cwd": "C:\\Users\\JINDA\\.openclaw\\workspace-zhugeliang",
+      "enabled": true,
+      "timeout": 180,
+      "log": true
+    }
+  }
+}

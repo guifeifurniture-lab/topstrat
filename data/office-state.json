@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-03-16T11:23:09.301Z",
+  "lastUpdated": "2026-03-16T11:48:51.368Z",
   "agents": [
     {
       "id": "zhugeliang",
       "name": "诸葛亮",
       "emoji": "💡",
       "role": "CEO/总指挥",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T11:00:00Z",
       "eventsToday": 2,
       "currentTask": "任务派发与协调",
@@ -17,7 +17,7 @@
       "name": "管仲",
       "emoji": "🔧",
       "role": "CTO/技术架构",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:59:00Z",
       "eventsToday": 2,
       "currentTask": "技术架构审查",
@@ -39,7 +39,7 @@
       "name": "孙膑",
       "emoji": "⚔️",
       "role": "后端开发",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:58:00Z",
       "eventsToday": 2,
       "currentTask": "前端修复",
@@ -50,7 +50,7 @@
       "name": "商鞅",
       "emoji": "✍️",
       "role": "DevOps",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:57:00Z",
       "eventsToday": 1,
       "currentTask": "DevOps 配置",
@@ -61,7 +61,7 @@
       "name": "萧何",
       "emoji": "📦",
       "role": "测试/QA",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:56:00Z",
       "eventsToday": 1,
       "currentTask": "QA 测试",
@@ -72,7 +72,7 @@
       "name": "张良",
       "emoji": "📊",
       "role": "产品/战略",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:55:00Z",
       "eventsToday": 1,
       "currentTask": "竞品分析",
@@ -83,7 +83,7 @@
       "name": "范蠡",
       "emoji": "💰",
       "role": "CFO/财务",
-      "status": "idle",
+      "status": "offline",
       "lastActivity": "2026-03-16T10:54:00Z",
       "eventsToday": 1,
       "currentTask": "财务分析",
@@ -346,7 +346,7 @@
     "shippedCount": 5,
     "handoffsToday": 1,
     "totalAgents": 8,
-    "lastUpdated": "2026-03-16T11:23:09.304Z"
+    "lastUpdated": "2026-03-16T11:48:51.371Z"
   },
   "graveyard": [
     {
