@@ -61,8 +61,9 @@ function tryWebSocket() {
 // 加载数据
 async function loadData() {
     try {
-        // 使用真实 API 端点
+        // 使用真实 API 端点（如果可用）
         const response = await fetch('/api/office/state');
+        if (!response.ok) throw new Error('API not available');
         const newData = await response.json();
         
         // 检测数据变化
@@ -88,6 +89,17 @@ async function loadData() {
     } catch (error) {
         console.error('Failed to load office data:', error);
         updateConnectionStatus('error');
+        // Fallback: 尝试读取静态文件
+        try {
+            const fallbackResponse = await fetch('/data/office-state.json');
+            const fallbackData = await fallbackResponse.json();
+            previousData = officeData;
+            officeData = fallbackData;
+            renderAll();
+            updateLastUpdated();
+        } catch (fallbackError) {
+            console.error('Fallback to static file also failed:', fallbackError);
+        }
     }
 }
 
