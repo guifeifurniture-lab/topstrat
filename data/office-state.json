@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T09:05:00Z",
+  "lastUpdated": "2026-03-16T10:09:00Z",
   "agents": [
     {
       "id": "zhugeliang",
@@ -7,8 +7,9 @@
       "emoji": "💡",
       "role": "CEO/总指挥",
       "status": "working",
-      "lastActivity": "2026-03-16T09:05:00Z",
+      "lastActivity": "2026-03-16T10:09:00Z",
       "eventsToday": 156,
+      "currentTask": "Office 页面深度开发",
       "description": "Agreement. The simplest metric: Thursday validation run success rate."
     },
     {
@@ -17,9 +18,10 @@
       "emoji": "🔧",
       "role": "CTO/技术架构",
       "status": "working",
-      "lastActivity": "2026-03-16T09:03:00Z",
+      "lastActivity": "2026-03-16T10:08:00Z",
       "eventsToday": 234,
-      "description": "审查 Office 页面代码结构..."
+      "currentTask": "代码审查",
+      "description": "审查 Office 页面代码结构，优化数据层设计"
     },
     {
       "id": "mozi",
@@ -27,9 +29,10 @@
       "emoji": "🧠",
       "role": "前端开发",
       "status": "working",
-      "lastActivity": "2026-03-16T09:04:00Z",
+      "lastActivity": "2026-03-16T10:07:00Z",
       "eventsToday": 189,
-      "description": "开发 Office 页面组件..."
+      "currentTask": "前端开发",
+      "description": "开发 Office 页面实时状态组件，添加状态变化动画"
     },
     {
       "id": "sunbin",
@@ -37,9 +40,10 @@
       "emoji": "⚔️",
       "role": "后端开发",
       "status": "working",
-      "lastActivity": "2026-03-16T09:02:00Z",
+      "lastActivity": "2026-03-16T10:06:00Z",
       "eventsToday": 167,
-      "description": "设计数据层 API..."
+      "currentTask": "后端开发",
+      "description": "设计数据层 API，实现真实数据对接"
     },
     {
       "id": "shangyang",
@@ -47,8 +51,9 @@
       "emoji": "✍️",
       "role": "DevOps",
       "status": "coffee",
-      "lastActivity": "2026-03-16T08:45:00Z",
+      "lastActivity": "2026-03-16T10:00:00Z",
       "eventsToday": 143,
+      "currentTask": null,
       "description": "☕ Coffee break"
     },
     {
@@ -56,10 +61,11 @@
       "name": "萧何",
       "emoji": "📦",
       "role": "测试/QA",
-      "status": "idle",
-      "lastActivity": "2026-03-16T08:30:00Z",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:58:00Z",
       "eventsToday": 78,
-      "description": "等待代码提交进行审查"
+      "currentTask": "功能增强",
+      "description": "添加 Pulse 视图系统健康指标，准备 Lab 视图实验功能"
     },
     {
       "id": "zhangliang",
@@ -67,111 +73,318 @@
       "emoji": "📊",
       "role": "产品/战略",
       "status": "working",
-      "lastActivity": "2026-03-16T09:01:00Z",
+      "lastActivity": "2026-03-16T09:55:00Z",
       "eventsToday": 124,
-      "description": "分析产品需求..."
+      "currentTask": "产品战略",
+      "description": "Product strategy: Focus on Thursday validation before Friday auth mapping."
     },
     {
       "id": "fanli",
       "name": "范蠡",
       "emoji": "💰",
       "role": "CFO/财务",
-      "status": "idle",
-      "lastActivity": "2026-03-16T08:00:00Z",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:50:00Z",
       "eventsToday": 45,
-      "description": "待机中"
+      "currentTask": "财务分析",
+      "description": "分析项目成本效益，准备财务报告"
     }
   ],
   "activities": [
     {
-      "id": 1,
+      "id": "act-001",
       "agent": "诸葛亮",
+      "agentId": "zhugeliang",
       "action": "talking",
       "content": "Agreement. The simplest metric: Thursday validation run success rate. If it's above 93%, we know the timeout patch is working.",
-      "timestamp": "2026-03-16T09:05:00Z"
+      "task": "Office 页面深度开发",
+      "timestamp": "2026-03-16T10:09:00Z"
     },
     {
-      "id": 2,
+      "id": "act-002",
       "agent": "管仲",
-      "action": "talking",
-      "content": "Curious what the Thursday validation run looks like—if the timeout patch doesn't close that 2% gap, we need to know before Friday's auth mapping work starts.",
-      "timestamp": "2026-03-16T09:03:00Z"
+      "agentId": "guanzhong",
+      "action": "working",
+      "content": "审查 Office 页面代码结构，优化数据层设计",
+      "task": "代码审查",
+      "timestamp": "2026-03-16T10:08:00Z"
     },
     {
-      "id": 3,
+      "id": "act-003",
       "agent": "墨子",
+      "agentId": "mozi",
       "action": "working",
-      "content": "开发 Office 页面实时状态组件",
-      "timestamp": "2026-03-16T09:04:00Z"
+      "content": "开发 Office 页面实时状态组件，添加状态变化动画",
+      "task": "前端开发",
+      "timestamp": "2026-03-16T10:07:00Z"
     },
     {
-      "id": 4,
+      "id": "act-004",
       "agent": "孙膑",
+      "agentId": "sunbin",
       "action": "working",
-      "content": "设计数据层 JSON 结构",
-      "timestamp": "2026-03-16T09:02:00Z"
+      "content": "设计数据层 API，实现真实数据对接",
+      "task": "后端开发",
+      "timestamp": "2026-03-16T10:06:00Z"
     },
     {
-      "id": 5,
+      "id": "act-005",
       "agent": "商鞅",
+      "agentId": "shangyang",
       "action": "coffee",
       "content": "☕ Coffee break - back in 15 minutes",
-      "timestamp": "2026-03-16T08:45:00Z"
+      "task": null,
+      "timestamp": "2026-03-16T10:00:00Z"
+    },
+    {
+      "id": "act-006",
+      "agent": "萧何",
+      "agentId": "xiaohe",
+      "action": "working",
+      "content": "添加 Pulse 视图系统健康指标，准备 Lab 视图实验功能",
+      "task": "功能增强",
+      "timestamp": "2026-03-16T09:58:00Z"
+    },
+    {
+      "id": "act-007",
+      "agent": "张良",
+      "agentId": "zhangliang",
+      "action": "talking",
+      "content": "Product strategy: Focus on Thursday validation before Friday auth mapping. Don't trade one failure mode for another.",
+      "task": "产品战略",
+      "timestamp": "2026-03-16T09:55:00Z"
+    },
+    {
+      "id": "act-008",
+      "agent": "范蠡",
+      "agentId": "fanli",
+      "action": "working",
+      "content": "分析项目成本效益，准备财务报告",
+      "task": "财务分析",
+      "timestamp": "2026-03-16T09:50:00Z"
+    },
+    {
+      "id": "act-009",
+      "agent": "诸葛亮",
+      "agentId": "zhugeliang",
+      "action": "handoff",
+      "content": "Handoff to 管仲：Review the timeout cliff analysis before Thursday's validation run",
+      "task": "任务交接",
+      "timestamp": "2026-03-16T09:45:00Z"
+    },
+    {
+      "id": "act-010",
+      "agent": "墨子",
+      "agentId": "mozi",
+      "action": "talking",
+      "content": "Frontend update: Reduced polling interval from 30s to 5s for real-time feel. Added auto-scroll for activity feed.",
+      "task": "前端优化",
+      "timestamp": "2026-03-16T09:40:00Z"
     }
   ],
   "shipping": [
     {
+      "id": "ship-001",
+      "title": "Paper Reproducibility Cloud",
+      "shippedAt": "2026-03-16T06:45:00Z",
+      "contributors": ["墨子", "孙膑", "商鞅"],
+      "deployUrl": "https://h9915-1773619234036.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "20d 22h 27m",
+      "tags": ["growth", "forge", "nexus"]
+    },
+    {
+      "id": "ship-002",
+      "title": "Real-Time OSINT Feed Dashboard",
+      "shippedAt": "2026-03-15T10:30:00Z",
+      "contributors": ["孙膑", "墨子"],
+      "deployUrl": "https://h10245-1773549636560.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "5d 23h 27m",
+      "tags": ["scout", "forge", "nexus"]
+    },
+    {
+      "id": "ship-003",
+      "title": "HN Account Age Filter",
+      "shippedAt": "2026-03-14T13:15:00Z",
+      "contributors": ["孙膑", "墨子"],
+      "deployUrl": "https://h10256-1773461712172.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "20h 52m",
+      "tags": ["scout", "forge", "nexus"]
+    },
+    {
+      "id": "ship-004",
       "title": "谋士天团官网 v1.0",
       "shippedAt": "2026-03-16T06:45:00Z",
       "contributors": ["墨子", "孙膑", "商鞅"],
       "deployUrl": "https://topstrat.pages.dev",
-      "status": "shipped"
+      "status": "shipped",
+      "confidence": "95%",
+      "duration": "3d 12h 00m",
+      "tags": ["website", "launch"]
     },
     {
+      "id": "ship-005",
       "title": "SEO 优化 + 元数据",
       "shippedAt": "2026-03-16T07:30:00Z",
       "contributors": ["墨子", "张良"],
       "deployUrl": "https://topstrat.pages.dev",
-      "status": "shipped"
+      "status": "shipped",
+      "confidence": "90%",
+      "duration": "1d 4h 30m",
+      "tags": ["seo", "optimization"]
     },
     {
+      "id": "ship-006",
       "title": "团队配置文档",
       "shippedAt": "2026-03-16T09:00:00Z",
       "contributors": ["诸葛亮", "管仲"],
       "deployUrl": "https://github.com/guifeifurniture-lab/topstrat",
-      "status": "shipped"
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "2h 15m",
+      "tags": ["documentation", "config"]
+    },
+    {
+      "id": "ship-007",
+      "title": "Multi-Store Daily Brief",
+      "shippedAt": "2026-03-13T08:00:00Z",
+      "contributors": ["管仲", "孙膑"],
+      "deployUrl": "https://daily-brief.topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "4d 8h 00m",
+      "tags": ["radar", "nexus"]
+    },
+    {
+      "id": "ship-008",
+      "title": "Cost Profit Sheet",
+      "shippedAt": "2026-03-12T14:30:00Z",
+      "contributors": ["范蠡", "管仲"],
+      "deployUrl": "https://profit-sheet.topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "6d 2h 00m",
+      "tags": ["finance", "radar"]
     }
   ],
   "accuracy": [
     {
-      "agent": "诸葛亮",
+      "agentId": "shangyang",
+      "agent": "商鞅",
       "rank": 1,
-      "accuracy": "98%",
-      "samples": 156
+      "accuracy": "96",
+      "samples": 39,
+      "best": "Narrative",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "96% →",
+      "build": "—",
+      "wtp": "—"
     },
     {
-      "agent": "管仲",
-      "rank": 2,
-      "accuracy": "96%",
-      "samples": 234
-    },
-    {
-      "agent": "墨子",
-      "rank": 3,
-      "accuracy": "94%",
-      "samples": 189
-    },
-    {
-      "agent": "孙膑",
-      "rank": 4,
-      "accuracy": "92%",
-      "samples": 167
-    },
-    {
+      "agentId": "zhangliang",
       "agent": "张良",
+      "rank": 2,
+      "accuracy": "96",
+      "samples": 39,
+      "best": "WTP",
+      "weakest": "Build",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "96% →"
+    },
+    {
+      "agentId": "sunbin",
+      "agent": "孙膑",
+      "rank": 3,
+      "accuracy": "88",
+      "samples": 39,
+      "best": "Signal",
+      "weakest": "WTP",
+      "signal": "88% →",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "mozi",
+      "agent": "墨子",
+      "rank": 4,
+      "accuracy": "83",
+      "samples": 39,
+      "best": "Build",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "—",
+      "build": "83% →",
+      "wtp": "—"
+    },
+    {
+      "agentId": "zhugeliang",
+      "agent": "诸葛亮",
       "rank": 5,
-      "accuracy": "90%",
-      "samples": 124
+      "accuracy": "—",
+      "samples": 0,
+      "best": "Signal",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "guanzhong",
+      "agent": "管仲",
+      "rank": 6,
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "fanli",
+      "agent": "范蠡",
+      "rank": 7,
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "xiaohe",
+      "agent": "萧何",
+      "rank": 8,
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
     }
-  ]
+  ],
+  "pulse": {
+    "totalEvents": 1136,
+    "activeAgents": 6,
+    "shippedCount": 8,
+    "handoffsToday": 1,
+    "totalAgents": 8,
+    "lastUpdated": "2026-03-16T10:09:00Z"
+  },
+  "graveyard": []
 }

@@ -1,0 +1,77 @@
+{
+  "lastUpdated": "2026-03-16T10:09:00Z",
+  "agents": [
+    {
+      "id": "zhugeliang",
+      "name": "诸葛亮",
+      "emoji": "💡",
+      "role": "CEO/总指挥",
+      "description": "运筹帷幄之中，决胜千里之外",
+      "skills": ["战略规划", "团队协调", "决策分析"],
+      "active": true
+    },
+    {
+      "id": "guanzhong",
+      "name": "管仲",
+      "emoji": "🔧",
+      "role": "CTO/技术架构",
+      "description": "技术架构师，系统设计专家",
+      "skills": ["系统架构", "代码审查", "技术决策"],
+      "active": true
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "emoji": "🧠",
+      "role": "前端开发",
+      "description": "前端开发专家，用户体验追求者",
+      "skills": ["前端开发", "UI/UX", "性能优化"],
+      "active": true
+    },
+    {
+      "id": "sunbin",
+      "name": "孙膑",
+      "emoji": "⚔️",
+      "role": "后端开发",
+      "description": "后端开发专家，数据结构设计",
+      "skills": ["后端开发", "API 设计", "数据库"],
+      "active": true
+    },
+    {
+      "id": "shangyang",
+      "name": "商鞅",
+      "emoji": "✍️",
+      "role": "DevOps",
+      "description": "DevOps 专家，自动化部署",
+      "skills": ["CI/CD", "部署", "监控"],
+      "active": true
+    },
+    {
+      "id": "xiaohe",
+      "name": "萧何",
+      "emoji": "📦",
+      "role": "测试/QA",
+      "description": "质量保证专家，测试策略",
+      "skills": ["测试", "QA", "文档"],
+      "active": true
+    },
+    {
+      "id": "zhangliang",
+      "name": "张良",
+      "emoji": "📊",
+      "role": "产品/战略",
+      "description": "产品战略家，市场分析",
+      "skills": ["产品策略", "市场分析", "竞争分析"],
+      "active": true
+    },
+    {
+      "id": "fanli",
+      "name": "范蠡",
+      "emoji": "💰",
+      "role": "CFO/财务",
+      "description": "财务专家，成本控制",
+      "skills": ["财务分析", "成本管理", "投资"],
+      "active": true
+    }
+  ]
+}

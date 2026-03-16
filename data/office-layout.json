@@ -1,0 +1,129 @@
+{
+  "officeName": "谋士天团办公室",
+  "gridSize": {
+    "width": 1200,
+    "height": 800
+  },
+  "tileSize": 40,
+  "zones": {
+    "desks": [
+      {
+        "id": "desk-zhugeliang",
+        "name": "诸葛亮工位",
+        "x": 100,
+        "y": 150,
+        "width": 120,
+        "height": 100,
+        "agent": "zhugeliang",
+        "emoji": "💡"
+      },
+      {
+        "id": "desk-guanzhong",
+        "name": "管仲工位",
+        "x": 260,
+        "y": 150,
+        "width": 120,
+        "height": 100,
+        "agent": "guanzhong",
+        "emoji": "🔧"
+      },
+      {
+        "id": "desk-sunbin",
+        "name": "孙膑工位",
+        "x": 420,
+        "y": 150,
+        "width": 120,
+        "height": 100,
+        "agent": "sunbin",
+        "emoji": "⚔️"
+      },
+      {
+        "id": "desk-shangyang",
+        "name": "商鞅工位",
+        "x": 580,
+        "y": 150,
+        "width": 120,
+        "height": 100,
+        "agent": "shangyang",
+        "emoji": "✍️"
+      },
+      {
+        "id": "desk-xiaohe",
+        "name": "萧何工位",
+        "x": 740,
+        "y": 150,
+        "width": 120,
+        "height": 100,
+        "agent": "xiaohe",
+        "emoji": "📦"
+      }
+    ],
+    "meetingRoom": {
+      "id": "meeting-room",
+      "name": "会议室",
+      "x": 950,
+      "y": 100,
+      "width": 200,
+      "height": 180,
+      "capacity": 5,
+      "emoji": "🗣️"
+    },
+    "coffeeBar": {
+      "id": "coffee-bar",
+      "name": "咖啡区",
+      "x": 950,
+      "y": 350,
+      "width": 200,
+      "height": 150,
+      "emoji": "☕"
+    },
+    "commonArea": {
+      "id": "common-area",
+      "name": "公共区域",
+      "x": 100,
+      "y": 350,
+      "width": 800,
+      "height": 200,
+      "emoji": "🛋️"
+    }
+  },
+  "paths": {
+    "deskToMeeting": [
+      {"x": 200, "y": 200},
+      {"x": 500, "y": 200},
+      {"x": 800, "y": 200},
+      {"x": 950, "y": 200}
+    ],
+    "deskToCoffee": [
+      {"x": 200, "y": 200},
+      {"x": 500, "y": 200},
+      {"x": 800, "y": 300},
+      {"x": 950, "y": 400}
+    ],
+    "meetingToCoffee": [
+      {"x": 950, "y": 280},
+      {"x": 950, "y": 350}
+    ]
+  },
+  "decorations": [
+    {"type": "plant", "x": 50, "y": 50, "emoji": "🪴"},
+    {"type": "plant", "x": 1100, "y": 50, "emoji": "🪴"},
+    {"type": "board", "x": 50, "y": 600, "emoji": "📋"},
+    {"type": "window", "x": 300, "y": 50, "emoji": "🪟"},
+    {"type": "window", "x": 500, "y": 50, "emoji": "🪟"},
+    {"type": "window", "x": 700, "y": 50, "emoji": "🪟"},
+    {"type": "clock", "x": 1100, "y": 600, "emoji": "🕐"},
+    {"type": "bookshelf", "x": 50, "y": 350, "emoji": "📚"}
+  ],
+  "colors": {
+    "floor": "#F5F5F0",
+    "wall": "#D4C4B0",
+    "desk": "#8B7355",
+    "deskHighlight": "#A08060",
+    "meetingRoom": "#C4D4E4",
+    "coffeeBar": "#E4D4C4",
+    "commonArea": "#D4E4C4",
+    "path": "#CCCCCC",
+    "pathActive": "#4A90D9"
+  }
+}

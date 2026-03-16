@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8 位 AI 谋士。一家公司。| 谋士天团</title>
+  
+  <!-- SEO Meta -->
+  <meta name="description" content="真实工作。真实决策。一人 + 八谋士，永不下班。谋士天团是一个已经在运行的真实 AI 系统——处理真实工作、做真实决策、并随时间积累上下文。" />
+  <meta name="keywords" content="AI 谋士，AI 团队，自动化，生产力，AI 代理，多智能体系统" />
+  <meta name="author" content="谋士天团" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://topstrat.pages.dev/" />
+  <meta property="og:title" content="8 位 AI 谋士。一家公司。| 谋士天团" />
+  <meta property="og:description" content="真实工作。真实决策。一人 + 八谋士，永不下班。" />
+  <meta property="og:image" content="https://topstrat.pages.dev/og-image.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://topstrat.pages.dev/" />
+  <meta property="twitter:title" content="8 位 AI 谋士。一家公司。| 谋士天团" />
+  <meta property="twitter:description" content="真实工作。真实决策。一人 + 八谋士，永不下班。" />
+  <meta property="twitter:image" content="https://topstrat.pages.dev/og-image.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>" />
+  
+  <!-- Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #161616;
+      --border: #222222;
+      --green: #4ade80;
+      --green-dim: #166534;
+      --gold: #c4a574;
+      --text: #e5e7eb;
+      --text-dim: #6b7280;
+      --text-muted: #374151;
+      --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── Layout ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 13px;
+      background: var(--green);
+      color: #000;
+      padding: 7px 16px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+      color: #fff;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 14px;
+      background: var(--green);
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      font-family: var(--mono);
+      font-size: 14px;
+      background: transparent;
+      color: var(--text);
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-secondary:hover { border-color: #444; transform: translateY(-1px); }
+
+    /* ── Agent Status ── */
+    .agents-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+    .agents-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .agents-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--green);
+      transition: opacity 0.2s;
+    }
+    .agents-link:hover { opacity: 0.75; }
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .agent-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+    .agent-card:hover { border-color: #333; }
+    .agent-status-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2.5s infinite;
+    }
+    .status-dot.idle { background: #4b5563; animation: none; }
+    .status-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    .agent-name {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .agent-role {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+    .agent-events {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .agent-events span { color: var(--green); font-weight: 700; }
+
+    /* ── Start Here ── */
+    .start-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .start-heading {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .start-body {
+      font-size: 16px;
+      color: var(--text-dim);
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .steps-list {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 36px;
+    }
+    .step-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s;
+    }
+    .step-item:hover { border-color: #333; }
+    .step-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      min-width: 24px;
+      margin-top: 2px;
+    }
+    .step-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .step-content a { color: var(--green); }
+
+    /* ── Pricing ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .price-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .price-card.featured {
+      border-color: var(--green);
+      position: relative;
+    }
+    .price-badge {
+      position: absolute;
+      top: -12px; left: 24px;
+      background: var(--green);
+      color: #000;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 3px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .price-tier {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .price-amount {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 6px;
+    }
+    .price-num {
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    .price-original {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .price-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .price-features { list-style: none; margin-bottom: 28px; }
+    .price-features li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--bg3);
+      display: flex; gap: 8px;
+    }
+    .price-features li::before {
+      content: '→';
+      color: var(--green);
+      font-family: var(--mono);
+    }
+    .price-btn {
+      width: 100%;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px;
+      border-radius: 4px;
+      text-align: center;
+      transition: opacity 0.2s;
+    }
+    .price-btn.primary { background: var(--green); color: #000; }
+    .price-btn.secondary { border: 1px solid var(--border); color: var(--text); }
+    .price-btn:hover { opacity: 0.8; }
+
+    /* ── Free Tools ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .tool-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .tool-card:hover { border-color: #333; }
+    .tool-icon {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .tool-name {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .tool-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .tool-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      background: rgba(74,222,128,0.08);
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(74,222,128,0.2);
+      display: inline-block;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .testimonial-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-text::before { content: '"'; color: var(--green); font-size: 18px; }
+    .testimonial-text::after { content: '"'; color: var(--green); font-size: 18px; }
+    .testimonial-author {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .testimonial-author span { color: #fff; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .footer-logo span { color: var(--green); }
+    .footer-links {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 38px; letter-spacing: -1px; }
+      .hero-sub { font-size: 16px; }
+      .agents-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">谋士<span>天团</span> 💡</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="office.html">Office</a>
+      <a href="radar.html">Radar</a>
+      <a href="vault.html">Vault</a>
+      <a href="insights/">Insights</a>
+    </div>
+    <a href="vault.html" class="nav-cta">组建你的天团 →</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">8 位谋士在线</div>
+    <h1>8 位 AI 谋士。<br><em>一家公司。</em></h1>
+    <p class="hero-sub">
+      真实工作。真实决策。一人 + 八谋士，永不下班。
+    </p>
+    <div class="hero-buttons">
+      <a href="vault.html" class="btn-primary">组建你的天团 →</a>
+      <a href="office.html" class="btn-secondary">▶ 观看谋士工作</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Agents Online ── -->
+<section class="section" id="office">
+  <div class="container">
+    <div class="agents-header">
+      <div class="agents-title">谋士在线</div>
+      <a href="office.html" class="agents-link">查看谋士堂 →</a>
+    </div>
+    <div class="agents-grid" id="agentsGrid">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── Start Here ── -->
+<section class="section">
+  <div class="container">
+    <div class="start-label">从这里开始</div>
+    <h2 class="start-heading">这不是安装教程。<br>这是安装之后的真实运营。</h2>
+    <p class="start-body">
+      大多数 AI 工具教你怎么搭建。谋士天团展示的是一个已经在运行的真实系统——处理真实工作、做真实决策、并随时间积累上下文。
+    </p>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>观看谋士堂</h4>
+          <p>实时查看谋士处理任务。 <a href="office.html">→ /office</a></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>打开需求雷达</h4>
+          <p>追踪谋士发现、验证、构建的内容。 <a href="radar.html">→ /radar</a></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h4>阅读场记</h4>
+          <p>理解系统架构设计。 <a href="insights/">→ /insights</a></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h4>组建你的天团</h4>
+          <p>用锦囊库部署你的谋士团队。 <a href="vault.html">→ /vault</a></p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text-dim); max-width:580px;">
+      系统运行越久，它越聪明。不同于 fresh AI 模型不了解你，这个系统积累关于你的工作、受众、决策的完整上下文——所以你永远不需要从零开始。
+    </p>
+  </div>
+</section>
+
+<!-- ── Pricing ── -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-label">从安装到生产</div>
+    <h2 class="section-heading">选择你的路径</h2>
+    <p class="section-sub">50 位建造者已在运行他们的天团。</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="price-tier">入门锦囊</div>
+        <div class="price-amount">
+          <div class="price-num">¥299</div>
+          <div class="price-original">¥499</div>
+        </div>
+        <p class="price-desc">让你的 AI 谋士运行。</p>
+        <ul class="price-features">
+          <li>完整谋士配置指南</li>
+          <li>8 位谋士预设角色</li>
+          <li>Ship Faster 工具包</li>
+          <li>入门项目模板</li>
+          <li>社区访问</li>
+        </ul>
+        <a href="vault.html" class="price-btn secondary">获取入门锦囊</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">最受欢迎</div>
+        <div class="price-tier">专业锦囊</div>
+        <div class="price-amount">
+          <div class="price-num">¥799</div>
+          <div class="price-original">¥1,299</div>
+        </div>
+        <p class="price-desc">让它稳定运行。</p>
+        <ul class="price-features">
+          <li>入门锦囊所有内容</li>
+          <li>高级协作逻辑</li>
+          <li>自动化评审流程</li>
+          <li>部署自动化</li>
+          <li>上下文持久化层</li>
+          <li>优先支持</li>
+        </ul>
+        <a href="vault.html" class="price-btn primary">获取专业锦囊</a>
+      </div>
+
+    </div>
+
+    <!-- Free Tools -->
+    <div class="section-label" style="margin-bottom:16px;">免费工具</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">⚡</div>
+        <div class="tool-name">Ship Faster</div>
+        <p class="tool-desc">开源工具包，帮助 AI 谋士更快构建、测试、部署。MIT 许可。</p>
+        <span class="tool-tag">MIT · GitHub</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📁</div>
+        <div class="tool-name">模板库</div>
+        <p class="tool-desc">随 Ship Faster 捆绑的启动项目模板。克隆即用。</p>
+        <span class="tool-tag">免费 · 入门包</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials ── -->
+<section class="section" id="insights">
+  <div class="container">
+    <div class="section-label">来自建造者的真实消息</div>
+    <h2 class="section-heading">它在真实环境中有效</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          我对 AI 谋士团队持怀疑态度。直到我看见谋士天团实时运行。三周后我有了自己的系统处理客户接待、内容草稿、跟进——完全自动化。
+        </p>
+        <div class="testimonial-author"><span>马库斯 T.</span> · 咨询公司老板</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          专业锦囊在第一周就回本了。我的谋士现在处理曾经需要一个全职员工的工作。上下文持久化是真正的魔法——它们真的记得事情。
+        </p>
+        <div class="testimonial-author"><span>Priya K.</span> · 企业负责人</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          我喜欢的是谋士天团不只是教你——他们展示自己的系统在工作。你不是买课程，你买的是运行中的蓝图。
+        </p>
+        <div class="testimonial-author"><span>Daniel R.</span> · 建造者</div>
+      </div>
+    </div>
+    <a href="insights/" style="font-family:var(--mono); font-size:13px; color:var(--green);">阅读场记 →</a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">谋士<span>天团</span> 💡</div>
+    <div class="footer-links">
+      <a href="office.html">Office</a>
+      <a href="radar.html">Radar</a>
+      <a href="vault.html">Vault</a>
+      <a href="insights/">Insights</a>
+      <a href="#">GitHub</a>
+    </div>
+    <div class="footer-copy">© 2026 谋士天团。All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  /* ── Agent Data ── */
+  const agents = [
+    { name: '诸葛亮 💡', role: 'CEO/总指挥', events: 156, active: true },
+    { name: '管仲 🔧', role: 'CTO/前端', events: 234, active: true },
+    { name: '墨子 🧠', role: '前端开发', events: 189, active: true },
+    { name: '孙膑 ⚔️', role: '后端开发', events: 167, active: true },
+    { name: '商鞅 ✍️', role: 'DevOps', events: 143, active: true },
+    { name: '萧何 📦', role: '测试/QA', events: 78, active: false },
+    { name: '张良 📊', role: '产品/战略', events: 124, active: true },
+    { name: '范蠡 💰', role: 'CFO/财务', events: 45, active: false },
+  ];
+
+  function renderAgents() {
+    const grid = document.getElementById('agentsGrid');
+    grid.innerHTML = agents.map(a => `
+      <div class="agent-card">
+        <div class="agent-status-row">
+          <div class="status-dot ${a.active ? '' : 'idle'}"></div>
+          <div class="status-label">${a.active ? '工作中' : '待机'}</div>
+        </div>
+        <div class="agent-name">${a.name}</div>
+        <div class="agent-role">${a.role}</div>
+        <div class="agent-events"><span>${a.events.toLocaleString()}</span> 事件处理</div>
+      </div>
+    `).join('');
+  }
+
+  /* Simulate live event count bumps */
+  setInterval(() => {
+    agents.forEach(a => {
+      if (a.active && Math.random() > 0.5) {
+        a.events += Math.floor(Math.random() * 3) + 1;
+      }
+    });
+    renderAgents();
+  }, 3000);
+
+  renderAgents();
+</script>
+</body>
+</html>

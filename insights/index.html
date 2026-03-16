@@ -1,109 +1,224 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>场记 | 谋士天团</title>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#0a0a0a;--bg2:#111;--border:#222;--green:#4ade80;--text:#e5e5e5;--text2:#a3a3a3;--text3:#6b7280;--mono:'JetBrains Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.6;min-height:100vh}
-    a{color:inherit;text-decoration:none}
-    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{font-size:15px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:.05em}
-    .nav-links{display:flex;gap:24px;list-style:none}
-    .nav-links a{color:var(--text2);text-decoration:none;font-size:13px;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--green)}
-    .page-header{max-width:800px;margin:0 auto;padding:64px 24px 48px;border-bottom:1px solid var(--border)}
-    .page-tag{display:inline-block;font-size:11px;color:var(--green);border:1px solid rgba(74,222,128,.3);padding:3px 10px;border-radius:3px;margin-bottom:20px;letter-spacing:.1em;text-transform:uppercase}
-    .page-header h1{font-size:clamp(28px,5vw,42px);font-weight:700;color:#fff;margin-bottom:16px}
-    .page-header p{font-size:15px;color:var(--text2);line-height:1.8;max-width:640px}
-    .sort-note{margin-top:20px;font-size:12px;color:var(--text3)}.sort-note span{color:var(--green)}
-    main{max-width:800px;margin:0 auto;padding:0 24px 80px}
-    .section-header{display:flex;align-items:baseline;gap:14px;padding:48px 0 24px;border-bottom:1px solid var(--border);margin-bottom:0}
-    .section-header h2{font-size:13px;font-weight:700;color:var(--text2);letter-spacing:.08em;text-transform:uppercase}
-    .section-count{font-size:11px;color:var(--text3)}
-    .article-card{display:block;padding:24px 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:background .15s;position:relative}
-    .article-card:hover .article-title{color:var(--green)}
-    .article-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .article-date{font-size:11px;color:var(--text3);letter-spacing:.05em}
-    .tag-article{font-size:10px;color:var(--green);border:1px solid rgba(74,222,128,.3);padding:2px 7px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase}
-    .article-title{font-size:17px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px;transition:color .2s}
-    .article-excerpt{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:14px;font-family:var(--sans)}
-    .read-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text3);transition:color .2s,gap .2s;font-weight:600}
-    .read-link::after{content:'→';transition:transform .2s}
-    .article-card:hover .read-link{color:var(--green);gap:8px}
-    .article-card:hover .read-link::after{transform:translateX(4px)}
-    footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center}
-    .footer-inner{max-width:800px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-left{font-size:12px;color:var(--text3)}
-    .footer-links{display:flex;gap:20px}
-    .footer-links a{font-size:12px;color:var(--text3);text-decoration:none;transition:color .2s}
-    .footer-links a:hover{color:var(--green)}
-    @media(max-width:600px){.nav-links{display:none}.page-header{padding:40px 16px 32px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>洞察 - 谋士天团</title>
+    <meta name="description" content="AI 谋士团队的实战经验、技术栈、失败教训和协作模式">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .article-card { transition: all 0.2s ease; }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .article-card:hover .article-title { color: #2563EB; }
+        .article-card:hover .read-more { color: #2563EB; }
+    </style>
 </head>
-<body>
-<nav>
-  <a href="../index.html" class="nav-logo">谋士天团 💡</a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../office.html">Office</a></li>
-    <li><a href="../radar.html">Radar</a></li>
-    <li><a href="../vault.html">Vault</a></li>
-    <li><a href="index.html" class="active">Insights</a>
-  </ul>
-</nav>
-<header class="page-header">
-  <span class="page-tag">Build in public</span>
-  <h1>场记 & 创始人笔记</h1>
-  <p>谋士天团曾经几乎完全活跃在 X 上。这些是线程背后的文章：技术栈、失败、重组、协作模式，以及用一个创始人和八位谋士构建 AI 公司的实战经验。</p>
-  <p class="sort-note">排序：<span>最新优先</span></p>
-</header>
-<main>
-  <div class="section-header">
-    <h2>创始人场记</h2>
-    <span class="section-count">3 篇文章</span>
-  </div>
-  <a href="#" class="article-card">
-    <div class="article-meta">
-      <span class="article-date">Mar 15, 2026</span>
-      <span class="tag-article">article</span>
-    </div>
-    <div class="article-title">谋士天团组建日志 #1: 从零到八位谋士</div>
-    <div class="article-excerpt">8 位 AI 谋士，1 个创始人，48 小时上线 MVP——从"我们应该组建团队"到"谋士们正在构建官网"只用了两天...</div>
-    <span class="read-link">Read article</span>
-  </a>
-  <a href="#" class="article-card">
-    <div class="article-meta">
-      <span class="article-date">Mar 15, 2026</span>
-      <span class="tag-article">article</span>
-    </div>
-    <div class="article-title">为什么我们选择 OpenClaw 而不是其他框架</div>
-    <div class="article-excerpt">对比了 LangChain、AutoGPT、CrewAI 之后，我们最终选择了 OpenClaw。原因很简单：它让我们专注于业务逻辑而不是框架本身...</div>
-    <span class="read-link">Read article</span>
-  </a>
-  <a href="#" class="article-card">
-    <div class="article-meta">
-      <span class="article-date">Mar 15, 2026</span>
-      <span class="tag-article">article</span>
-    </div>
-    <div class="article-title">8 位谋士的职责分工设计思路</div>
-    <div class="article-excerpt">从市场洞察团队转型为产品研发团队，我们重新设计了 8 位谋士的职责。6 人投入开发，占比 75%+</div>
-    <span class="read-link">Read article</span>
-  </a>
-</main>
-<footer>
-  <div class="footer-inner">
-    <span class="footer-left">© 2026 谋士天团。Built in public.</span>
-    <div class="footer-links">
-      <a href="../office.html">Office</a>
-      <a href="../radar.html">Radar</a>
-      <a href="../vault.html">Vault</a>
-      <a href="mailto:voxyz.developer@gmail.com">Contact</a>
-    </div>
-  </div>
-</footer>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 (与 Office 页面一致) -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-xl font-bold text-gray-900">谋士天团 💡</a>
+                    <div class="hidden md:flex ml-10 space-x-4">
+                        <a href="../index.html" class="text-gray-600 hover:text-gray-900 px-3 py-2">首页</a>
+                        <a href="../office.html" class="text-gray-600 hover:text-gray-900 px-3 py-2">办公室</a>
+                        <a href="../radar.html" class="text-gray-600 hover:text-gray-900 px-3 py-2">雷达</a>
+                        <a href="../vault.html" class="text-gray-600 hover:text-gray-900 px-3 py-2">定价</a>
+                        <a href="index.html" class="text-gray-900 font-medium px-3 py-2">洞察</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- 页面标题 (与 VoxYZ Insights 一致) -->
+        <div class="text-center mb-12">
+            <p class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Build in public</p>
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Insights & Field Notes</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                谋士天团的实战经验、技术栈、失败教训和协作模式。
+                从一个创始人和八位谋士构建 AI 公司的真实记录。
+            </p>
+        </div>
+
+        <!-- 分类和搜索 -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+            <!-- 分类筛选 -->
+            <div class="flex flex-wrap gap-2">
+                <button class="category-btn active px-4 py-2 rounded-full bg-blue-600 text-white font-medium text-sm" data-category="all">全部</button>
+                <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border hover:bg-gray-50 font-medium text-sm" data-category="architecture">架构设计</button>
+                <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border hover:bg-gray-50 font-medium text-sm" data-category="guide">实战指南</button>
+                <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border hover:bg-gray-50 font-medium text-sm" data-category="analysis">竞品分析</button>
+            </div>
+            <!-- 搜索框 -->
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="搜索文章..." 
+                    class="w-full md:w-64 px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 文章列表 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
+            <!-- 文章 1 -->
+            <article class="article-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer flex flex-col h-full" data-category="architecture" data-title="谋士天团如何工作">
+                <div class="flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded">架构设计</span>
+                        <span class="text-sm text-gray-500">Mar 16, 2026</span>
+                    </div>
+                    <h2 class="article-title text-xl font-bold text-gray-900 mb-3">谋士天团如何工作</h2>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        8 位 AI 谋士，1 个创始人，如何分工协作？本文详细介绍我们的系统架构：从总指挥诸葛亮到前端墨子、后端孙膑，
+                        每个角色的职责、协作流程，以及如何通过 OpenClaw 实现自动化运作。
+                    </p>
+                </div>
+                <div class="read-more flex items-center text-blue-600 font-medium mt-auto">
+                    <span>阅读文章</span>
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <a href="articles/moushi-architecture.html" class="absolute inset-0" aria-label="阅读谋士天团如何工作"></a>
+            </article>
+
+            <!-- 文章 2 -->
+            <article class="article-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer flex flex-col h-full" data-category="guide" data-title="从 0 到 1 部署 AI 团队">
+                <div class="flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded">实战指南</span>
+                        <span class="text-sm text-gray-500">Mar 16, 2026</span>
+                    </div>
+                    <h2 class="article-title text-xl font-bold text-gray-900 mb-3">从 0 到 1 部署 AI 团队</h2>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        实战指南：如何用 48 小时部署一个 AI 谋士团队。从环境配置、角色设计、任务分配，到第一行代码提交。
+                        包含完整的配置文件模板、常见陷阱和解决方案。
+                    </p>
+                </div>
+                <div class="read-more flex items-center text-blue-600 font-medium mt-auto">
+                    <span>阅读文章</span>
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <a href="articles/deploy-ai-team.html" class="absolute inset-0" aria-label="阅读从 0 到 1 部署 AI 团队"></a>
+            </article>
+
+            <!-- 文章 3 -->
+            <article class="article-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer flex flex-col h-full" data-category="analysis" data-title="VoxYZ 对标分析">
+                <div class="flex-grow">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded">竞品分析</span>
+                        <span class="text-sm text-gray-500">Mar 16, 2026</span>
+                    </div>
+                    <h2 class="article-title text-xl font-bold text-gray-900 mb-3">VoxYZ 对标分析</h2>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        深度分析 VoxYZ 的 AI 公司运营模式：他们的 agent 架构、自动化流程、以及我们学到的关键经验。
+                        对比我们的差异化和改进方向。
+                    </p>
+                </div>
+                <div class="read-more flex items-center text-blue-600 font-medium mt-auto">
+                    <span>阅读文章</span>
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <a href="articles/voxyz-analysis.html" class="absolute inset-0" aria-label="阅读 VoxYZ 对标分析"></a>
+            </article>
+        </div>
+
+        <!-- 无搜索结果提示 -->
+        <div id="no-results" class="hidden text-center py-12">
+            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-gray-500 text-lg">没有找到匹配的文章</p>
+            <p class="text-gray-400 text-sm mt-2">尝试其他关键词或清除筛选条件</p>
+        </div>
+    </main>
+
+    <!-- 页脚 (与 Office 页面一致) -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center flex-wrap gap-4">
+                <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="../office.html" class="text-gray-600 hover:text-gray-900">办公室</a>
+                    <a href="../radar.html" class="text-gray-600 hover:text-gray-900">雷达</a>
+                    <a href="../vault.html" class="text-gray-600 hover:text-gray-900">定价</a>
+                    <a href="index.html" class="text-gray-900 font-medium">洞察</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 分类筛选和搜索功能
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const searchInput = document.getElementById('search-input');
+        const articlesGrid = document.getElementById('articles-grid');
+        const noResults = document.getElementById('no-results');
+        const articles = document.querySelectorAll('#articles-grid .article-card');
+
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // 分类筛选
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white');
+                    b.classList.add('bg-white', 'text-gray-600');
+                });
+                this.classList.remove('bg-white', 'text-gray-600');
+                this.classList.add('bg-blue-600', 'text-white');
+                currentCategory = this.dataset.category;
+                filterArticles();
+            });
+        });
+
+        // 搜索功能
+        searchInput.addEventListener('input', function() {
+            searchQuery = this.value.toLowerCase().trim();
+            filterArticles();
+        });
+
+        // 筛选文章
+        function filterArticles() {
+            let visibleCount = 0;
+            articles.forEach(article => {
+                const category = article.dataset.category;
+                const title = article.dataset.title.toLowerCase();
+                
+                const matchCategory = currentCategory === 'all' || category === currentCategory;
+                const matchSearch = searchQuery === '' || title.includes(searchQuery);
+                
+                if (matchCategory && matchSearch) {
+                    article.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            // 显示/隐藏无结果提示
+            if (visibleCount === 0) {
+                articlesGrid.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                articlesGrid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

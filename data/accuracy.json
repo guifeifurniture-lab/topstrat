@@ -1,0 +1,103 @@
+{
+  "lastUpdated": "2026-03-16T10:09:00Z",
+  "accuracy": [
+    {
+      "agentId": "shangyang",
+      "agent": "商鞅",
+      "accuracy": "96",
+      "samples": 39,
+      "best": "Narrative",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "96% →",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "zhangliang",
+      "agent": "张良",
+      "accuracy": "96",
+      "samples": 39,
+      "best": "WTP",
+      "weakest": "Build",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "96% →"
+    },
+    {
+      "agentId": "sunbin",
+      "agent": "孙膑",
+      "accuracy": "88",
+      "samples": 39,
+      "best": "Signal",
+      "weakest": "WTP",
+      "signal": "88% →",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "mozi",
+      "agent": "墨子",
+      "accuracy": "83",
+      "samples": 39,
+      "best": "Build",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "—",
+      "build": "83% →",
+      "wtp": "—"
+    },
+    {
+      "agentId": "zhugeliang",
+      "agent": "诸葛亮",
+      "accuracy": "—",
+      "samples": 0,
+      "best": "Signal",
+      "weakest": "WTP",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "guanzhong",
+      "agent": "管仲",
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "fanli",
+      "agent": "范蠡",
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    },
+    {
+      "agentId": "xiaohe",
+      "agent": "萧何",
+      "accuracy": "—",
+      "samples": 0,
+      "best": "—",
+      "weakest": "—",
+      "signal": "—",
+      "narrative": "—",
+      "build": "—",
+      "wtp": "—"
+    }
+  ],
+  "resolved": 156,
+  "pending": 1732
+}

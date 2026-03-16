@@ -1,0 +1,101 @@
+{
+  "lastUpdated": "2026-03-16T10:09:00Z",
+  "shipping": [
+    {
+      "id": "ship-001",
+      "title": "Paper Reproducibility Cloud",
+      "shippedAt": "2026-03-16T06:45:00Z",
+      "contributors": ["墨子", "孙膑", "商鞅"],
+      "contributorIds": ["mozi", "sunbin", "shangyang"],
+      "deployUrl": "https://h9915-1773619234036.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "20d 22h 27m",
+      "tags": ["growth", "forge", "nexus"]
+    },
+    {
+      "id": "ship-002",
+      "title": "Real-Time OSINT Feed Dashboard",
+      "shippedAt": "2026-03-15T10:30:00Z",
+      "contributors": ["孙膑", "墨子"],
+      "contributorIds": ["sunbin", "mozi"],
+      "deployUrl": "https://h10245-1773549636560.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "5d 23h 27m",
+      "tags": ["scout", "forge", "nexus"]
+    },
+    {
+      "id": "ship-003",
+      "title": "HN Account Age Filter",
+      "shippedAt": "2026-03-14T13:15:00Z",
+      "contributors": ["孙膑", "墨子"],
+      "contributorIds": ["sunbin", "mozi"],
+      "deployUrl": "https://h10256-1773461712172.vercel.app",
+      "status": "shipped",
+      "confidence": "80%",
+      "duration": "20h 52m",
+      "tags": ["scout", "forge", "nexus"]
+    },
+    {
+      "id": "ship-004",
+      "title": "谋士天团官网 v1.0",
+      "shippedAt": "2026-03-16T06:45:00Z",
+      "contributors": ["墨子", "孙膑", "商鞅"],
+      "contributorIds": ["mozi", "sunbin", "shangyang"],
+      "deployUrl": "https://topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "95%",
+      "duration": "3d 12h 00m",
+      "tags": ["website", "launch"]
+    },
+    {
+      "id": "ship-005",
+      "title": "SEO 优化 + 元数据",
+      "shippedAt": "2026-03-16T07:30:00Z",
+      "contributors": ["墨子", "张良"],
+      "contributorIds": ["mozi", "zhangliang"],
+      "deployUrl": "https://topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "90%",
+      "duration": "1d 4h 30m",
+      "tags": ["seo", "optimization"]
+    },
+    {
+      "id": "ship-006",
+      "title": "团队配置文档",
+      "shippedAt": "2026-03-16T09:00:00Z",
+      "contributors": ["诸葛亮", "管仲"],
+      "contributorIds": ["zhugeliang", "guanzhong"],
+      "deployUrl": "https://github.com/guifeifurniture-lab/topstrat",
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "2h 15m",
+      "tags": ["documentation", "config"]
+    },
+    {
+      "id": "ship-007",
+      "title": "Multi-Store Daily Brief",
+      "shippedAt": "2026-03-13T08:00:00Z",
+      "contributors": ["管仲", "孙膑"],
+      "contributorIds": ["guanzhong", "sunbin"],
+      "deployUrl": "https://daily-brief.topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "4d 8h 00m",
+      "tags": ["radar", "nexus"]
+    },
+    {
+      "id": "ship-008",
+      "title": "Cost Profit Sheet",
+      "shippedAt": "2026-03-12T14:30:00Z",
+      "contributors": ["范蠡", "管仲"],
+      "contributorIds": ["fanli", "guanzhong"],
+      "deployUrl": "https://profit-sheet.topstrat.pages.dev",
+      "status": "shipped",
+      "confidence": "100%",
+      "duration": "6d 2h 00m",
+      "tags": ["finance", "radar"]
+    }
+  ]
+}

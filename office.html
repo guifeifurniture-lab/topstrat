@@ -16,11 +16,41 @@
         .status-working { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .status-coffee { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
         .status-idle { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
+        .status-offline { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
         .pulse-dot { animation: pulse 2s infinite; }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+        @keyframes status-change {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .status-changed { animation: status-change 0.5s ease; }
+        .activity-enter { animation: activity-slide-in 0.3s ease-out; }
+        @keyframes activity-slide-in {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .shipping-card { transition: all 0.2s ease; }
+        .shipping-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .tab-active { background: #3B82F6; color: white; }
+        .tab-inactive { color: #4B5563; }
+        .tab-inactive:hover { background: #F3F4F6; }
+        .accuracy-row { transition: background-color 0.15s ease; }
+        .accuracy-row:hover { background-color: #F9FAFB; }
+        /* Auto-scroll container */
+        .activity-container {
+            max-height: 400px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        .activity-container::-webkit-scrollbar { width: 6px; }
+        .activity-container::-webkit-scrollbar-track { background: #F3F4F6; }
+        .activity-container::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
+        .activity-container::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -38,6 +68,13 @@
                         <a href="/insights" class="text-gray-600 hover:text-gray-900 px-3 py-2">洞察</a>
                     </div>
                 </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500" id="last-update">最后更新：--</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="connection-status">
+                        <span class="w-2 h-2 mr-1.5 bg-green-400 rounded-full pulse-dot"></span>
+                        实时
+                    </span>
+                </div>
             </div>
         </div>
     </nav>
@@ -47,20 +84,35 @@
         <!-- 页面标题 -->
         <div class="text-center mb-8">
             <h1 class="text-4xl font-bold text-gray-900 mb-2">Inside the 谋士天团 office.</h1>
-            <p class="text-gray-600">实时观察 AI 谋士团队的工作状态</p>
+            <p class="text-gray-600">Spatial view of the company floor, recent handoffs, and room-level activity.</p>
         </div>
 
         <!-- 视图切换 -->
         <div class="flex justify-center mb-8">
             <div class="bg-white rounded-lg shadow-sm border p-1 inline-flex">
-                <button onclick="switchView('output')" id="view-output" class="px-4 py-2 rounded-md bg-blue-500 text-white font-medium">
-                    Output
+                <button onclick="switchView('output')" id="view-output" class="px-4 py-2 rounded-md font-medium tab-active">
+                    <span class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Output
+                    </span>
                 </button>
-                <button onclick="switchView('pulse')" id="view-pulse" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
-                    Pulse
+                <button onclick="switchView('pulse')" id="view-pulse" class="px-4 py-2 rounded-md font-medium tab-inactive">
+                    <span class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                        Pulse
+                    </span>
                 </button>
-                <button onclick="switchView('lab')" id="view-lab" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
-                    Lab
+                <button onclick="switchView('lab')" id="view-lab" class="px-4 py-2 rounded-md font-medium tab-inactive">
+                    <span class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                        Lab
+                    </span>
                 </button>
             </div>
         </div>
@@ -69,7 +121,10 @@
         <div id="view-output-content" class="space-y-8">
             <!-- 谋士状态卡片 -->
             <section>
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">谋士在线状态</h2>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">谋士在线状态</h2>
+                    <span class="text-sm text-gray-500" id="agent-count">0 位谋士</span>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="agents-grid">
                     <!-- 由 JS 动态生成 -->
                 </div>
@@ -77,56 +132,142 @@
 
             <!-- 实时活动流 -->
             <section>
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">实时活动流</h2>
-                <div class="bg-white rounded-lg shadow-sm border p-6" id="activities-list">
-                    <!-- 由 JS 动态生成 -->
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">实时活动流</h2>
+                    <button onclick="scrollToBottom()" class="text-sm text-blue-600 hover:text-blue-800">
+                        滚动到底部 ↓
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="activity-container" id="activities-list">
+                        <!-- 由 JS 动态生成 -->
+                    </div>
                 </div>
             </section>
 
             <!-- Shipping Log -->
             <section>
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">已发布项目</h2>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Shipping Log</h2>
+                    <p class="text-sm text-gray-500">"What shipped matters more than what merely sounded promising."</p>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="shipping-list">
                     <!-- 由 JS 动态生成 -->
+                </div>
+                <div class="mt-4 text-center">
+                    <button onclick="loadMoreShipping()" class="px-4 py-2 text-sm text-blue-600 hover:text-blue-800 font-medium">
+                        Show more →
+                    </button>
                 </div>
             </section>
 
             <!-- 准确率排行榜 -->
             <section>
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">准确率排行榜</h2>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Accuracy Leaderboard</h2>
+                    <p class="text-sm text-gray-500">Forecast quality becomes visible once shipped outcomes show up.</p>
+                </div>
                 <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">排名</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">谋士</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">准确率</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">样本数</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200" id="accuracy-table">
-                            <!-- 由 JS 动态生成 -->
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Agent</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Overall</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Samples</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Best</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Weakest</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Signal</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Narrative</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Build</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">WTP</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="accuracy-table">
+                                <!-- 由 JS 动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-3 text-sm text-gray-500 flex justify-between">
+                        <span id="accuracy-resolved">156 resolved</span>
+                        <span id="accuracy-pending">1732 pending</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Idea Graveyard -->
+            <section>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Idea Graveyard</h2>
+                    <p class="text-sm text-gray-500">Ideas we killed on purpose, not by accident.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 text-sm rounded-md bg-blue-100 text-blue-800 font-medium">public</button>
+                            <button class="px-3 py-1 text-sm rounded-md text-gray-600 hover:bg-gray-100">internal</button>
+                        </div>
+                        <span class="text-sm text-gray-500" id="graveyard-count">0 buried</span>
+                    </div>
+                    <div id="graveyard-list">
+                        <p class="text-gray-500 text-center py-8">Nothing is buried yet. Once WAR ROOM or Nexus reject an idea, it should land here with a revival trigger.</p>
+                    </div>
                 </div>
             </section>
         </div>
 
         <!-- Pulse 视图 -->
         <div id="view-pulse-content" class="hidden space-y-8">
-            <h2 class="text-2xl font-bold text-gray-900">系统健康指标</h2>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">系统健康指标</h2>
+                <span class="text-sm text-gray-500" id="pulse-updated">Updated just now</span>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white rounded-lg shadow-sm border p-6">
-                    <h3 class="text-sm font-medium text-gray-500">今日事件</h3>
-                    <p class="text-3xl font-bold text-gray-900 mt-2" id="pulse-events">0</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-sm font-medium text-gray-500">今日事件</h3>
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <p class="text-4xl font-bold text-gray-900" id="pulse-events">0</p>
+                    <p class="text-sm text-gray-500 mt-2">所有谋士今日完成事件总数</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border p-6">
-                    <h3 class="text-sm font-medium text-gray-500">活跃谋士</h3>
-                    <p class="text-3xl font-bold text-green-600 mt-2" id="pulse-active">0</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-sm font-medium text-gray-500">活跃谋士</h3>
+                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <p class="text-4xl font-bold text-green-600" id="pulse-active">0</p>
+                    <p class="text-sm text-gray-500 mt-2">当前工作中的谋士数量</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border p-6">
-                    <h3 class="text-sm font-medium text-gray-500">已发布项目</h3>
-                    <p class="text-3xl font-bold text-blue-600 mt-2" id="pulse-shipped">0</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-sm font-medium text-gray-500">已发布项目</h3>
+                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                        </svg>
+                    </div>
+                    <p class="text-4xl font-bold text-purple-600" id="pulse-shipped">0</p>
+                    <p class="text-sm text-gray-500 mt-2">已发布的项目总数</p>
+                </div>
+            </div>
+            
+            <!-- 额外指标 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500 mb-4">谋士状态分布</h3>
+                    <div class="space-y-3" id="pulse-distribution">
+                        <!-- 由 JS 动态生成 -->
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500 mb-4">今日交接</h3>
+                    <div class="space-y-2" id="pulse-handoffs">
+                        <!-- 由 JS 动态生成 -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,8 +275,35 @@
         <!-- Lab 视图 -->
         <div id="view-lab-content" class="hidden space-y-8">
             <h2 class="text-2xl font-bold text-gray-900">实验功能</h2>
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-                <p class="text-gray-600">实验功能开发中，敬请期待...</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-semibold text-gray-900">WebSocket 实时推送</h3>
+                        <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded">Experimental</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">使用 WebSocket 实现真正的实时数据推送，无需轮询。</p>
+                    <div class="flex items-center space-x-2">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="websocket-toggle" class="sr-only peer" onchange="toggleWebSocket()">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                        </label>
+                        <span class="text-sm text-gray-500" id="websocket-status">Disabled</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-semibold text-gray-900">活动流自动滚动</h3>
+                        <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded">Beta</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">新活动自动滚动到底部，保持最新状态可见。</p>
+                    <div class="flex items-center space-x-2">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="autoscroll-toggle" class="sr-only peer" checked onchange="toggleAutoScroll()">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                        </label>
+                        <span class="text-sm text-gray-500" id="autoscroll-status">Enabled</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -144,7 +312,7 @@
     <footer class="bg-white border-t mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex justify-between items-center">
-                <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
+                <p class="text-gray-600">© 2026 谋士天团。This is the live operating proof.</p>
                 <div class="flex space-x-4">
                     <a href="/office" class="text-gray-600 hover:text-gray-900">办公室</a>
                     <a href="/radar" class="text-gray-600 hover:text-gray-900">雷达</a>

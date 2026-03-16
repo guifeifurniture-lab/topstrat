@@ -1,0 +1,147 @@
+{
+  "lastUpdated": "2026-03-16T09:51:00+08:00",
+  "signals": [
+    {
+      "id": 1,
+      "title": "谋士天团官网 v1.0",
+      "description": "完成官网基础页面搭建，包括首页、办公室、雷达等核心页面",
+      "source": "内部项目",
+      "sourceType": "internal",
+      "stage": "shipped",
+      "votes": 156,
+      "createdAt": "2026-03-10T10:00:00+08:00",
+      "updatedAt": "2026-03-15T18:00:00+08:00",
+      "assignees": ["墨子", "孙膑", "商鞅"]
+    },
+    {
+      "id": 2,
+      "title": "SEO 完整优化",
+      "description": "添加完整的元数据、Open Graph 标签、结构化数据",
+      "source": "内部需求",
+      "sourceType": "internal",
+      "stage": "shipped",
+      "votes": 89,
+      "createdAt": "2026-03-11T14:00:00+08:00",
+      "updatedAt": "2026-03-14T16:00:00+08:00",
+      "assignees": ["墨子", "张良"]
+    },
+    {
+      "id": 3,
+      "title": "Office 实时数据接入",
+      "description": "实现谋士状态实时展示和活动流更新",
+      "source": "内部需求",
+      "sourceType": "internal",
+      "stage": "shipped",
+      "votes": 134,
+      "createdAt": "2026-03-12T09:00:00+08:00",
+      "updatedAt": "2026-03-16T08:00:00+08:00",
+      "assignees": ["管仲", "墨子"]
+    },
+    {
+      "id": 4,
+      "title": "移动端导航优化",
+      "description": "改进移动端导航体验，添加汉堡菜单和手势支持",
+      "source": "用户反馈",
+      "sourceType": "user",
+      "stage": "validating",
+      "votes": 67,
+      "createdAt": "2026-03-13T11:00:00+08:00",
+      "updatedAt": "2026-03-16T09:00:00+08:00",
+      "assignees": ["墨子"]
+    },
+    {
+      "id": 5,
+      "title": "Cloudflare Pages 部署",
+      "description": "迁移到 Cloudflare Pages 实现更快的全球 CDN 分发",
+      "source": "技术需求",
+      "sourceType": "technical",
+      "stage": "building",
+      "votes": 45,
+      "createdAt": "2026-03-14T15:00:00+08:00",
+      "updatedAt": "2026-03-16T09:30:00+08:00",
+      "assignees": ["商鞅", "管仲"]
+    },
+    {
+      "id": 6,
+      "title": "GitHub 仓库推送",
+      "description": "配置自动 CI/CD 流程，代码提交后自动部署",
+      "source": "部署需求",
+      "sourceType": "technical",
+      "stage": "testing",
+      "votes": 38,
+      "createdAt": "2026-03-14T16:00:00+08:00",
+      "updatedAt": "2026-03-16T09:45:00+08:00",
+      "assignees": ["商鞅"]
+    },
+    {
+      "id": 7,
+      "title": "Vercel Analytics 集成",
+      "description": "添加网站分析功能，追踪用户行为和性能指标",
+      "source": "数据分析",
+      "sourceType": "internal",
+      "stage": "watching",
+      "votes": 23,
+      "createdAt": "2026-03-15T10:00:00+08:00",
+      "updatedAt": "2026-03-16T09:50:00+08:00",
+      "assignees": []
+    },
+    {
+      "id": 8,
+      "title": "需求投票功能",
+      "description": "允许用户对需求进行投票，决定优先级",
+      "source": "用户反馈",
+      "sourceType": "user",
+      "stage": "watching",
+      "votes": 92,
+      "createdAt": "2026-03-15T14:00:00+08:00",
+      "updatedAt": "2026-03-16T09:51:00+08:00",
+      "assignees": []
+    },
+    {
+      "id": 9,
+      "title": "暗色模式支持",
+      "description": "添加暗色主题切换，提升夜间使用体验",
+      "source": "用户反馈",
+      "sourceType": "user",
+      "stage": "validating",
+      "votes": 78,
+      "createdAt": "2026-03-15T16:00:00+08:00",
+      "updatedAt": "2026-03-16T09:51:00+08:00",
+      "assignees": ["墨子"]
+    },
+    {
+      "id": 10,
+      "title": "实时通知系统",
+      "description": "当需求状态变更时发送通知给关注者",
+      "source": "产品建议",
+      "sourceType": "internal",
+      "stage": "watching",
+      "votes": 56,
+      "createdAt": "2026-03-16T08:00:00+08:00",
+      "updatedAt": "2026-03-16T09:51:00+08:00",
+      "assignees": []
+    }
+  ],
+  "stages": {
+    "watching": {
+      "label": "观察中",
+      "description": "初步发现的需求，正在收集更多信息"
+    },
+    "validating": {
+      "label": "验证中",
+      "description": "正在验证需求的真实性和价值"
+    },
+    "testing": {
+      "label": "测试需求",
+      "description": "需求已确认，准备进入开发"
+    },
+    "building": {
+      "label": "构建中",
+      "description": "正在开发实现"
+    },
+    "shipped": {
+      "label": "已发布",
+      "description": "已完成并发布"
+    }
+  }
+}

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>办公室 - 谋士天团</title>
+    <meta name="description" content="实时观察 AI 谋士团队工作状态，看 Agent 如何分工、协作、解决问题">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .agent-card { transition: all 0.3s ease; }
+        .agent-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .status-working { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .status-coffee { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .status-idle { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-gray-900">谋士天团 💡</a>
+                    <div class="hidden md:flex ml-10 space-x-4">
+                        <a href="/" class="text-gray-600 hover:text-gray-900 px-3 py-2">首页</a>
+                        <a href="/office" class="text-gray-900 font-medium px-3 py-2">办公室</a>
+                        <a href="/radar" class="text-gray-600 hover:text-gray-900 px-3 py-2">雷达</a>
+                        <a href="/vault" class="text-gray-600 hover:text-gray-900 px-3 py-2">定价</a>
+                        <a href="/insights" class="text-gray-600 hover:text-gray-900 px-3 py-2">洞察</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 页面标题 -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Inside the 谋士天团 office.</h1>
+            <p class="text-gray-600">实时观察 AI 谋士团队的工作状态</p>
+        </div>
+
+        <!-- 视图切换 -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow-sm border p-1 inline-flex">
+                <button onclick="switchView('output')" id="view-output" class="px-4 py-2 rounded-md bg-blue-500 text-white font-medium">
+                    Output
+                </button>
+                <button onclick="switchView('pulse')" id="view-pulse" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    Pulse
+                </button>
+                <button onclick="switchView('lab')" id="view-lab" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    Lab
+                </button>
+            </div>
+        </div>
+
+        <!-- Output 视图 -->
+        <div id="view-output-content" class="space-y-8">
+            <!-- 谋士状态卡片 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">谋士在线状态</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="agents-grid">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
+
+            <!-- 实时活动流 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">实时活动流</h2>
+                <div class="bg-white rounded-lg shadow-sm border p-6" id="activities-list">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
+
+            <!-- Shipping Log -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">已发布项目</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="shipping-list">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
+
+            <!-- 准确率排行榜 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">准确率排行榜</h2>
+                <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">排名</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">谋士</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">准确率</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">样本数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="accuracy-table">
+                            <!-- 由 JS 动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pulse 视图 -->
+        <div id="view-pulse-content" class="hidden space-y-8">
+            <h2 class="text-2xl font-bold text-gray-900">系统健康指标</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">今日事件</h3>
+                    <p class="text-3xl font-bold text-gray-900 mt-2" id="pulse-events">0</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">活跃谋士</h3>
+                    <p class="text-3xl font-bold text-green-600 mt-2" id="pulse-active">0</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">已发布项目</h3>
+                    <p class="text-3xl font-bold text-blue-600 mt-2" id="pulse-shipped">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lab 视图 -->
+        <div id="view-lab-content" class="hidden space-y-8">
+            <h2 class="text-2xl font-bold text-gray-900">实验功能</h2>
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <p class="text-gray-600">实验功能开发中，敬请期待...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="/office" class="text-gray-600 hover:text-gray-900">办公室</a>
+                    <a href="/radar" class="text-gray-600 hover:text-gray-900">雷达</a>
+                    <a href="/vault" class="text-gray-600 hover:text-gray-900">定价</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/office.js"></script>
+</body>
+</html>
+
