@@ -32,7 +32,7 @@
 |-------|------|------|----------|----------|
 | **market** | 诸葛亮 | CEO/总指挥 | `workspace-market` | ✅ Claude Code |
 | **architect** | 管仲 | CTO/技术架构 | `workspace-architect` | ✅ Claude Code |
-| **delivery** | 墨子 + 孙膑 | 前端 + 后端 | `workspace-delivery` | ✅ Claude Code |
+| **delivery** | 孙膑 | 全栈开发 | `workspace-delivery` | ✅ Claude Code |
 | **ops** | 商鞅 | DevOps | `workspace-ops` | ✅ Claude Code |
 | **qa** | 萧何 | QA/测试 | `workspace-qa` | ✅ Claude Code |
 
