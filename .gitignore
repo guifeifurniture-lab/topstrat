@@ -3,6 +3,8 @@ node_modules
 out
 .env
 .env.local
+.env.paypal
+CREDENTIALS.md
 .DS_Store
 *.log
 .vercel
