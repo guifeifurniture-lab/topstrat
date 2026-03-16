@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>谋士天团 - Stage | 实时舞台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 基础重置与变量 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0ff;
+            --black: #000;
+            --white: #fff;
+            --gray: #333;
+        }
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+            position: relative;
+            cursor: none;
+        }
+
+        /* --- 自定义光标 --- */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: all 0.1s ease-out;
+            mix-blend-mode: difference;
+        }
+        .custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 255, 0.2);
+        }
+
+        /* --- 导航栏 --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--white));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-btn:hover {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        /* --- 横向容器 --- */
+        .horizontal-container {
+            height: 100vh;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        .track {
+            height: 100%;
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        /* --- 面板 --- */
+        .panel {
+            width: 100vw;
+            height: 100vh;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        /* --- 视差图层 --- */
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.1s ease-out;
+        }
+        .layer-1 {
+            filter: blur(2px);
+            opacity: 0.3;
+        }
+        .layer-2 {
+            transform: translateX(-10px);
+            opacity: 0.5;
+        }
+
+        /* --- 内容覆盖层 --- */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            padding: 10vh 10vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .content-overlay h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            background: linear-gradient(45deg, var(--white), var(--primary));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .content-overlay p {
+            color: #888;
+            max-width: 500px;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+        }
+
+        /* --- 流体按钮 --- */
+        .fluid-btn {
+            position: relative;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--white);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            display: inline-block;
+            transform: translateZ(0);
+        }
+        .fluid-btn:hover {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        /* --- 滚动指示器 --- */
+        .scroll-hint {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            color: #555;
+            font-size: 0.8rem;
+            z-index: 100;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* --- 加载遮罩 --- */
+        .loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader-content {
+            color: var(--primary);
+            font-size: 1.5rem;
+            animation: pulse 1s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载遮罩 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">Loading...</div>
+    </div>
+
+    <!-- 自定义光标 -->
+    <div class="custom-cursor" id="cursor"></div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">TOPSTRAT 谋士天团</div>
+        <div>
+            <a href="/" class="nav-btn">返回首页</a>
+        </div>
+    </nav>
+
+    <!-- 横向滚动容器 -->
+    <div class="horizontal-container" id="horizontalContainer">
+        <div class="track" id="track">
+            <!-- 面板 1: 核心模块 -->
+            <div class="panel">
+                <div class="layer layer-1" style="background: linear-gradient(135deg, #001111, #003333);"></div>
+                <div class="layer layer-2" style="background: linear-gradient(135deg, #002222, #004444);"></div>
+                <div class="content-overlay">
+                    <h2>核心模块</h2>
+                    <p>基于先进的算法架构，提供极致的性能优化体验。探索数据的深层维度，发现前所未有的洞察力。</p>
+                    <a href="/office" class="fluid-btn">进入办公室 →</a>
+                </div>
+            </div>
+
+            <!-- 面板 2: 系统架构 -->
+            <div class="panel">
+                <div class="layer layer-1" style="background: linear-gradient(135deg, #110011, #330033);"></div>
+                <div class="layer layer-2" style="background: linear-gradient(135deg, #220022, #440044);"></div>
+                <div class="content-overlay">
+                    <h2>系统架构</h2>
+                    <p>分布式节点网络，确保数据的绝对安全与实时同步。10 人 AI 团队 24 小时不间断运行，构建坚不可摧的数字堡垒。</p>
+                    <a href="/radar" class="fluid-btn">查看雷达 →</a>
+                </div>
+            </div>
+
+            <!-- 面板 3: 未来连接 -->
+            <div class="panel">
+                <div class="layer layer-1" style="background: linear-gradient(135deg, #001133, #003355);"></div>
+                <div class="layer layer-2" style="background: linear-gradient(135deg, #002244, #004466);"></div>
+                <div class="content-overlay">
+                    <h2>未来连接</h2>
+                    <p>无缝对接 Web3 世界，开启全新的交互时代。定义下一代互联网标准，引领 AI Agent 协作新范式。</p>
+                    <a href="/vault" class="fluid-btn">组建天团 →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 滚动提示 -->
+    <div class="scroll-hint">← 滑动查看 →</div>
+
+    <script>
+        // --- 1. 页面加载完成后隐藏遮罩 ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('fade-out');
+        });
+
+        // --- 2. 横向滚动逻辑 ---
+        const track = document.getElementById('track');
+        const panels = document.querySelectorAll('.panel');
+        const totalWidth = panels.length;
+        let currentX = 0;
+        let targetX = 0;
+        let scrollOffset = 0;
+
+        track.style.width = `${totalWidth * 100}vw`;
+
+        // --- 3. 鼠标滚轮控制横向移动 ---
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollOffset += e.deltaY * 0.002;
+            const maxScroll = totalWidth - 1;
+            scrollOffset = Math.max(0, Math.min(scrollOffset, maxScroll));
+        }, { passive: false });
+
+        // --- 4. 触摸滑动支持 ---
+        let touchStartX = 0;
+        let touchCurrentX = 0;
+
+        window.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            touchCurrentX = e.touches[0].clientX;
+            const diff = touchStartX - touchCurrentX;
+            scrollOffset += diff * 0.005;
+            touchStartX = touchCurrentX;
+            const maxScroll = totalWidth - 1;
+            scrollOffset = Math.max(0, Math.min(scrollOffset, maxScroll));
+        }, { passive: true });
+
+        // --- 5. 视差动画循环 ---
+        function animate() {
+            currentX += (scrollOffset - currentX) * 0.1;
+            track.style.transform = `translateX(-${currentX * 100}vw)`;
+
+            // --- 6. 视差图层移动 ---
+            const layers = document.querySelectorAll('.layer');
+            layers.forEach((layer, index) => {
+                const speed = 0.1 + (index * 0.05);
+                const offsetX = currentX * speed * 100;
+                layer.style.transform = `translateX(-${offsetX}px) scale(1.05)`;
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- 7. 自定义磁性光标 ---
+        const cursor = document.getElementById('cursor');
+        const interactiveElements = document.querySelectorAll('a, button, .fluid-btn');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // --- 8. 辅助函数：返回首页 ---
+        function goHome() {
+            window.location.href = '/';
+        }
+
+        // --- 9. 响应式处理 ---
+        window.addEventListener('resize', () => {
+            track.style.width = `${totalWidth * 100}vw`;
+        });
+    </script>
+</body>
+</html>
