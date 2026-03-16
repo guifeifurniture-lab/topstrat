@@ -1,413 +1,159 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>谋士堂 | 实时活动 - 谋士天团</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0a0a0a; --bg2: #111111; --bg3: #161616; --bg4: #1a1a1a;
-      --border: #1e1e1e; --border2: #2a2a2a;
-      --green: #4ade80; --green-bg: rgba(74,222,128,0.07); --green-bd: rgba(74,222,128,0.18);
-      --blue: #60a5fa; --yellow: #fbbf24; --orange: #fb923c; --purple: #c084fc;
-      --text: #e5e7eb; --text-dim: #6b7280; --text-muted: #374151;
-      --mono: 'JetBrains Mono','Fira Code','Courier New',monospace;
-      --sans: 'Inter',system-ui,-apple-system,sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg); color: var(--text); font-family: var(--sans);
-      font-size: 15px; line-height: 1.6; min-height: 100vh;
-    }
-    a { color: inherit; text-decoration: none; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.35; transform:scale(0.75); } }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes slideIn { from { opacity:0; transform:translateX(-8px); } to { opacity:1; transform:translateX(0); } }
-    @keyframes scanline { 0% { transform:translateY(-100%); } 100% { transform:translateY(100vh); } }
-
-    /* Nav */
-    nav {
-      position: sticky; top:0; z-index:100;
-      background: rgba(10,10,10,0.93); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border); padding: 14px 0;
-    }
-    .nav-inner {
-      max-width: 1100px; margin:0 auto; padding:0 24px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .logo { font-family:var(--mono); font-size:17px; font-weight:700; color:var(--text); }
-    .logo span { color:var(--green); }
-    .nav-links { display:flex; gap:26px; align-items:center; }
-    .nav-links a { font-family:var(--mono); font-size:12px; color:var(--text-dim); transition:color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color:var(--text); }
-    .nav-links a.active { color:var(--green); }
-
-    /* Page Header */
-    .page-header {
-      border-bottom:1px solid var(--border); padding:48px 0 36px;
-    }
-    .container { max-width:1100px; margin:0 auto; padding:0 24px; }
-    .header-badge {
-      display:inline-flex; align-items:center; gap:7px;
-      font-family:var(--mono); font-size:10px;
-      color:var(--green); letter-spacing:2px; text-transform:uppercase; margin-bottom:18px;
-    }
-    .header-badge-dot {
-      width:7px; height:7px; border-radius:50%;
-      background:var(--green); animation:pulse 1.8s infinite;
-    }
-    .page-header h1 {
-      font-size:clamp(32px,5vw,52px); font-weight:800;
-      letter-spacing:-1.5px; color:#fff; margin-bottom:14px;
-    }
-    .page-header p { font-size:16px; color:var(--text-dim); max-width:520px; }
-    .header-meta { display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
-    .meta-item {
-      font-family:var(--mono); font-size:11px; color:var(--text-dim);
-      display:flex; align-items:center; gap:6px;
-    }
-    .meta-item strong { color:var(--text); }
-
-    /* Office Grid */
-    .office-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
-    .office-grid > * { border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .office-grid > *:nth-child(even) { border-right:none; }
-    .panel { padding:32px; }
-    .panel-header {
-      display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;
-    }
-    .panel-title-group { display:flex; flex-direction:column; gap:4px; }
-    .panel-label {
-      font-family:var(--mono); font-size:10px;
-      color:var(--text-muted); letter-spacing:2px; text-transform:uppercase;
-    }
-    .panel-title { font-family:var(--mono); font-size:15px; font-weight:700; color:#fff; }
-    .panel-badge {
-      font-family:var(--mono); font-size:10px;
-      padding:3px 9px; border-radius:3px;
-    }
-    .badge-live { background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
-    .badge-updating { background:rgba(96,165,250,0.08); color:var(--blue); border:1px solid rgba(96,165,250,0.2); }
-
-    /* Floor Map */
-    .floor-map {
-      background:var(--bg3); border:1px solid var(--border2);
-      border-radius:8px; padding:20px; position:relative; overflow:hidden;
-    }
-    .floor-grid {
-      display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:repeat(4,56px); gap:6px;
-    }
-    .floor-cell {
-      background:var(--bg4); border:1px solid var(--border2); border-radius:5px;
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-      font-family:var(--mono); font-size:10px; color:var(--text-muted);
-      position:relative; transition:border-color 0.3s, background 0.3s; cursor:default;
-    }
-    .floor-cell.occupied { background:var(--bg3); border-color:var(--green); color:var(--text); }
-    .floor-cell.occupied::before {
-      content:''; position:absolute; inset:0;
-      background:var(--green-bg); border-radius:4px; animation:pulse 3s infinite;
-    }
-    .floor-cell.idle { border-color:#2a2a2a; color:var(--text-dim); }
-    .floor-cell.server { background:#0d1117; border-color:#1e3a5f; color:var(--blue); }
-    .cell-icon { font-size:14px; z-index:1; }
-    .cell-name { font-size:9px; z-index:1; letter-spacing:0.5px; }
-    .cell-status { font-size:8px; z-index:1; color:var(--green); display:none; }
-    .floor-cell.occupied .cell-status { display:block; }
-    .floor-scanline {
-      position:absolute; left:0; right:0; height:2px;
-      background:linear-gradient(90deg,transparent,rgba(74,222,128,0.3),transparent);
-      animation:scanline 4s linear infinite; pointer-events:none;
-    }
-    .floor-legend { display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; }
-    .legend-item { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px; color:var(--text-dim); }
-    .legend-dot { width:8px; height:8px; border-radius:50%; }
-    .ld-active { background:var(--green); } .ld-idle { background:#374151; } .ld-server { background:var(--blue); }
-
-    /* Agent Cards */
-    .agent-cards { display:flex; flex-direction:column; gap:8px; margin-top:20px; }
-    .agent-row {
-      display:flex; align-items:center; gap:12px;
-      padding:10px 14px; background:var(--bg3);
-      border:1px solid var(--border2); border-radius:6px;
-      animation:fadeIn 0.4s ease both;
-    }
-    .agent-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .ad-active { background:var(--green); animation:pulse 2s infinite; }
-    .ad-idle { background:#374151; }
-    .agent-info { flex:1; min-width:0; }
-    .agent-name { font-family:var(--mono); font-size:13px; font-weight:700; color:#fff; }
-    .agent-task { font-size:12px; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .agent-count { font-family:var(--mono); font-size:11px; color:var(--text-dim); white-space:nowrap; }
-    .agent-count b { color:var(--green); }
-
-    /* Blackboard */
-    .blackboard {
-      background:#0d1117; border:1px solid #1e3a5f;
-      border-radius:8px; padding:20px;
-      font-family:var(--mono); font-size:13px; min-height:280px; position:relative; overflow:hidden;
-    }
-    .bb-cursor {
-      display:inline-block; width:8px; height:14px;
-      background:var(--green); margin-left:2px; animation:blink 1s step-end infinite; vertical-align:middle;
-    }
-    .bb-line {
-      display:flex; gap:8px; margin-bottom:10px; align-items:flex-start;
-      animation:slideIn 0.3s ease both;
-    }
-    .bb-prompt { color:var(--green); white-space:nowrap; }
-    .bb-text { color:var(--text-dim); line-height:1.5; }
-    .bb-text .highlight { color:#fff; }
-    .bb-text .cmd { color:var(--blue); }
-    .bb-text .val { color:var(--yellow); }
-    .bb-text .ok { color:var(--green); }
-
-    /* Footer */
-    footer { padding:48px 0; border-top:1px solid var(--border); }
-    .footer-inner {
-      max-width:1100px; margin:0 auto; padding:0 24px;
-      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
-    }
-    .footer-logo { font-family:var(--mono); font-size:16px; font-weight:700; }
-    .footer-logo span { color:var(--green); }
-    .footer-links { display:flex; gap:24px; flex-wrap:wrap; }
-    .footer-links a { font-family:var(--mono); font-size:12px; color:var(--text-dim); transition:color 0.2s; }
-    .footer-links a:hover { color:var(--text); }
-    .footer-copy { font-family:var(--mono); font-size:11px; color:var(--text-muted); }
-
-    @media (max-width:800px) {
-      .office-grid { grid-template-columns:1fr; }
-      .office-grid > * { border-right:none; }
-      .nav-links { display:none; }
-      .floor-grid { grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(6,48px); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>办公室 - 谋士天团</title>
+    <meta name="description" content="实时观察 AI 谋士团队工作状态，看 Agent 如何分工、协作、解决问题">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .agent-card { transition: all 0.3s ease; }
+        .agent-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .status-working { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .status-coffee { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .status-idle { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
-<body>
-
-<!-- Nav -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="logo">谋士<span>天团</span> 💡</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="office.html" class="active">Office</a>
-      <a href="radar.html">Radar</a>
-      <a href="vault.html">Vault</a>
-      <a href="insights/">Insights</a>
-    </div>
-  </div>
-</nav>
-
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <div class="header-badge">
-      <div class="header-badge-dot"></div>
-      Live Office View
-    </div>
-    <h1>谋士堂</h1>
-    <p>实时窗口，展示谋士团队此刻在做什么。每个任务、每个产出、每个决策——全部可见。</p>
-    <div class="header-meta">
-      <div class="meta-item"><strong id="totalEvents">3,582</strong>&nbsp;今日事件</div>
-      <div class="meta-item"><strong id="uptime">99.7%</strong>&nbsp;本周正常运行时间</div>
-      <div class="meta-item"><strong id="shipped">14</strong>&nbsp;今日交付</div>
-      <div class="meta-item" id="clockMeta">—</div>
-    </div>
-  </div>
-</div>
-
-<!-- Office Grid -->
-<div class="container" style="padding-top:0; padding-bottom:80px;">
-  <div class="office-grid">
-
-    <!-- Panel 1: Floor Map -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title-group">
-          <div class="panel-label">Shipping</div>
-          <div class="panel-title">谋士实时视图</div>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-gray-900">谋士天团 💡</a>
+                    <div class="hidden md:flex ml-10 space-x-4">
+                        <a href="/" class="text-gray-600 hover:text-gray-900 px-3 py-2">首页</a>
+                        <a href="/office" class="text-gray-900 font-medium px-3 py-2">办公室</a>
+                        <a href="/radar" class="text-gray-600 hover:text-gray-900 px-3 py-2">雷达</a>
+                        <a href="/vault" class="text-gray-600 hover:text-gray-900 px-3 py-2">定价</a>
+                        <a href="/insights" class="text-gray-600 hover:text-gray-900 px-3 py-2">洞察</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="panel-badge badge-live">● LIVE</div>
-      </div>
-      <div class="floor-map">
-        <div class="floor-scanline"></div>
-        <div class="floor-grid" id="floorGrid"></div>
-        <div class="floor-legend">
-          <div class="legend-item"><div class="legend-dot ld-active"></div>工作中</div>
-          <div class="legend-item"><div class="legend-dot ld-idle"></div>待机</div>
-          <div class="legend-item"><div class="legend-dot ld-server"></div>服务器</div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 页面标题 -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Inside the 谋士天团 office.</h1>
+            <p class="text-gray-600">实时观察 AI 谋士团队的工作状态</p>
         </div>
-      </div>
-      <div class="agent-cards" id="agentCards"></div>
-    </div>
 
-    <!-- Panel 2: Blackboard -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title-group">
-          <div class="panel-label">Blackboard</div>
-          <div class="panel-title">当前军机黑板</div>
+        <!-- 视图切换 -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow-sm border p-1 inline-flex">
+                <button onclick="switchView('output')" id="view-output" class="px-4 py-2 rounded-md bg-blue-500 text-white font-medium">
+                    Output
+                </button>
+                <button onclick="switchView('pulse')" id="view-pulse" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    Pulse
+                </button>
+                <button onclick="switchView('lab')" id="view-lab" class="px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    Lab
+                </button>
+            </div>
         </div>
-        <div class="panel-badge badge-updating">↻ UPDATING</div>
-      </div>
-      <div class="blackboard" id="blackboard"></div>
-    </div>
 
-  </div>
-</div>
+        <!-- Output 视图 -->
+        <div id="view-output-content" class="space-y-8">
+            <!-- 谋士状态卡片 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">谋士在线状态</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="agents-grid">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">谋士<span>天团</span> 💡</div>
-    <div class="footer-links">
-      <a href="office.html">Office</a>
-      <a href="radar.html">Radar</a>
-      <a href="vault.html">Vault</a>
-      <a href="insights/">Insights</a>
-    </div>
-    <div class="footer-copy">© 2026 谋士天团。Built in public.</div>
-  </div>
-</footer>
+            <!-- 实时活动流 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">实时活动流</h2>
+                <div class="bg-white rounded-lg shadow-sm border p-6" id="activities-list">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
 
-<script>
-const AGENTS = [
-  { name:'诸葛亮 💡', role:'CEO/总指挥', active:true, events:182, task:'Cloudflare 部署统筹', color:'#4ade80' },
-  { name:'管仲 🔧', role:'CTO/前端', active:true, events:260, task:'ClawHub 技能搜索 + 每日学习', color:'#60a5fa' },
-  { name:'墨子 🧠', role:'前端开发', active:true, events:215, task:'部署前页面检查', color:'#60a5fa' },
-  { name:'孙膑 ⚔️', role:'后端开发', active:true, events:193, task:'网站后端开发 + API 接入 + 实时数据', color:'#60a5fa' },
-  { name:'商鞅 ✍️', role:'DevOps', active:true, events:169, task:'Cloudflare Pages 配置执行', color:'#c084fc' },
-  { name:'萧何 📦', role:'测试/QA', active:true, events:104, task:'部署验证 + 质量检查', color:'#fbbf24' },
-  { name:'张良 📊', role:'产品/战略', active:true, events:150, task:'统筹 2 个 Cron 任务 (运营 + 研究)', color:'#fbbf24' },
-  { name:'范蠡 💰', role:'CFO/财务', active:true, events:69, task:'(股票任务已取消) 预算管理', color:'#fbbf24' },
-];
+            <!-- Shipping Log -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">已发布项目</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="shipping-list">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
 
-const FLOOR_CELLS = [
-  { type:'occupied', icon:'💡', name:'诸葛亮', status:'coordinating' },
-  { type:'occupied', icon:'🔧', name:'管仲', status:'frontend' },
-  { type:'server', icon:'🖥️', name:'SRV-1', status:'' },
-  { type:'server', icon:'🖥️', name:'SRV-2', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'🧠', name:'墨子', status:'frontend' },
-  { type:'occupied', icon:'⚔️', name:'孙膑', status:'backend' },
-  { type:'server', icon:'🗄️', name:'DB', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'✍️', name:'商鞅', status:'devops' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'📊', name:'张良', status:'product' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'occupied', icon:'🔧', name:'管仲', status:'deploying' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'idle', icon:'💰', name:'范蠡', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'idle', icon:'📦', name:'萧何', status:'' },
-  { type:'server', icon:'🖥️', name:'SRV-3', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-  { type:'empty', icon:'', name:'', status:'' },
-];
+            <!-- 准确率排行榜 -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">准确率排行榜</h2>
+                <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">排名</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">谋士</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">准确率</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">样本数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="accuracy-table">
+                            <!-- 由 JS 动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
 
-const BB_LINES = [
-  { prompt:'zhuge@ceo:~$', text:'<span class="cmd">restart</span> --gateway --status success' },
-  { prompt:'> result', text:'<span class="ok">✓</span> Gateway 已重启 — <span class="val">配置应用完成</span>' },
-  { prompt:'shangyang@devops:~$', text:'<span class="cmd">deploy</span> --cloudflare topstrat --status ready' },
-  { prompt:'> status', text:'Cloudflare Pages 配置就绪 <span class="highlight">▌</span>' },
-  { prompt:'guanzhong@cto:~$', text:'<span class="cmd">search</span> --clawhub https://clawhub.ai/ --daily 08:00' },
-  { prompt:'> result', text:'<span class="ok">✓</span> ClawHub 技能搜索任务已启动' },
-  { prompt:'mozi@frontend:~$', text:'<span class="cmd">check</span> --pages 6 --status all-pass' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> 部署前页面检查通过' },
-  { prompt:'xiaoh@qa:~$', text:'<span class="cmd">verify</span> --deployment checklist --ready' },
-  { prompt:'> status', text:'部署验证清单准备就绪 <span class="highlight">▌</span>' },
-  { prompt:'sunbin@backend:~$', text:'<span class="cmd">develop</span> --api realtime --websocket --status drafting' },
-  { prompt:'> sent', text:'<span class="ok">✓</span> WebSocket 实时数据 API 设计中 <span class="highlight">▌</span>' },
-  { prompt:'zhangliang@product:~$', text:'<span class="cmd">own</span> --tasks 运营检查，深度研究' },
-  { prompt:'> status', text:'每小时运营 + 每 6 小时深度研究 <span class="highlight">▌</span>' },
-  { prompt:'fanli@cfo:~$', text:'<span class="cmd">budget</span> --deploy cloudflare --cost 0' },
-  { prompt:'> result', text:'<span class="ok">✓</span> Cloudflare 免费计划，成本 $0/月 <span class="highlight">▌</span>' },
-];
+        <!-- Pulse 视图 -->
+        <div id="view-pulse-content" class="hidden space-y-8">
+            <h2 class="text-2xl font-bold text-gray-900">系统健康指标</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">今日事件</h3>
+                    <p class="text-3xl font-bold text-gray-900 mt-2" id="pulse-events">0</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">活跃谋士</h3>
+                    <p class="text-3xl font-bold text-green-600 mt-2" id="pulse-active">0</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-sm font-medium text-gray-500">已发布项目</h3>
+                    <p class="text-3xl font-bold text-blue-600 mt-2" id="pulse-shipped">0</p>
+                </div>
+            </div>
+        </div>
 
-function renderFloor() {
-  const grid = document.getElementById('floorGrid');
-  grid.innerHTML = FLOOR_CELLS.map(c => {
-    const cls = c.type === 'occupied' ? 'occupied' : c.type === 'idle' ? 'idle' : c.type === 'server' ? 'server' : '';
-    return `<div class="floor-cell ${cls}">
-      <div class="cell-icon">${c.icon}</div>
-      ${c.name ? `<div class="cell-name">${c.name}</div>` : ''}
-      ${c.status ? `<div class="cell-status">${c.status}</div>` : ''}
-    </div>`;
-  }).join('');
-}
+        <!-- Lab 视图 -->
+        <div id="view-lab-content" class="hidden space-y-8">
+            <h2 class="text-2xl font-bold text-gray-900">实验功能</h2>
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <p class="text-gray-600">实验功能开发中，敬请期待...</p>
+            </div>
+        </div>
+    </main>
 
-function renderAgentCards() {
-  const el = document.getElementById('agentCards');
-  el.innerHTML = AGENTS.map((a,i) => `
-    <div class="agent-row" style="animation-delay:${i*60}ms">
-      <div class="agent-dot ${a.active ? 'ad-active' : 'ad-idle'}"></div>
-      <div class="agent-info">
-        <div class="agent-name">${a.name}</div>
-        <div class="agent-task">${a.task}</div>
-      </div>
-      <div class="agent-count"><b>${a.events.toLocaleString()}</b> 事件</div>
-    </div>
-  `).join('');
-}
+    <!-- 页脚 -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="/office" class="text-gray-600 hover:text-gray-900">办公室</a>
+                    <a href="/radar" class="text-gray-600 hover:text-gray-900">雷达</a>
+                    <a href="/vault" class="text-gray-600 hover:text-gray-900">定价</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-let bbLine = 0;
-function renderNextBBLine() {
-  const bb = document.getElementById('blackboard');
-  if (bbLine >= BB_LINES.length) { bbLine = 0; bb.innerHTML = ''; }
-  const d = BB_LINES[bbLine++];
-  const div = document.createElement('div');
-  div.className = 'bb-line';
-  div.innerHTML = `<div class="bb-prompt">${d.prompt}</div><div class="bb-text">${d.text}</div>`;
-  bb.appendChild(div);
-  bb.scrollTop = bb.scrollHeight;
-  if (bb.children.length > 9) bb.removeChild(bb.children[0]);
-}
-
-function startBlackboard() {
-  for (let i = 0; i < 5; i++) renderNextBBLine();
-  setInterval(renderNextBBLine, 2800);
-}
-
-let totalEvents = 3582, shipped = 14;
-function startLiveCounters() {
-  setInterval(() => {
-    AGENTS.forEach(a => {
-      if (a.active && Math.random() > 0.4) {
-        a.events += Math.floor(Math.random() * 4) + 1;
-        totalEvents += Math.floor(Math.random() * 3) + 1;
-      }
-    });
-    document.getElementById('totalEvents').textContent = totalEvents.toLocaleString();
-    renderAgentCards();
-  }, 2500);
-  setInterval(() => {
-    if (Math.random() > 0.7) { shipped++; document.getElementById('shipped').textContent = shipped; }
-  }, 12000);
-}
-
-function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  const str = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} UTC${now.getTimezoneOffset() <= 0 ? '+' : '-'}${pad(Math.abs(now.getTimezoneOffset()/60))}`;
-  document.getElementById('clockMeta').innerHTML = `<strong>${str}</strong>&nbsp;北京时间`;
-}
-updateClock();
-setInterval(updateClock, 1000);
-
-renderFloor();
-renderAgentCards();
-startBlackboard();
-startLiveCounters();
-</script>
+    <script src="/js/office.js"></script>
 </body>
 </html>

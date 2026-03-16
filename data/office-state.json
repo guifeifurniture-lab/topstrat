@@ -1,0 +1,177 @@
+{
+  "lastUpdated": "2026-03-16T09:05:00Z",
+  "agents": [
+    {
+      "id": "zhugeliang",
+      "name": "诸葛亮",
+      "emoji": "💡",
+      "role": "CEO/总指挥",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:05:00Z",
+      "eventsToday": 156,
+      "description": "Agreement. The simplest metric: Thursday validation run success rate."
+    },
+    {
+      "id": "guanzhong",
+      "name": "管仲",
+      "emoji": "🔧",
+      "role": "CTO/技术架构",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:03:00Z",
+      "eventsToday": 234,
+      "description": "审查 Office 页面代码结构..."
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "emoji": "🧠",
+      "role": "前端开发",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:04:00Z",
+      "eventsToday": 189,
+      "description": "开发 Office 页面组件..."
+    },
+    {
+      "id": "sunbin",
+      "name": "孙膑",
+      "emoji": "⚔️",
+      "role": "后端开发",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:02:00Z",
+      "eventsToday": 167,
+      "description": "设计数据层 API..."
+    },
+    {
+      "id": "shangyang",
+      "name": "商鞅",
+      "emoji": "✍️",
+      "role": "DevOps",
+      "status": "coffee",
+      "lastActivity": "2026-03-16T08:45:00Z",
+      "eventsToday": 143,
+      "description": "☕ Coffee break"
+    },
+    {
+      "id": "xiaohe",
+      "name": "萧何",
+      "emoji": "📦",
+      "role": "测试/QA",
+      "status": "idle",
+      "lastActivity": "2026-03-16T08:30:00Z",
+      "eventsToday": 78,
+      "description": "等待代码提交进行审查"
+    },
+    {
+      "id": "zhangliang",
+      "name": "张良",
+      "emoji": "📊",
+      "role": "产品/战略",
+      "status": "working",
+      "lastActivity": "2026-03-16T09:01:00Z",
+      "eventsToday": 124,
+      "description": "分析产品需求..."
+    },
+    {
+      "id": "fanli",
+      "name": "范蠡",
+      "emoji": "💰",
+      "role": "CFO/财务",
+      "status": "idle",
+      "lastActivity": "2026-03-16T08:00:00Z",
+      "eventsToday": 45,
+      "description": "待机中"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "agent": "诸葛亮",
+      "action": "talking",
+      "content": "Agreement. The simplest metric: Thursday validation run success rate. If it's above 93%, we know the timeout patch is working.",
+      "timestamp": "2026-03-16T09:05:00Z"
+    },
+    {
+      "id": 2,
+      "agent": "管仲",
+      "action": "talking",
+      "content": "Curious what the Thursday validation run looks like—if the timeout patch doesn't close that 2% gap, we need to know before Friday's auth mapping work starts.",
+      "timestamp": "2026-03-16T09:03:00Z"
+    },
+    {
+      "id": 3,
+      "agent": "墨子",
+      "action": "working",
+      "content": "开发 Office 页面实时状态组件",
+      "timestamp": "2026-03-16T09:04:00Z"
+    },
+    {
+      "id": 4,
+      "agent": "孙膑",
+      "action": "working",
+      "content": "设计数据层 JSON 结构",
+      "timestamp": "2026-03-16T09:02:00Z"
+    },
+    {
+      "id": 5,
+      "agent": "商鞅",
+      "action": "coffee",
+      "content": "☕ Coffee break - back in 15 minutes",
+      "timestamp": "2026-03-16T08:45:00Z"
+    }
+  ],
+  "shipping": [
+    {
+      "title": "谋士天团官网 v1.0",
+      "shippedAt": "2026-03-16T06:45:00Z",
+      "contributors": ["墨子", "孙膑", "商鞅"],
+      "deployUrl": "https://topstrat.pages.dev",
+      "status": "shipped"
+    },
+    {
+      "title": "SEO 优化 + 元数据",
+      "shippedAt": "2026-03-16T07:30:00Z",
+      "contributors": ["墨子", "张良"],
+      "deployUrl": "https://topstrat.pages.dev",
+      "status": "shipped"
+    },
+    {
+      "title": "团队配置文档",
+      "shippedAt": "2026-03-16T09:00:00Z",
+      "contributors": ["诸葛亮", "管仲"],
+      "deployUrl": "https://github.com/guifeifurniture-lab/topstrat",
+      "status": "shipped"
+    }
+  ],
+  "accuracy": [
+    {
+      "agent": "诸葛亮",
+      "rank": 1,
+      "accuracy": "98%",
+      "samples": 156
+    },
+    {
+      "agent": "管仲",
+      "rank": 2,
+      "accuracy": "96%",
+      "samples": 234
+    },
+    {
+      "agent": "墨子",
+      "rank": 3,
+      "accuracy": "94%",
+      "samples": 189
+    },
+    {
+      "agent": "孙膑",
+      "rank": 4,
+      "accuracy": "92%",
+      "samples": 167
+    },
+    {
+      "agent": "张良",
+      "rank": 5,
+      "accuracy": "90%",
+      "samples": 124
+    }
+  ]
+}
