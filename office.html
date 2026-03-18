@@ -11,12 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .agent-card { transition: all 0.3s ease; }
-        .agent-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .status-working { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
-        .status-coffee { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .status-idle { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
-        .status-offline { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); }
+        .agent-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .agent-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .status-working { background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+        .status-talking { background: linear-gradient(135deg, #3B82F6 0%, #4F46E5 100%); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .status-coffee { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+        .status-idle { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2); }
+        .status-offline { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); box-shadow: 0 4px 12px rgba(156, 163, 175, 0.2); }
+        .status-changed { animation: status-change 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .pulse-dot { animation: pulse 2s infinite; }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
@@ -33,13 +35,13 @@
             from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        .shipping-card { transition: all 0.2s ease; }
-        .shipping-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .tab-active { background: #3B82F6; color: white; }
-        .tab-inactive { color: #4B5563; }
-        .tab-inactive:hover { background: #F3F4F6; }
-        .accuracy-row { transition: background-color 0.15s ease; }
-        .accuracy-row:hover { background-color: #F9FAFB; }
+        .shipping-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .shipping-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .accuracy-row { transition: all 0.15s ease; }
+        .accuracy-row:hover { background-color: #F3F4F6; transform: translateX(2px); }
+        .tab-active { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); }
+        .tab-inactive { color: #4B5563; transition: all 0.2s ease; }
+        .tab-inactive:hover { background: #F3F4F6; transform: translateY(-1px); }
         /* Auto-scroll container */
         .activity-container {
             max-height: 400px;

@@ -11,10 +11,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .article-card { transition: all 0.2s ease; }
-        .article-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        /* Pulse 动画 - 与 Office 统一 */
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* 文章卡片动画 - 与 Office 统一 */
+        .article-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .article-card:hover { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+        }
         .article-card:hover .article-title { color: #2563EB; }
         .article-card:hover .read-more { color: #2563EB; }
+        
+        /* 分类按钮动画 */
+        .category-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .category-btn:hover {
+            transform: translateY(-1px);
+        }
+        .category-btn.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -32,24 +59,36 @@
                         <a href="index.html" class="text-gray-900 font-medium px-3 py-2">洞察</a>
                     </div>
                 </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500" id="last-update">最后更新：--</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="connection-status">
+                        <span class="w-2 h-2 mr-1.5 bg-green-400 rounded-full pulse-dot"></span>
+                        实时
+                    </span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- 主内容 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- 页面标题 (与 VoxYZ Insights 一致) -->
-        <div class="text-center mb-12">
+        <div class="text-center mb-8">
             <p class="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">Build in public</p>
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Insights & Field Notes</h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Insights & Field Notes</h1>
+            <p class="text-gray-600 max-w-3xl mx-auto">
                 谋士天团的实战经验、技术栈、失败教训和协作模式。
                 从一个创始人和八位谋士构建 AI 公司的真实记录。
             </p>
         </div>
 
         <!-- 分类和搜索 -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Articles</h2>
+                <p class="text-sm text-gray-500">Field notes from building in public</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
             <!-- 分类筛选 -->
             <div class="flex flex-wrap gap-2">
                 <button class="category-btn active px-4 py-2 rounded-full bg-blue-600 text-white font-medium text-sm" data-category="all">全部</button>
@@ -136,6 +175,8 @@
             </article>
         </div>
 
+        </section>
+
         <!-- 无搜索结果提示 -->
         <div id="no-results" class="hidden text-center py-12">
             <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,10 +193,10 @@
             <div class="flex justify-between items-center flex-wrap gap-4">
                 <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="../office.html" class="text-gray-600 hover:text-gray-900">办公室</a>
-                    <a href="../radar.html" class="text-gray-600 hover:text-gray-900">雷达</a>
-                    <a href="../vault.html" class="text-gray-600 hover:text-gray-900">定价</a>
-                    <a href="index.html" class="text-gray-900 font-medium">洞察</a>
+                    <a href="../office.html" class="text-gray-600 hover:text-gray-900 text-sm">办公室</a>
+                    <a href="../radar.html" class="text-gray-600 hover:text-gray-900 text-sm">雷达</a>
+                    <a href="../vault.html" class="text-gray-600 hover:text-gray-900 text-sm">定价</a>
+                    <a href="index.html" class="text-gray-900 font-medium text-sm">洞察</a>
                 </div>
             </div>
         </div>

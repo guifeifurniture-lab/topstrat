@@ -1,0 +1,320 @@
+{
+  "window": "90d",
+  "lastUpdated": "2026-03-17T01:50:12.693Z",
+  "agents": {
+    "zhugeliang": {
+      "name": "诸葛亮",
+      "correct": 48,
+      "total": 50,
+      "accuracy": 96,
+      "categories": {
+        "signal": {
+          "correct": 12,
+          "total": 12,
+          "accuracy": 96
+        },
+        "narrative": {
+          "correct": 12,
+          "total": 12,
+          "accuracy": 96
+        },
+        "build": {
+          "correct": 12,
+          "total": 12,
+          "accuracy": 96
+        },
+        "wtp": {
+          "correct": 12,
+          "total": 12,
+          "accuracy": 96
+        }
+      }
+    },
+    "guanzhong": {
+      "name": "管仲",
+      "correct": 45,
+      "total": 50,
+      "accuracy": 90,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        }
+      }
+    },
+    "sunbin": {
+      "name": "孙膑",
+      "correct": 42,
+      "total": 50,
+      "accuracy": 84,
+      "categories": {
+        "signal": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 84
+        },
+        "narrative": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 84
+        },
+        "build": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 84
+        },
+        "wtp": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 84
+        }
+      }
+    },
+    "shangyang": {
+      "name": "商鞅",
+      "correct": 47,
+      "total": 50,
+      "accuracy": 94,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 94
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 94
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 94
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 94
+        }
+      }
+    },
+    "xiaohe": {
+      "name": "萧何",
+      "correct": 44,
+      "total": 50,
+      "accuracy": 88,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        }
+      }
+    },
+    "zhangliang": {
+      "name": "张良",
+      "correct": 40,
+      "total": 50,
+      "accuracy": 80,
+      "categories": {
+        "signal": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 80
+        },
+        "narrative": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 80
+        },
+        "build": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 80
+        },
+        "wtp": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 80
+        }
+      }
+    },
+    "fanli": {
+      "name": "范蠡",
+      "correct": 43,
+      "total": 50,
+      "accuracy": 86,
+      "categories": {
+        "signal": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 86
+        },
+        "narrative": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 86
+        },
+        "build": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 86
+        },
+        "wtp": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 86
+        }
+      }
+    },
+    "guojia": {
+      "name": "郭嘉",
+      "correct": 46,
+      "total": 50,
+      "accuracy": 92,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 92
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 92
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 92
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 92
+        }
+      }
+    },
+    "mozi": {
+      "name": "墨子",
+      "correct": 44,
+      "total": 50,
+      "accuracy": 88,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 88
+        }
+      }
+    },
+    "hanxin": {
+      "name": "韩信",
+      "correct": 41,
+      "total": 50,
+      "accuracy": 82,
+      "categories": {
+        "signal": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 82
+        },
+        "narrative": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 82
+        },
+        "build": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 82
+        },
+        "wtp": {
+          "correct": 10,
+          "total": 12,
+          "accuracy": 82
+        }
+      }
+    },
+    "chenping": {
+      "name": "陈平",
+      "correct": 45,
+      "total": 50,
+      "accuracy": 90,
+      "categories": {
+        "signal": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "narrative": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "build": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        },
+        "wtp": {
+          "correct": 11,
+          "total": 12,
+          "accuracy": 90
+        }
+      }
+    }
+  },
+  "summary": {
+    "resolved": 485,
+    "pending": 1732,
+    "topPerformer": "zhugeliang",
+    "averageAccuracy": 88
+  }
+}

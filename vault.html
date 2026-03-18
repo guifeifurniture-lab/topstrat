@@ -11,8 +11,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .pricing-card { transition: all 0.3s ease; }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        
+        /* Pulse 动画 - 与 Office 统一 */
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* 定价卡片动画 - 与 Office 统一 */
+        .pricing-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .pricing-card:hover { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+        }
+        
+        /* FAQ 卡片动画 */
+        .faq-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* 按钮动画 */
+        .btn-primary {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -30,22 +62,29 @@
                         <a href="/insights" class="text-gray-600 hover:text-gray-900 px-3 py-2">洞察</a>
                     </div>
                 </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500" id="last-update">最后更新：--</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="connection-status">
+                        <span class="w-2 h-2 mr-1.5 bg-green-400 rounded-full pulse-dot"></span>
+                        实时
+                    </span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- 主内容 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- 页面标题 -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">选择你的天团配置</h1>
-            <p class="text-xl text-gray-600">从 Starter 到 Pro，全部更新免费</p>
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">The Vault</h1>
+            <p class="text-gray-600">Choose your strategist team configuration. From Starter to Pro, all updates free.</p>
         </div>
 
         <!-- 定价卡片 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <!-- Starter -->
-            <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8">
+            <div class="pricing-card bg-white rounded-xl shadow-sm border p-6">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-2xl font-bold text-gray-900">Starter</h2>
                     <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">入门版</span>
@@ -78,13 +117,13 @@
                         <span class="text-gray-700">社区访问</span>
                     </li>
                 </ul>
-                <button class="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition">
+                <button data-plan="starter" class="btn-primary w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800">
                     获取 Starter
                 </button>
             </div>
 
             <!-- Pro -->
-            <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-blue-500 p-8 relative">
+            <div class="pricing-card bg-white rounded-xl shadow-sm border-2 border-blue-500 p-6 relative">
                 <div class="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-medium">
                     最受欢迎
                 </div>
@@ -124,29 +163,32 @@
                         <span class="text-gray-700">优先支持</span>
                     </li>
                 </ul>
-                <button class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition">
+                <button data-plan="pro" class="btn-primary w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600">
                     获取 Pro
                 </button>
             </div>
         </div>
 
         <!-- FAQ -->
-        <div class="mt-16 max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">常见问题</h2>
+        <section class="mt-12 max-w-3xl mx-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">FAQ</h2>
+                <p class="text-sm text-gray-500">Common questions answered</p>
+            </div>
             <div class="space-y-4">
-                <details class="bg-white rounded-lg shadow-sm border p-6">
+                <details class="faq-card bg-white rounded-lg shadow-sm border p-6">
                     <summary class="font-medium text-gray-900 cursor-pointer">Starter 和 Pro 有什么区别？</summary>
                     <p class="text-gray-600 mt-3">Starter 是让你从 0 到 1 运行 AI 谋士团队。Pro 是生产级系统，包含协作逻辑、自动化评审、部署自动化等高级功能。如果已有 Starter，升级 Pro 只需补差价。</p>
                 </details>
-                <details class="bg-white rounded-lg shadow-sm border p-6">
+                <details class="faq-card bg-white rounded-lg shadow-sm border p-6">
                     <summary class="font-medium text-gray-900 cursor-pointer">购买后如何获取访问权限？</summary>
                     <p class="text-gray-600 mt-3">支付完成后，在结账页面输入你的 GitHub 用户名。大多数买家在几分钟内获得访问权限。</p>
                 </details>
-                <details class="bg-white rounded-lg shadow-sm border p-6">
+                <details class="faq-card bg-white rounded-lg shadow-sm border p-6">
                     <summary class="font-medium text-gray-900 cursor-pointer">后续还有其他费用吗？</summary>
                     <p class="text-gray-600 mt-3">一次性购买，无订阅费。你的 AI 谋士需要 AI 模型（ChatGPT、Claude、Gemini 等），如果你已有 Pro 订阅就足够了。典型成本是每月$5-20。</p>
                 </details>
-                <details class="bg-white rounded-lg shadow-sm border p-6">
+                <details class="faq-card bg-white rounded-lg shadow-sm border p-6">
                     <summary class="font-medium text-gray-900 cursor-pointer">我不会编程，能使用吗？</summary>
                     <p class="text-gray-600 mt-3">可以。一切都是复制粘贴。4 个 AI 引导提示完成设置。一位 54 岁的顾问在 3 周内建立了 5 个谋士团队，没有写过一行代码。</p>
                 </details>
@@ -157,15 +199,19 @@
     <!-- 页脚 -->
     <footer class="bg-white border-t mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap gap-4">
                 <p class="text-gray-600">© 2026 谋士天团。All rights reserved.</p>
-                <div class="flex space-x-4">
-                    <a href="/office" class="text-gray-600 hover:text-gray-900">办公室</a>
-                    <a href="/radar" class="text-gray-600 hover:text-gray-900">雷达</a>
-                    <a href="/vault" class="text-gray-600 hover:text-gray-900">定价</a>
+                <div class="flex space-x-6">
+                    <a href="/office" class="text-gray-600 hover:text-gray-900 text-sm">办公室</a>
+                    <a href="/radar" class="text-gray-600 hover:text-gray-900 text-sm">雷达</a>
+                    <a href="/vault" class="text-gray-600 hover:text-gray-900 text-sm">定价</a>
+                    <a href="/insights" class="text-gray-600 hover:text-gray-900 text-sm">洞察</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Vault 支付集成脚本 -->
+    <script src="/js/vault.js"></script>
 </body>
 </html>

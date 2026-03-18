@@ -1,0 +1,248 @@
+/* ===================================
+   谋士天团 - 全局样式系统
+   基于 VoxYZ 风格对标设计
+   =================================== */
+
+/* CSS 变量定义 */
+:root {
+  /* 主色调 */
+  --cyan: #00ffff;
+  --cyan-dim: rgba(0, 255, 255, 0.1);
+  --cyan-border: rgba(0, 255, 255, 0.3);
+  --cyan-glow: rgba(0, 255, 255, 0.4);
+  
+  /* 基础色 */
+  --black: #000000;
+  --gray-900: #111111;
+  --gray-800: #1a1a1a;
+  --gray-700: #2a2a2a;
+  --gray-600: #3a3a3a;
+  --gray-500: #4a4a4a;
+  --gray-400: #666666;
+  --gray-300: #888888;
+  --gray-200: #aaaaaa;
+  --gray-100: #cccccc;
+  --white: #ffffff;
+  
+  /* 文本色 */
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --text-tertiary: #666666;
+  
+  /* 渐变 */
+  --gradient-cyan-white: linear-gradient(45deg, #ffffff, #00ffff);
+  --gradient-cyan-horizontal: linear-gradient(90deg, #00ffff, #ffffff);
+  
+  /* 阴影 */
+  --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.4);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+  
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* 过渡 */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* 字体 */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* 间距 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
+  --spacing-3xl: 8rem;
+}
+
+/* 基础重置 */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--black);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 毛玻璃效果 */
+.backdrop {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.backdrop-strong {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 渐变文字 */
+.text-gradient {
+  background: var(--gradient-cyan-white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cyan {
+  background: var(--gradient-cyan-horizontal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 发光效果 */
+.glow-cyan {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* 流体按钮基础样式 */
+.fluid-btn {
+  position: relative;
+  padding: 1rem 2.5rem;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-block;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  z-index: 1;
+}
+
+.fluid-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.fluid-btn:hover::before {
+  left: 100%;
+}
+
+.fluid-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.fluid-btn-primary {
+  background: rgba(0, 255, 255, 0.2);
+}
+
+.fluid-btn-secondary {
+  background: transparent;
+  border-color: var(--gray-600);
+}
+
+.fluid-btn-secondary:hover {
+  border-color: var(--cyan);
+}
+
+/* 卡片样式 */
+.card {
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--cyan-border);
+  transform: translateY(-5px);
+}
+
+/* 导航栏样式 */
+.nav-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--cyan-border);
+}
+
+/* 徽章样式 */
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--cyan);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .nav-glass {
+    padding: 1rem 4%;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* 无障碍 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

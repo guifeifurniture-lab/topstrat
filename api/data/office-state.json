@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T21:30:56.675Z",
+  "lastUpdated": "2026-03-16T22:06:23.015Z",
   "agents": [
     {
       "id": "zhugeliang",
@@ -8,8 +8,8 @@
       "role": "CEO/总指挥",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 32,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 52,
       "description": "诸葛亮 - CEO/总指挥"
     },
     {
@@ -19,8 +19,8 @@
       "role": "CTO/技术架构",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 18,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 34,
       "description": "管仲 - CTO/技术架构"
     },
     {
@@ -30,8 +30,8 @@
       "role": "全栈开发",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 12,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 58,
       "description": "孙膑 - 全栈开发"
     },
     {
@@ -41,8 +41,8 @@
       "role": "前端专家",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 13,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 32,
       "description": "郭嘉 - 前端专家"
     },
     {
@@ -52,8 +52,8 @@
       "role": "前端开发",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 26,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 28,
       "description": "墨子 - 前端开发"
     },
     {
@@ -63,8 +63,8 @@
       "role": "DevOps",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 59,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 36,
       "description": "商鞅 - DevOps"
     },
     {
@@ -74,8 +74,8 @@
       "role": "QA/测试",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 30,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 14,
       "description": "萧何 - QA/测试"
     },
     {
@@ -85,8 +85,8 @@
       "role": "军师/侦察",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 14,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 34,
       "description": "张良 - 军师/侦察"
     },
     {
@@ -96,8 +96,8 @@
       "role": "CFO/财务",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 17,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 46,
       "description": "范蠡 - CFO/财务"
     },
     {
@@ -107,8 +107,8 @@
       "role": "增长黑客",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 23,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 46,
       "description": "韩信 - 增长黑客"
     },
     {
@@ -118,16 +118,16 @@
       "role": "客户成功",
       "status": "idle",
       "currentTask": null,
-      "lastActivity": "2026-03-16T21:30:56.675Z",
-      "eventsToday": 55,
+      "lastActivity": "2026-03-16T22:06:23.015Z",
+      "eventsToday": 13,
       "description": "陈平 - 客户成功"
     }
   ],
   "activities": [],
   "pulse": {
-    "totalEvents": 299,
+    "totalEvents": 393,
     "activeAgents": 0,
     "totalAgents": 11,
-    "lastUpdated": "2026-03-16T21:30:56.675Z"
+    "lastUpdated": "2026-03-16T22:06:23.015Z"
   }
 }
